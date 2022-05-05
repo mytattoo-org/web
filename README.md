@@ -1,9 +1,7 @@
-## Template para Next
+# MyTattoo web
 
-# Dotenv
-  * .env is inside next.config.js (or .env.local)
-  * will change in build time (run yarn dev to see changes)
+- ## Axios (REST)
 
-# Jest and Cypress
-  * when use expect in jest need be imported from "@jest/globals"
-  * added: \<rootDir>/src/frontend/tests/cypress/ inside jest.config.js to jest ignore all cypress folder 
+- ## React ('Typescript' Library)
+
+- ## Next ('Typescript' Framework)
