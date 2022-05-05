@@ -6,7 +6,6 @@ const ProfileOptionsStyle = styled.ul`
   justify-content: flex-end;
 
   width: 100%;
-  padding-right: 24px;
 
   li {
     :not(:last-child) {

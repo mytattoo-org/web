@@ -9,12 +9,19 @@ import { useTheme } from 'styled-components'
 const useDisplayOptions = () => {
   const theme = useTheme()
   const { showLeftSide, toggleShowLeftSide } = useContext(FeedContext)
-
   const [selectedDisplay, setSelectedDisplay] =
     useState<TSelectedDisplay>('vertical')
 
+  const filterAriaLabel = showLeftSide
+    ? 'Desabilitar filtros'
+    : 'Habilitar filtros'
+
   const onLiClick = (newSelected: TSelectedDisplay) => {
     if (selectedDisplay !== newSelected) setSelectedDisplay(newSelected)
+  }
+
+  const onFilterClick = () => {
+    showLeftSide ? toggleShowLeftSide() : toggleShowLeftSide()
   }
 
   const verticalColor =
@@ -30,9 +37,10 @@ const useDisplayOptions = () => {
   return {
     onLiClick,
     showLeftSide,
+    onFilterClick,
     verticalColor,
-    horizontalColor,
-    toggleShowLeftSide
+    filterAriaLabel,
+    horizontalColor
   }
 }
 

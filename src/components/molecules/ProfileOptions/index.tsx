@@ -15,7 +15,7 @@ const ProfileOptions = () => (
     </li>
 
     <li>
-      <Avatar size={46} src='/avatar.png' />
+      <Avatar size={40} src='/avatar.png' />
     </li>
   </ProfileOptionsStyle>
 )

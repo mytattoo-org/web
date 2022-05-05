@@ -7,7 +7,10 @@ const NavbarStyle = styled.nav`
   right: 0;
   z-index: 1;
 
+  display: flex;
+
   height: 78px;
+  padding: 0 8px;
 
   background-color: ${({ theme }) => theme.colors.background};
 
@@ -27,38 +30,16 @@ const NavbarStyle = styled.nav`
       height: 46px;
 
       &:first-child {
-        display: none;
+        display: flex;
       }
 
       &:nth-child(2) {
         flex: 1;
-        padding: 0 8px;
+        margin: 0 16px;
       }
 
       &:last-child {
-        display: none;
-      }
-    }
-  }
-
-  @media screen and (min-width: 425px) {
-    > ul {
-      > li {
-        &:first-child {
-          display: flex;
-
-          padding-left: 8px;
-        }
-
-        &:nth-child(2) {
-          padding: 0 16px;
-        }
-
-        &:last-child {
-          display: flex;
-
-          padding-right: 8px;
-        }
+        display: flex;
       }
     }
   }
