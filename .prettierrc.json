@@ -1,0 +1,32 @@
+{
+  "tabWidth": 2,
+  "semi": false,
+  "printWidth": 80,
+  "singleQuote": true,
+  "endOfLine": "auto",
+  "trailingComma": "none",
+  "jsxSingleQuote": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrder": [
+    "^./types$|^./styles|^./logic$",
+    "^./|^../",
+    "^components/atoms",
+    "^components/molecules",
+    "^components/organisms",
+    "^components/providers",
+    "^components/templates",
+    "^pages",
+    "^hooks",
+    "^store",
+    "^styles",
+    "^tests",
+    "^types",
+    "^utils",
+    "^@public",
+    "^@common",
+    "<THIRD_PARTY_MODULES>"
+  ]
+}

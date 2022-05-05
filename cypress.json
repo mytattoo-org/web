@@ -1,0 +1,14 @@
+{
+  "projectId": "1aq5rw",
+  "baseUrl": "http://localhost:3000",
+  "env": {
+    "api": "http://localhost:3001"
+  },
+  "fixturesFolder": "./src/tests/cypress/fixtures",
+  "integrationFolder": "./src/tests/cypress/integration",
+  "pluginsFile": "./src/tests/cypress/plugins",
+  "screenshotsFolder": "./src/tests/cypress/screenshots",
+  "videosFolder": "./src/tests/cypress/videos",
+  "downloadsFolder": "./src/tests/cypress/downloads",
+  "supportFile": "./src/tests/cypress/support"
+}
