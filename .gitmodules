@@ -1,0 +1,3 @@
+[submodule "submodules/commom"]
+	path = submodules/commom
+	url = https://github.com/mytattoo-org/common

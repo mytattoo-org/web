@@ -30,5 +30,5 @@
       "@common/*": ["../../common/src/*"]
     }
   },
-  "references": [{ "path": "../common" }]
+  "references": [{ "path": "./submodules/common" }]
 }
