@@ -1,9 +1,14 @@
 import { FeedContext } from 'components/templates/Feed/logic'
 
+import useWindowSize from 'hooks/useWindowSize'
+
 import { useContext } from 'react'
 
 const useAuthOptions = () => {
+  const { innerWidth } = useWindowSize()
   const { toggleShowAuthModal } = useContext(FeedContext)
+
+  console.log(innerWidth)
 
   const onSignInClick = () => {
     toggleShowAuthModal({ open: true, page: 'sign-in' })
@@ -13,7 +18,9 @@ const useAuthOptions = () => {
     toggleShowAuthModal({ open: true, page: 'sign-up' })
   }
 
-  return { onSignInClick, onSignUpClick }
+  const isSmall = innerWidth < 600
+
+  return { onSignInClick, onSignUpClick, isSmall }
 }
 
 export { useAuthOptions }

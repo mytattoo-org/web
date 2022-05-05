@@ -31,14 +31,11 @@ const DisplayOptionsStyle = styled.ul`
   }
 
   li {
-    label {
+    &,
+    & label {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    & + li {
-      margin-left: 8px;
     }
   }
 
@@ -53,11 +50,15 @@ const DisplayOptionsStyle = styled.ul`
     &.DisabledFilter,
     &.Filter {
       width: 24px;
-      height: 24px;
+      height: 29px;
     }
 
-    &.DisabledFilter path {
-      fill: ${({ theme }) => theme.colors.primary};
+    &.DisabledFilter {
+      height: 26px;
+
+      path {
+        fill: ${({ theme }) => theme.colors.primary};
+      }
     }
 
     &.Filter path {

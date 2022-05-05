@@ -10,8 +10,22 @@ const AuthOptionsStyle = styled.ul<IAuthOptionsStyleProps>`
 
   width: 100%;
 
-  li + li {
-    margin-left: 16px;
+  li {
+    display: flex;
+    align-items: center;
+
+    button .Icon {
+      width: 36px;
+      height: 36px;
+
+      path {
+        fill: ${({ theme }) => theme.colors.secondary};
+      }
+    }
+
+    & + li {
+      margin-left: 16px;
+    }
   }
 `
 

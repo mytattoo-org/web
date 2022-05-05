@@ -11,10 +11,11 @@ import Filter from 'components/atoms/Icon/icons/Filter'
 const DisplayOptions = () => {
   const {
     onLiClick,
-    horizontalColor,
-    verticalColor,
     showLeftSide,
-    toggleShowLeftSide
+    onFilterClick,
+    verticalColor,
+    horizontalColor,
+    filterAriaLabel
   } = useDisplayOptions()
 
   return (
@@ -55,12 +56,8 @@ const DisplayOptions = () => {
         <button
           type='button'
           id='filterButton'
-          aria-label={
-            showLeftSide ? 'Desabilitar filtros' : 'Habilitar filtros'
-          }
-          onClick={() => {
-            showLeftSide ? toggleShowLeftSide() : toggleShowLeftSide()
-          }}
+          onClick={onFilterClick}
+          aria-label={filterAriaLabel}
         >
           {showLeftSide ? (
             <DisabledFilter aria-live='polite' />
