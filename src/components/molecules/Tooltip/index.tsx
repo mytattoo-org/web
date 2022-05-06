@@ -4,7 +4,7 @@ import type { ITooltipProps } from './types'
 
 import TooltipArrow from 'components/atoms/Icon/icons/TooltipArrow'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Tooltip = ({
   trigger: Trigger,

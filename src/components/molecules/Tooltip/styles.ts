@@ -9,6 +9,11 @@ const TooltipStyle = styled.div<ITooltipStyleProps>`
     position: absolute;
     z-index: 1;
   }
+
+  .Trigger {
+    display: flex;
+    justify-content: center;
+  }
 `
 
 export { TooltipStyle }

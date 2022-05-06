@@ -1,7 +1,7 @@
 import { ArtistHeartStyle } from './styles'
 import type { IArtistHeartProps } from './types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const ArtistHeart = ({ className, ...props }: IArtistHeartProps) => (
   <ArtistHeartStyle

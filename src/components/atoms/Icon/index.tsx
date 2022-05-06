@@ -1,7 +1,7 @@
 import { IconStyle } from './styles'
 import type { IIconProps } from './types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Icon = ({
   desc,

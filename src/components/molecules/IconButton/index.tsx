@@ -1,7 +1,7 @@
 import { IconButtonStyle } from './styles'
 import type { IIconButtonProps } from './types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const IconButton = ({
   outlined,

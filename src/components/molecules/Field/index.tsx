@@ -7,7 +7,7 @@ import ClosedEye from 'components/atoms/Icon/icons/ClosedEye'
 import Eye from 'components/atoms/Icon/icons/Eye'
 import Input from 'components/atoms/Input'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Field = <FormValues,>({
   type,

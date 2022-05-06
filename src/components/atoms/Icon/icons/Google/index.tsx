@@ -1,7 +1,7 @@
 import Icon from '../../'
 import { IIconProps } from '../../types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Google = ({ className, ...props }: IIconProps) => (
   <Icon
