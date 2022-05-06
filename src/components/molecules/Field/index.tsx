@@ -7,12 +7,14 @@ import ClosedEye from 'components/atoms/Icon/icons/ClosedEye'
 import Eye from 'components/atoms/Icon/icons/Eye'
 import Input from 'components/atoms/Input'
 
+import { composeClassName } from 'utils/composeClassName'
+
 const Field = <FormValues,>({
+  type,
   name,
   label,
   formik,
-  type,
-  className = 'Field',
+  className,
   ...props
 }: IFieldProps<FormValues>) => {
   const {
@@ -30,23 +32,20 @@ const Field = <FormValues,>({
   } = useField<FormValues>({ formik, name, type })
 
   return (
-    <FieldStyle className={className} hasError={hasError} hasFilled={hasFilled}>
+    <FieldStyle
+      hasError={hasError}
+      hasFilled={hasFilled}
+      className={composeClassName(`Field ${name}Field`, className)}
+    >
       {hasError && (
         <Tooltip
-          trigger={
-            <Alert
-              title={`${name}Trigger`}
-              className='triggerAlert'
-              aria-describedby={`${name}Error`}
-            />
-          }
+          name={name}
+          trigger={<Alert />}
           content={
             <Error>
-              <Alert className='contentAlert' />
+              <Alert />
 
-              <div role='tooltip' id={`${name}Error`}>
-                {errorMessage as any}
-              </div>
+              <div>{errorMessage}</div>
             </Error>
           }
         />
@@ -58,7 +57,7 @@ const Field = <FormValues,>({
         id={name}
         name={name}
         type={inputType}
-        value={inputValue as any}
+        value={inputValue}
         onBlur={onInputBlur}
         onChange={onInputChange}
         {...props}

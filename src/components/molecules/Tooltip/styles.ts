@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const TooltipStyle = styled.div<ITooltipStyleProps>`
   position: relative;
 
-  .content {
+  .Content {
     position: absolute;
     z-index: 1;
   }

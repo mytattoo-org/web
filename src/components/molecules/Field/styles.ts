@@ -21,8 +21,8 @@ const Error = styled.div`
   }
 `
 
-const Tooltip = styled(OriginalTooltip).attrs({ className: 'Tooltip' })`
-  .trigger svg {
+const Tooltip = styled(OriginalTooltip)`
+  .Trigger .Alert {
     height: 18px;
 
     path {
@@ -30,11 +30,11 @@ const Tooltip = styled(OriginalTooltip).attrs({ className: 'Tooltip' })`
     }
   }
 
-  .content {
+  .Content {
     left: -13px;
     bottom: 16px;
 
-    .contentAlert {
+    .Alert {
       height: 18px;
 
       path {

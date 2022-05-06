@@ -5,9 +5,6 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
 # next.js
 /.next/
 /out/
@@ -37,6 +34,7 @@ yarn-error.log*
 /src/tests/cypress/videos/*
 /src/tests/cypress/screenshots/*
 /src/tests/cypress/downloads/*
+/src/tests/jest/coverage/*
 
 # vscode
 .vscode

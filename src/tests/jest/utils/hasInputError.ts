@@ -12,7 +12,6 @@ interface IHasInputErrorParams {
 }
 
 const hasInputError = async ({
-  name,
   input,
   error,
   testValue,
@@ -23,14 +22,14 @@ const hasInputError = async ({
       testingRequired
         ? await userEvent.click(input)
         : await typeAndVerify(input, testValue)
+  })
 
+  await act(async () => {
     await userEvent.keyboard('{Tab}')
   })
 
   await act(async () => {
-    await userEvent.hover(
-      await screen.findByRole('button', { name: `${name}Trigger` })
-    )
+    await userEvent.click(screen.getByRole(''))
   })
 
   expect(screen.getByRole('tooltip')).toHaveTextContent(error)

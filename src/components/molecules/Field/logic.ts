@@ -11,8 +11,11 @@ const useField = <FormValues>({
 
   const nameIndex = name as keyof FormValues
 
-  const inputValue = name ? formik.values[nameIndex] : undefined
-  const errorMessage = name ? formik.errors[nameIndex] : undefined
+  const inputValue = (name
+    ? formik.values[nameIndex]
+    : undefined) as unknown as string
+
+  const errorMessage = (name ? formik.errors[nameIndex] : undefined) as string
   const inputTouched = name ? formik.touched[nameIndex] : undefined
   const hasFilled = !!inputValue
 

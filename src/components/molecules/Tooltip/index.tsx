@@ -4,32 +4,40 @@ import type { ITooltipProps } from './types'
 
 import TooltipArrow from 'components/atoms/Icon/icons/TooltipArrow'
 
+import { composeClassName } from 'utils/composeClassName'
+
 const Tooltip = ({
   trigger: Trigger,
   content: Content,
-  className = 'Tooltip',
+  className,
+  name,
   ...props
 }: ITooltipProps) => {
-  const { isHovering, onTriggerMouseEnter, onTriggerMouseLeave } = useTooltip()
+  const {
+    isHovering,
+    onTriggerClick,
+    onTriggerMouseEnter,
+    onTriggerMouseLeave
+  } = useTooltip()
 
   return (
-    <TooltipStyle className={className} {...props}>
+    <TooltipStyle className={composeClassName('Tooltip', className)} {...props}>
       {isHovering && (
-        <div className='content'>
+        <div className='Content'>
           {Content}
 
           <TooltipArrow />
         </div>
       )}
 
-      <div
-        role='button'
-        className='trigger'
+      <button
+        className='Trigger'
+        onClick={onTriggerClick}
         onMouseEnter={onTriggerMouseEnter}
         onMouseLeave={onTriggerMouseLeave}
       >
         {Trigger}
-      </div>
+      </button>
     </TooltipStyle>
   )
 }
