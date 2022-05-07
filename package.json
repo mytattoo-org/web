@@ -9,7 +9,7 @@
     "start": "next start",
     "audit-fix": "yarn-audit-fix",
     "upgrade-all": "yarn-upgrade-all",
-    "test": "clear && jest --silent",
+    "test": "clear && jest",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cy:dashboard": "npx cypress run --record --key 597c09d6-ded9-4dc7-a63b-5f7c102257ce",

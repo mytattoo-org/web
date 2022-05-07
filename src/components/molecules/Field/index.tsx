@@ -15,6 +15,7 @@ const Field = <FormValues,>({
   label,
   formik,
   className,
+  ariaName,
   ...props
 }: IFieldProps<FormValues>) => {
   const {
@@ -39,13 +40,15 @@ const Field = <FormValues,>({
     >
       {hasError && (
         <Tooltip
-          name={name}
+          ariaName={ariaName}
           trigger={<Alert />}
           content={
             <Error>
               <Alert />
 
-              <div>{errorMessage}</div>
+              <div aria-label={`${ariaName} error message`} role='alert'>
+                {errorMessage}
+              </div>
             </Error>
           }
         />

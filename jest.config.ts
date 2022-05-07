@@ -7,6 +7,7 @@ const jestConfig: Config.InitialOptions = {
   testEnvironment: 'jsdom',
   collectCoverageFrom: ['src/**/*'],
   moduleDirectories: ['node_modules', 'src'],
+  modulePaths: ['node_modules', '<rootDir>'],
   coverageReporters: ['text-summary', 'lcov'],
   testPathIgnorePatterns: ['<rootDir>/src/tests'],
   coverageDirectory: '<rootDir>/src/tests/jest/coverage',
@@ -15,6 +16,8 @@ const jestConfig: Config.InitialOptions = {
   coveragePathIgnorePatterns: [
     'styles.ts',
     '.types.ts',
+    '.stories.ts',
+    '.stories.tsx',
     '<rootDir>/src/tests',
     '<rootDir>/src/styles',
     '<rootDir>/src/components/atoms/Icon/icons'

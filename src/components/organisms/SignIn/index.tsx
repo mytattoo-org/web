@@ -28,6 +28,7 @@ const SignIn = (props: ISignInProps) => {
           <Field
             formik={formik}
             name='usernameOrEmail'
+            ariaName='username or email'
             label='Nome de usuário ou E-mail'
           />
 
@@ -36,6 +37,7 @@ const SignIn = (props: ISignInProps) => {
             name='password'
             type='password'
             formik={formik}
+            ariaName='password'
           />
 
           <SignInButton

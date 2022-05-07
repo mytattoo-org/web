@@ -10,7 +10,7 @@ const Tooltip = ({
   trigger: Trigger,
   content: Content,
   className,
-  name,
+  ariaName,
   ...props
 }: ITooltipProps) => {
   const {
@@ -31,10 +31,12 @@ const Tooltip = ({
       )}
 
       <button
+        type='button'
         className='Trigger'
         onClick={onTriggerClick}
         onMouseEnter={onTriggerMouseEnter}
         onMouseLeave={onTriggerMouseLeave}
+        aria-label={`${ariaName} tooltip trigger`}
       >
         {Trigger}
       </button>
