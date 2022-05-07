@@ -36,6 +36,7 @@ const Field = <FormValues,>({
     <FieldStyle
       hasError={hasError}
       hasFilled={hasFilled}
+      data-cy={name + 'Field'}
       className={composeClassName(`Field ${name}Field`, className)}
     >
       {hasError && (
@@ -62,6 +63,7 @@ const Field = <FormValues,>({
       <Input
         id={name}
         name={name}
+        data-cy={name}
         type={inputType}
         value={inputValue}
         onBlur={onInputBlur}
@@ -71,9 +73,13 @@ const Field = <FormValues,>({
 
       {showEyes &&
         (showEye ? (
-          <Eye className='eye' onClick={onEyeClick} />
+          <Eye className='eye' onClick={onEyeClick} data-cy='eye' />
         ) : (
-          <ClosedEye className='eye' onClick={onClosedEyeClick} />
+          <ClosedEye
+            className='eye'
+            onClick={onClosedEyeClick}
+            data-cy='closedEye'
+          />
         ))}
     </FieldStyle>
   )

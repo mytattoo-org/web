@@ -16,15 +16,17 @@ const SignIn = (props: ISignInProps) => {
   return (
     <SignInStyle {...props}>
       <nav>
-        <Close onClick={onCloseClick} />
+        <button data-cy='close' onClick={onCloseClick}>
+          <Close />
+        </button>
       </nav>
 
       {loading ? (
-        <div className='loadingWrapper'>
+        <div className='loadingWrapper' data-cy='loading'>
           <Loading />
         </div>
       ) : (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} data-cy='signIn'>
           <Field
             formik={formik}
             name='usernameOrEmail'
@@ -42,6 +44,7 @@ const SignIn = (props: ISignInProps) => {
 
           <SignInButton
             type='submit'
+            data-cy='signIn'
             variant='secondary'
             active={enableSubmit}
             disabled={!enableSubmit}
@@ -49,7 +52,9 @@ const SignIn = (props: ISignInProps) => {
             Entrar
           </SignInButton>
 
-          <ModalButton onClick={onSignUpClick}>Cadastrar</ModalButton>
+          <ModalButton data-cy='signUp' onClick={onSignUpClick}>
+            Cadastrar
+          </ModalButton>
 
           {/*
             <GoogleButton icon={<Google size={24} />}>
