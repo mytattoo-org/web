@@ -18,7 +18,7 @@ interface IFieldProps<FormValues>
     IInputProps {
   name: string
   label: string
-  ariaName: string
+  ariaName?: string
 }
 
 export type { IFieldProps, IFieldStyleProps, IUseFieldParams }

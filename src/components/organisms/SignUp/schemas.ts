@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 const username = {
   required: { error: 'Informe um nome de usuário!' },
   min: { value: 3, error: 'Nome de usuário muito curto!' },
-  max: { value: 30, error: 'Nome de usuário muito longo!' },
+  max: { value: 20, error: 'Nome de usuário muito longo!' },
   matches: {
     value: /^([A-z0-9])+$/,
     error: 'Nome de usuário deve conter apenas números ou letras!'

@@ -10,9 +10,13 @@ const hasInputError = async ({
   testingValue
 }: IHasInputErrorParams) => {
   await act(async () => {
-    await userEvent.click(input)
+    await userEvent.clear(input)
+  })
 
-    testingValue && (await userEvent.type(input, testingValue))
+  await act(async () => {
+    testingValue
+      ? await userEvent.type(input, testingValue)
+      : await userEvent.click(input)
 
     await userEvent.tab()
   })

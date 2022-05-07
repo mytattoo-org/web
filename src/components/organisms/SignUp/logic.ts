@@ -1,6 +1,6 @@
 import type { ISignUpValues, TOnSignupSubmit } from './types'
 
-import { signUpYupSchema } from './schema'
+import { signUpYupSchema } from './schemas'
 
 import { FeedContext } from 'components/templates/Feed/logic'
 

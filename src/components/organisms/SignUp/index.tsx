@@ -44,6 +44,7 @@ const SignUp = (props: ISignUpProps) => {
             formik={formik}
             name='confirmPassword'
             label='Confirmar senha'
+            ariaName='confirm password'
           />
 
           <ModalButton type='submit' disabled={!enableSubmit}>

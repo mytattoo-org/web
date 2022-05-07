@@ -40,13 +40,16 @@ const Field = <FormValues,>({
     >
       {hasError && (
         <Tooltip
-          ariaName={ariaName}
+          ariaName={ariaName || name}
           trigger={<Alert />}
           content={
             <Error>
               <Alert />
 
-              <div aria-label={`${ariaName} error message`} role='alert'>
+              <div
+                aria-label={`${ariaName || name} error message`}
+                role='alert'
+              >
                 {errorMessage}
               </div>
             </Error>
