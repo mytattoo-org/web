@@ -10,7 +10,7 @@ import Field from 'components/molecules/Field'
 import { ModalButton } from 'components/organisms/AuthModal/styles'
 
 const SignIn = (props: ISignInProps) => {
-  const { formik, loading, onCloseClick, isSignInFilled, onSignUpClick } =
+  const { formik, loading, onCloseClick, enableSubmit, onSignUpClick } =
     useSignIn()
 
   return (
@@ -43,17 +43,19 @@ const SignIn = (props: ISignInProps) => {
           <SignInButton
             type='submit'
             variant='secondary'
-            active={isSignInFilled}
-            disabled={!isSignInFilled}
+            active={enableSubmit}
+            disabled={!enableSubmit}
           >
             Entrar
           </SignInButton>
 
           <ModalButton onClick={onSignUpClick}>Cadastrar</ModalButton>
 
-          {/* <GoogleButton icon={<Google size={24} />}>
-            Entrar com o Google
-          </GoogleButton> */}
+          {/*
+            <GoogleButton icon={<Google size={24} />}>
+              Entrar com o Google
+            </GoogleButton>
+          */}
         </form>
       )}
     </SignInStyle>

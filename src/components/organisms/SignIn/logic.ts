@@ -1,4 +1,4 @@
-import { signInYupSchema } from './schema'
+import { signInYupSchema } from './schemas'
 
 import { FeedContext } from 'components/templates/Feed/logic'
 
@@ -26,10 +26,9 @@ const initialValues: ISignInValues = {
 
 const useSignIn = () => {
   const theme = useTheme()
+  const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const { toggleShowAuthModal, triggeringFeedback } = useContext(FeedContext)
-
-  const dispatch = useAppDispatch()
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
@@ -78,9 +77,8 @@ const useSignIn = () => {
     onSubmit: onSignInSubmit,
     validationSchema: signInYupSchema
   })
-
-  const isSignInFilled =
-    !formik.errors.usernameOrEmail && !formik.errors.password
+  const { password, usernameOrEmail } = formik.errors
+  const enableSubmit = !password && !usernameOrEmail && formik.dirty
 
   const onSignUpClick = () => {
     toggleShowAuthModal({ page: 'sign-up', open: true })
@@ -90,7 +88,7 @@ const useSignIn = () => {
     toggleShowAuthModal({ page: 'sign-in', open: false })
   }
 
-  return { onCloseClick, onSignUpClick, formik, isSignInFilled, loading }
+  return { onCloseClick, onSignUpClick, formik, enableSubmit, loading }
 }
 
 export { useSignIn }
