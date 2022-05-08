@@ -27,7 +27,7 @@ const SignUp = (props: ISignUpProps) => {
       </nav>
 
       {loading ? (
-        <div className='loadingWrapper'>
+        <div className='loadingWrapper' data-cy='loading'>
           <Loading />
         </div>
       ) : (

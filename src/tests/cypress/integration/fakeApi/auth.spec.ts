@@ -2,42 +2,6 @@ import createUser from 'tests/fakes/createUser'
 import readUsers from 'tests/fakes/readUser'
 import signIn from 'tests/fakes/signIn'
 
-describe('AuthModal', () => {
-  it('should be able to open SignIn modal', () => {
-    cy.visit('/')
-
-    cy.get('button[data-cy="signIn"]').click()
-    cy.get('form[data-cy="signIn"]').should('exist')
-  })
-
-  it('should be able to navigate between SignIn and SignUp modal', () => {
-    cy.get('form > [data-cy="signUp"]').click()
-    cy.get('form[data-cy="signIn"]').should('not.exist')
-    cy.get('form[data-cy="signUp"]').should('exist')
-
-    cy.get('button[data-cy="back"]').click()
-    cy.get('form[data-cy="signIn"]').should('exist')
-    cy.get('form[data-cy="signUp"]').should('not.exist')
-  })
-
-  it('should be able to close SignIn modal', () => {
-    cy.get('button[data-cy="close"]').click()
-    cy.get('form[data-cy="signIn"]').should('not.exist')
-  })
-
-  it('should be able to open SignUp modal', () => {
-    cy.visit('/')
-
-    cy.get('button[data-cy="signUp"]').click()
-    cy.get('form[data-cy="signUp"]').should('exist')
-  })
-
-  it('should be able to close SignUp modal', () => {
-    cy.get('button[data-cy="close"]').click()
-    cy.get('form[data-cy="signUp"]').should('not.exist')
-  })
-})
-
 describe('SignIn', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -55,18 +19,20 @@ describe('SignIn', () => {
     cy.get('#password[type="password"]')
 
     cy.get('form > button[data-cy="signIn"]').click()
-    cy.get('[data-cy="loading"]')
-
-    const api = Cypress.env('api')
 
     cy.intercept(
-      { method: 'POST', url: `${api}/auth/sign-in` },
-      signIn.response
+      { method: 'POST', url: `http://localhost:3001/auth/sign-in` },
+      req => req.reply(signIn.response)
     ).as('sign-in')
 
+    cy.wait('@sign-in')
+
     cy.intercept(
-      { method: 'GET', url: `${api}/users/${readUsers.request.id}` },
-      readUsers.response(true)
+      {
+        method: 'GET',
+        url: `http://localhost:3001/users/${readUsers.request.id}`
+      },
+      req => req.reply(readUsers.response(true))
     ).as('users')
 
     cy.get('[data-cy="feedback"]').contains('Sucesso')
@@ -92,13 +58,10 @@ describe('SignUp', () => {
 
     cy.get('form button[data-cy="signUp"]').click()
 
-    cy.get('.loadingWrapper')
-
     const api = Cypress.env('api')
 
-    cy.intercept(
-      { method: 'POST', url: `${api}/users` },
-      createUser.response
+    cy.intercept({ method: 'POST', url: `${api}/users` }, req =>
+      req.reply(createUser.response)
     ).as('createUser')
 
     cy.get('[data-cy="feedback"]').contains('Sucesso')

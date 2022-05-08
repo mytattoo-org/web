@@ -1,7 +1,7 @@
 import {
   ISignInRequest,
   TSignInResponse
-} from '@common/types/authentication/signIn.types'
+} from '../../../submodules/common/src/types/authentication/signIn.types'
 
 const request: ISignInRequest = {
   password: 'InSTinToS@1234',

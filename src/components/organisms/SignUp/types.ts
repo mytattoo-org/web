@@ -1,4 +1,4 @@
-import { ICreateUserRequest } from '@common/types/users/createUser.types'
+import { ICreateUserRequest } from '../../../../submodules/common/src/types/users/createUser.types'
 
 import { FormikConfig } from 'formik'
 

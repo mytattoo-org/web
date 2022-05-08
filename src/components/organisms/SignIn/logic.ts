@@ -1,3 +1,8 @@
+import type {
+  ISignInRequest as ISignInValues,
+  TSignInResponse
+} from '../../../../submodules/common/src/types/authentication/signIn.types'
+import type { TReadUsersResponse } from '../../../../submodules/common/src/types/users/readUsers.types'
 import { signInYupSchema } from './schemas'
 
 import { FeedContext } from 'components/templates/Feed/logic'
@@ -5,12 +10,6 @@ import { FeedContext } from 'components/templates/Feed/logic'
 import useAppDispatch from 'hooks/useAppDispatch'
 
 import user from 'store/user'
-
-import type {
-  ISignInRequest as ISignInValues,
-  TSignInResponse
-} from '@common/types/authentication/signIn.types'
-import type { TReadUsersResponse } from '@common/types/users/readUsers.types'
 
 import { api } from 'api'
 import { AxiosResponse } from 'axios'

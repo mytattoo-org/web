@@ -31,10 +31,10 @@ yarn-error.log*
 .vercel
 
 # tests
-/src/tests/cypress/videos/*
-/src/tests/cypress/screenshots/*
-/src/tests/cypress/downloads/*
-/src/tests/jest/coverage/*
+# /src/tests/cypress/videos/*
+# /src/tests/cypress/screenshots/*
+# /src/tests/cypress/downloads/*
+# /src/tests/jest/coverage/*
 
 # vscode
 .vscode

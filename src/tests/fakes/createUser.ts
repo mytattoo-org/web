@@ -1,7 +1,7 @@
 import {
   ICreateUserRequest,
   TCreateUserResponse
-} from '@common/types/users/createUser.types'
+} from '../../../submodules/common/src/types/users/createUser.types'
 
 import { uuid } from 'uuidv4'
 
