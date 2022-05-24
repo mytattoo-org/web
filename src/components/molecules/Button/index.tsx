@@ -18,7 +18,7 @@ const Button = ({
   >
     {Icon && Icon}
 
-    {children}
+    <span>{children}</span>
   </ButtonStyle>
 )
 
