@@ -1,4 +1,17 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["styled-components", { "ssr": true }], "inline-react-svg"]
+  "plugins": [
+    ["styled-components", { "ssr": true }],
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "root": ".",
+        "alias": {
+          "@public": ["./public"],
+          "@common": ["./submodules/common/src"]
+        }
+      }
+    ]
+  ]
 }

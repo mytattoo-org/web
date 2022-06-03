@@ -32,8 +32,8 @@ export default createGlobalStyle`
         cursor: pointer;
 
         border: none;
-        background-color: transparent;
         outline: 1px red 1px;
+        background-color: transparent;
       }
 
       input[type="checkbox"] {

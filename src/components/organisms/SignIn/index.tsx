@@ -10,24 +10,27 @@ import Field from 'components/molecules/Field'
 import { ModalButton } from 'components/organisms/AuthModal/styles'
 
 const SignIn = (props: ISignInProps) => {
-  const { formik, loading, onCloseClick, isSignInFilled, onSignUpClick } =
+  const { formik, loading, onCloseClick, enableSubmit, onSignUpClick } =
     useSignIn()
 
   return (
     <SignInStyle {...props}>
       <nav>
-        <Close onClick={onCloseClick} />
+        <button data-cy='close' onClick={onCloseClick}>
+          <Close />
+        </button>
       </nav>
 
       {loading ? (
-        <div className='loadingWrapper'>
+        <div className='loadingWrapper' data-cy='loading'>
           <Loading />
         </div>
       ) : (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} data-cy='signIn'>
           <Field
             formik={formik}
             name='usernameOrEmail'
+            ariaName='username or email'
             label='Nome de usuário ou E-mail'
           />
 
@@ -36,22 +39,28 @@ const SignIn = (props: ISignInProps) => {
             name='password'
             type='password'
             formik={formik}
+            ariaName='password'
           />
 
           <SignInButton
             type='submit'
+            data-cy='signIn'
             variant='secondary'
-            active={isSignInFilled}
-            disabled={!isSignInFilled}
+            active={enableSubmit}
+            disabled={!enableSubmit}
           >
             Entrar
           </SignInButton>
 
-          <ModalButton onClick={onSignUpClick}>Cadastrar</ModalButton>
+          <ModalButton data-cy='signUp' onClick={onSignUpClick}>
+            Cadastrar
+          </ModalButton>
 
-          {/* <GoogleButton icon={<Google size={24} />}>
-            Entrar com o Google
-          </GoogleButton> */}
+          {/*
+            <GoogleButton icon={<Google size={24} />}>
+              Entrar com o Google
+            </GoogleButton>
+          */}
         </form>
       )}
     </SignInStyle>

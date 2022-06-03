@@ -17,17 +17,21 @@ const SignUp = (props: ISignUpProps) => {
   return (
     <SignUpStyle {...props}>
       <nav>
-        <Arrow onClick={onArrowClick} />
+        <button onClick={onArrowClick} data-cy='back'>
+          <Arrow />
+        </button>
 
-        <Close onClick={onCloseClick} />
+        <button onClick={onCloseClick} data-cy='close'>
+          <Close />
+        </button>
       </nav>
 
       {loading ? (
-        <div className='loadingWrapper'>
+        <div className='loadingWrapper' data-cy='loading'>
           <Loading />
         </div>
       ) : (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} data-cy='signUp'>
           <Field name='username' label='Nome de usuário' formik={formik} />
 
           <Field type='email' name='email' label='E-mail' formik={formik} />
@@ -44,9 +48,10 @@ const SignUp = (props: ISignUpProps) => {
             formik={formik}
             name='confirmPassword'
             label='Confirmar senha'
+            ariaName='confirm password'
           />
 
-          <ModalButton type='submit' disabled={!enableSubmit}>
+          <ModalButton type='submit' data-cy='signUp' disabled={!enableSubmit}>
             Cadastrar
           </ModalButton>
 

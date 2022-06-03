@@ -8,7 +8,7 @@ const SignUpStyle = styled.section<ISignUpStyleProps>`
   }
 
   form {
-    .Field .Tooltip .content {
+    .Field .Tooltip .Content {
       width: min(354px, 100vw - 48px - 16px);
     }
   }

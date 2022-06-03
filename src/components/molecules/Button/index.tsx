@@ -1,7 +1,7 @@
 import { ButtonStyle } from './styles'
 import type { IButtonProps } from './types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Button = ({
   children,
@@ -18,7 +18,7 @@ const Button = ({
   >
     {Icon && Icon}
 
-    {children}
+    <span>{children}</span>
   </ButtonStyle>
 )
 

@@ -11,7 +11,16 @@ const useTooltip = () => {
     setIsHovering(false)
   }
 
-  return { isHovering, onTriggerMouseEnter, onTriggerMouseLeave }
+  const onTriggerClick = () => {
+    setIsHovering(prev => !prev)
+  }
+
+  return {
+    isHovering,
+    onTriggerClick,
+    onTriggerMouseEnter,
+    onTriggerMouseLeave
+  }
 }
 
 export { useTooltip }

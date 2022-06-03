@@ -6,8 +6,8 @@ const StylesStyle = styled.ul<IStylesStyleProps>`
   display: flex;
   flex-wrap: wrap;
 
+  margin-top: 16px;
   max-height: 123px;
-  margin-bottom: 16px;
   overflow-y: scroll;
 
   li {

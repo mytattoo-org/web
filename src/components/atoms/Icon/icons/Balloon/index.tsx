@@ -1,7 +1,7 @@
 import Icon from '../../'
 import type { IIconProps } from '../../types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Balloon = ({ className, ...props }: IIconProps) => (
   <Icon

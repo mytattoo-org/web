@@ -6,4 +6,4 @@ const composeClassName: TComposeClassName = (
 ) =>
   propClassName ? `${componentClassName} ${propClassName}` : componentClassName
 
-export { composeClassName }
+export default composeClassName

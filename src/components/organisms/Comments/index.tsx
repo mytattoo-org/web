@@ -5,8 +5,8 @@ import Input from 'components/atoms/Input'
 
 import Comment from 'components/molecules/Comment'
 
-import avatar2 from '@public/avatar2.jpg'
-import avatar from '@public/avatar.png'
+import avatar2 from '@public/temp/avatar2.jpg'
+import avatar from '@public/temp/avatar.png'
 
 import { memo } from 'react'
 

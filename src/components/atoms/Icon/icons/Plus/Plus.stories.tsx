@@ -1,5 +1,7 @@
 import Plus from './index'
 
+import theme from 'styles/theme'
+
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 const metadata: ComponentMeta<typeof Plus> = {
@@ -7,7 +9,9 @@ const metadata: ComponentMeta<typeof Plus> = {
   title: 'Components/Atoms/Icons/Plus'
 }
 
-const Template: ComponentStory<typeof Plus> = args => <Plus {...args} />
+const Template: ComponentStory<typeof Plus> = args => (
+  <Plus style={{ height: 24, fill: theme.colors.red }} {...args} />
+)
 
 const Primary = Template.bind({})
 

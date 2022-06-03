@@ -22,7 +22,7 @@ const Post = ({ postHeader, forwardedAs, ...props }: IPostProps) => (
         width='100%'
         height='100%'
         priority={true}
-        src='/tattoo.png'
+        src='/temp/tattoo.png'
         layout='responsive'
         objectFit='contain'
         alt='Tatuagem no antebraço com a representação do deus Anúbis'

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - dev
+      - master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Add/Update submodules
+        run: |
+          yarn submodules:init
+          yarn submodules:update
+
+      - name: Log
+        run: ls
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Jest
+        run: yarn jest
+
+      - name: Cypress
+        uses: cypress-io/github-action@v2.9.7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          record: true
+          install: false
+          start: yarn start
+          spec: src/tests/cypress/integration/withoutApi/**/*.spec.ts

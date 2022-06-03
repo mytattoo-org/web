@@ -11,20 +11,26 @@ const AuthOptions = (props: IAuthOptionsProps) => {
     <AuthOptionsStyle {...props}>
       {isSmall ? (
         <li>
-          <button type='button' onClick={onSignInClick}>
+          <button type='button' onClick={onSignInClick} data-cy='defaultAvatar'>
             <DefaultAvatar />
           </button>
         </li>
       ) : (
         <>
           <li>
-            <SignInButton onClick={onSignInClick} variant='secondary'>
+            <SignInButton
+              data-cy='signIn'
+              variant='secondary'
+              onClick={onSignInClick}
+            >
               Entrar
             </SignInButton>
           </li>
 
           <li>
-            <SignUpButton onClick={onSignUpClick}>Registrar</SignUpButton>
+            <SignUpButton data-cy='signUp' onClick={onSignUpClick}>
+              Registrar
+            </SignUpButton>
           </li>
         </>
       )}

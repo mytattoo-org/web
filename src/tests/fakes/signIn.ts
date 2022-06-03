@@ -1,7 +1,7 @@
 import {
   ISignInRequest,
   TSignInResponse
-} from '@common/types/authentication/signIn.types'
+} from '@common/types/authentication/useCases/signIn.types'
 
 const request: ISignInRequest = {
   password: 'InSTinToS@1234',

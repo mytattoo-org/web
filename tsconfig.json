@@ -5,7 +5,8 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js",
-    "cypress/*"
+    "cypress/*",
+    "src/tests/jest/jest.setup.js"
   ],
   "compilerOptions": {
     "noEmit": true,
@@ -29,6 +30,5 @@
       "@public/*": ["../public/*"],
       "@common/*": ["../submodules/common/src/*"]
     }
-  },
-  "references": [{ "path": "./submodules/common" }]
+  }
 }

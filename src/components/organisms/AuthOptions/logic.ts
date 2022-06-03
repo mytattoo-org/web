@@ -8,8 +8,6 @@ const useAuthOptions = () => {
   const { innerWidth } = useWindowSize()
   const { toggleShowAuthModal } = useContext(FeedContext)
 
-  console.log(innerWidth)
-
   const onSignInClick = () => {
     toggleShowAuthModal({ open: true, page: 'sign-in' })
   }
@@ -18,7 +16,7 @@ const useAuthOptions = () => {
     toggleShowAuthModal({ open: true, page: 'sign-up' })
   }
 
-  const isSmall = innerWidth ? innerWidth < 600 : true
+  const isSmall = innerWidth ? innerWidth < 600 : false
 
   return { onSignInClick, onSignUpClick, isSmall }
 }

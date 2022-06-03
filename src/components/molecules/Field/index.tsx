@@ -7,12 +7,15 @@ import ClosedEye from 'components/atoms/Icon/icons/ClosedEye'
 import Eye from 'components/atoms/Icon/icons/Eye'
 import Input from 'components/atoms/Input'
 
+import composeClassName from 'utils/composeClassName'
+
 const Field = <FormValues,>({
+  type,
   name,
   label,
   formik,
-  type,
-  className = 'Field',
+  className,
+  ariaName,
   ...props
 }: IFieldProps<FormValues>) => {
   const {
@@ -30,22 +33,25 @@ const Field = <FormValues,>({
   } = useField<FormValues>({ formik, name, type })
 
   return (
-    <FieldStyle className={className} hasError={hasError} hasFilled={hasFilled}>
+    <FieldStyle
+      hasError={hasError}
+      hasFilled={hasFilled}
+      data-cy={name + 'Field'}
+      className={composeClassName(`Field ${name}Field`, className)}
+    >
       {hasError && (
         <Tooltip
-          trigger={
-            <Alert
-              title={`${name}Trigger`}
-              className='triggerAlert'
-              aria-describedby={`${name}Error`}
-            />
-          }
+          ariaName={ariaName || name}
+          trigger={<Alert />}
           content={
             <Error>
-              <Alert className='contentAlert' />
+              <Alert />
 
-              <div role='tooltip' id={`${name}Error`}>
-                {errorMessage as any}
+              <div
+                aria-label={`${ariaName || name} error message`}
+                role='alert'
+              >
+                {errorMessage}
               </div>
             </Error>
           }
@@ -57,8 +63,9 @@ const Field = <FormValues,>({
       <Input
         id={name}
         name={name}
+        data-cy={name}
         type={inputType}
-        value={inputValue as any}
+        value={inputValue}
         onBlur={onInputBlur}
         onChange={onInputChange}
         {...props}
@@ -66,9 +73,13 @@ const Field = <FormValues,>({
 
       {showEyes &&
         (showEye ? (
-          <Eye className='eye' onClick={onEyeClick} />
+          <Eye className='eye' onClick={onEyeClick} data-cy='eye' />
         ) : (
-          <ClosedEye className='eye' onClick={onClosedEyeClick} />
+          <ClosedEye
+            className='eye'
+            onClick={onClosedEyeClick}
+            data-cy='closedEye'
+          />
         ))}
     </FieldStyle>
   )

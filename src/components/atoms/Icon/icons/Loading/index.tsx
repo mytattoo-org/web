@@ -2,7 +2,7 @@ import { LoadingStyle } from './styles'
 
 import type { IIconProps } from '../../types'
 
-import { composeClassName } from 'utils/composeClassName'
+import composeClassName from 'utils/composeClassName'
 
 const Loading = ({ className, ...props }: IIconProps) => (
   <LoadingStyle

@@ -39,11 +39,11 @@ const PostActions = ({
         <IconButton
           className='tattooButton'
           onClick={onTattooClick}
-          ariaLabel='Esconder estilos de tatuagens da postagem'
-          outlinedAriaLabel='Mostrar estilos de tatuagens da postagem'
           outlined={!showingStyles}
           icon={<Tattoo aria-live='polite' />}
           outlinedIcon={<OutlinedTattoo aria-live='polite' />}
+          ariaLabel='Esconder estilos de tatuagens da postagem'
+          outlinedAriaLabel='Mostrar estilos de tatuagens da postagem'
         />
       </li>
     </PostActionsStyle>

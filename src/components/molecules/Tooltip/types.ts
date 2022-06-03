@@ -7,6 +7,7 @@ interface ITooltipProps
     HTMLAttributes<HTMLDivElement> {
   trigger: ReactNode
   content: ReactNode
+  ariaName: string
 }
 
 export type { ITooltipProps, ITooltipStyleProps }
