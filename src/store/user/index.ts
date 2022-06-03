@@ -1,15 +1,25 @@
 import { IUserStore } from './types'
 
-import setUser from './reducers/setUser'
+import signInExtraReducers from './extraReducers/signIn'
+
+import { TExtraReducers } from 'typescript/redux.types'
 
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState: IUserStore = {}
+const initialState: IUserStore = {
+  loading: false,
+  user: undefined
+}
+
+const extraReducers: TExtraReducers<IUserStore> = builder => {
+  signInExtraReducers(builder)
+}
 
 const user = createSlice({
   name: 'user',
-  initialState,
-  reducers: { setUser: setUser }
+  reducers: {},
+  extraReducers,
+  initialState
 })
 
-export default user
+export { user }

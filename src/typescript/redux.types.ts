@@ -1,6 +1,8 @@
-import store from '.'
+import { store } from 'store/'
+
 import {
   ActionReducerMapBuilder,
+  AsyncThunkPayloadCreator,
   CaseReducer,
   PayloadAction
 } from '@reduxjs/toolkit'
@@ -16,4 +18,16 @@ type TStoreState = ReturnType<typeof store.getState>
 
 type TStoreDispatch = typeof store.dispatch
 
-export type { TExtraReducers, TReducer, TStoreDispatch, TStoreState }
+type TPayloadCreator<Return, Params, Config> = AsyncThunkPayloadCreator<
+  Return,
+  Params,
+  Config
+>
+
+export type {
+  TReducer,
+  TStoreState,
+  TExtraReducers,
+  TStoreDispatch,
+  TPayloadCreator
+}

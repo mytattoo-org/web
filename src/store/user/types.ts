@@ -1,7 +1,8 @@
-import type { IUserModel } from '../../../submodules/common/src/types/users/userModel.types'
+import { IUserModel } from '@common/types/users/models/userModel.types'
 
 interface IUserStore {
-  user?: Partial<IUserModel>
+  loading: boolean
+  user?: Omit<IUserModel, 'password'> & { token: string }
 }
 
 export type { IUserStore }
