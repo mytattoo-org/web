@@ -1,7 +1,7 @@
 import {
   IReadUsersRequestParams,
   TReadUsersResponse
-} from '../../../submodules/common/src/types/users/readUsers.types'
+} from '@common/types/users/useCases/readUsers.types'
 
 const request: IReadUsersRequestParams = {
   id: '1'

@@ -1,4 +1,3 @@
-import type { ISignInRequest as ISignInValues } from '../../../../submodules/common/src/types/authentication/signIn.types'
 import { signInYupSchema } from './schemas'
 
 import { FeedContext } from 'components/templates/Feed/logic'
@@ -7,6 +6,8 @@ import useAppDispatch from 'hooks/useAppDispatch'
 import useAppSelector from 'hooks/useAppSelector'
 
 import { signInThunk } from 'store/user/extraReducers/signIn'
+
+import type { ISignInRequest as ISignInValues } from '@common/types/authentication/useCases/signIn.types'
 
 import { useFormik } from 'formik'
 import { useContext, useEffect, useState } from 'react'
