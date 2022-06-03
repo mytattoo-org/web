@@ -7,13 +7,21 @@ const fakePosts: TPostsResponse = [
     id: '2',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit dolor, eos possimus sint, quam aliquam veniam obcaecati, eius libero numquam perspiciatis dolorem! Sed, adipisci odio minima odit dolorum libero vero.',
-    author: { name: 'Vitor Daniel', isArtist: true, avatar: '/avatar2.jpg' }
+    author: {
+      name: 'Vitor Daniel',
+      isArtist: true,
+      avatar: '/temp/avatar2.jpg'
+    }
   },
   {
     id: '1',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit dolor, eos possimus sint, quam aliquam veniam obcaecati, eius libero numquam perspiciatis dolorem! Sed, adipisci odio minima odit dolorum libero vero.',
-    author: { name: 'Miguel Andrade', isArtist: false, avatar: '/avatar.png' }
+    author: {
+      name: 'Miguel Andrade',
+      isArtist: false,
+      avatar: '/temp/avatar.png'
+    }
   }
 ]
 

@@ -6,7 +6,7 @@ import DropArrow from 'components/atoms/DropArrow'
 
 import UserCard from 'components/molecules/UserCard'
 
-import avatar from '@public/avatar2.jpg'
+import avatar from '@public/temp/avatar2.jpg'
 
 const fakeRecommendations = [
   {
