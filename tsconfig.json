@@ -28,8 +28,7 @@
     "incremental": true,
     "paths": {
       "@public/*": ["../public/*"],
-      "@common/*": ["../../common/src/*"]
+      "@common/*": ["../submodules/common/src/*"]
     }
-  },
-  "references": [{ "path": "./submodules/common" }]
+  }
 }

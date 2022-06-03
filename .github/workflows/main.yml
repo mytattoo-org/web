@@ -15,9 +15,13 @@ jobs:
       - name: Checkout repository and submodules
         uses: actions/checkout@v3
         with:
-          ref: dev
-          fetch-depth: 0
-          submodules: recursive
+          submodules: true
+
+      - name: Update submodules
+        run: git submodule update --remote --recursive
+
+      - name: Log
+        run: ls
 
       - name: Install
         run: yarn install
