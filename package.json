@@ -7,14 +7,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "audit-fix": "yarn-audit-fix",
-    "upgrade-all": "yarn-upgrade-all",
     "test": "clear && jest",
+    "audit-fix": "yarn-audit-fix",
+    "storybook:build": "build-storybook",
+    "storybook": "start-storybook -p 6006",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cy:dashboard": "npx cypress run --record --key 597c09d6-ded9-4dc7-a63b-5f7c102257ce",
-    "storybook": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
+    "submodules:init": "git submodule update --init",
+    "submodules:update": "git submodule foreach git pull origin master",
+    "submodules:add:common": "git submodule add https://github.com/mytattoo-org/common submodules/common"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -74,7 +76,6 @@
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.6.4",
     "uuidv4": "^6.2.13",
-    "yarn-audit-fix": "^9.3.1",
-    "yarn-upgrade-all": "^0.7.1"
+    "yarn-audit-fix": "^9.3.1"
   }
 }

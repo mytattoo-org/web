@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository and submodules
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          submodules: true
 
-      - name: Update submodules
-        run: git submodule update --remote --recursive
+      - name: Add/Update submodules
+        run: |
+          yarn submodules:init
+          yarn submodules:update
 
       - name: Log
         run: ls
