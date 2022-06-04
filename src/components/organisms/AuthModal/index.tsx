@@ -10,7 +10,11 @@ const AuthModal = (props: IAuthModalProps) => {
 
   return (
     <AuthModalStyle {...props}>
-      {page === 'sign-in' ? <SignIn /> : <SignUp />}
+      {page === 'sign-in' ? (
+        <SignIn data-cy='signInModal' />
+      ) : (
+        <SignUp data-cy='signUpModal' />
+      )}
 
       <div className='transparentBackground' onClick={onBackgroundClick}></div>
     </AuthModalStyle>

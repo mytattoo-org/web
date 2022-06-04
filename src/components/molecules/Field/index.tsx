@@ -77,8 +77,8 @@ const Field = <FormValues,>({
         ) : (
           <ClosedEye
             className='eye'
-            onClick={onClosedEyeClick}
             data-cy='closedEye'
+            onClick={onClosedEyeClick}
           />
         ))}
     </FieldStyle>

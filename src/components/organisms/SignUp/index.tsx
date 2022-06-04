@@ -17,7 +17,7 @@ const SignUp = (props: ISignUpProps) => {
   return (
     <SignUpStyle {...props}>
       <nav>
-        <button onClick={onArrowClick} data-cy='back'>
+        <button onClick={onArrowClick} data-cy='arrow'>
           <Arrow />
         </button>
 
@@ -51,7 +51,11 @@ const SignUp = (props: ISignUpProps) => {
             ariaName='confirm password'
           />
 
-          <ModalButton type='submit' data-cy='signUp' disabled={!enableSubmit}>
+          <ModalButton
+            type='submit'
+            data-cy='signUpSubmit'
+            disabled={!enableSubmit}
+          >
             Cadastrar
           </ModalButton>
 

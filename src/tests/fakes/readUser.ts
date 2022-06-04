@@ -7,7 +7,13 @@ const request: IReadUsersRequestParams = {
   id: '1'
 }
 
-const response = (one: boolean): TReadUsersResponse => {
+interface IResponseParams {
+  one?: boolean
+}
+
+const response = (options?: IResponseParams): TReadUsersResponse => {
+  const one = options?.one || true
+
   if (one) {
     const user: TReadUsersResponse['user'] = {
       id: '1',
