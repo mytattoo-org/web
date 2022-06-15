@@ -4,7 +4,7 @@ const theme = {
     green: '#34A853',
     primary: '#9C7BEB',
     secondary: '#fcfcfc',
-    background: '#121214'
+    background: '#07000D'
   },
   fonts: {
     sizes: {
