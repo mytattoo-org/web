@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-
   html {
     * {
       margin: 0;
@@ -41,8 +40,17 @@ export default createGlobalStyle`
           box-shadow: initial;
         }
       }
+
+      ::-webkit-scrollbar {
+        width: 16px;
+
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: ${({ theme }) => theme.colors.primary};
+        border: solid 4px ${({ theme }) => theme.colors.background};
+      }
     }
   }
-
-
 `

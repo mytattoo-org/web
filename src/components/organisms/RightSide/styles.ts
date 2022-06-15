@@ -17,6 +17,16 @@ const RightSideStyle = styled.aside<IRightSideStyleProps>`
   section + section {
     margin-top: 24px;
   }
+
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border: solid 4px ${({ theme }) => theme.colors.background};
+  }
 `
 
 export { RightSideStyle }
