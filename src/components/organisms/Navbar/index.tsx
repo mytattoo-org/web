@@ -11,8 +11,8 @@ const Navbar = () => {
   const { isAuth } = useNavbar()
 
   return (
-    <NavbarStyle id='nav'>
-      <ul>
+    <NavbarStyle>
+      <ul id='nav'>
         <li>
           <DisplayOptions />
         </li>

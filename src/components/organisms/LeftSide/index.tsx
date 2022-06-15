@@ -16,10 +16,8 @@ const LeftSide = (props: ILeftSideProps) => {
 
   return (
     <LeftSideStyle
-      id='leftSide'
-      role='alert'
-      aria-atomic='true'
-      aria-live='assertive'
+      id='filters'
+      aria-label='Editar filtros desejados das postagens'
       {...props}
     >
       <header>

@@ -24,17 +24,19 @@ const Recommendations = ({
 
         <button
           type='button'
+          aria-expanded={show}
+          aria-haspopup='menu'
           onClick={onArrowClick}
           aria-label={show ? `Esconder ${title}` : `Mostrar ${title}`}
         >
-          <DropArrow condition={show} aria-live='polite' />
+          <DropArrow condition={show} />
         </button>
       </header>
 
       <Presence condition={show} {...animations.presence}>
-        <motion.ul {...animations.ul(recommendations.length)}>
+        <motion.ul role='list' {...animations.ul(recommendations.length)}>
           {recommendations.map(({ avatar, id, name, smallBio }) => (
-            <motion.li key={id} {...animations.li}>
+            <motion.li role='listitem' key={id} {...animations.li}>
               <UserCard name={name} smallBio={smallBio} avatar={avatar} />
             </motion.li>
           ))}

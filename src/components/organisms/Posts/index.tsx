@@ -9,7 +9,15 @@ const Posts = () => {
 
   return (
     <PostsStyle>
-      <CreatePost forwardedAs='header' />
+      <a href='#shortcuts' target='_self' tabIndex={0}>
+        Voltar para atalhos
+      </a>
+
+      <CreatePost forwardedAs='header' aria-label='Criar postagem' />
+
+      <a href='#shortcuts' target='_self' tabIndex={0}>
+        Voltar para atalhos
+      </a>
 
       <ul aria-label='Postagens' id='main'>
         {formattedPosts.map(({ headerData, id }) => (

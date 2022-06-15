@@ -15,7 +15,7 @@ const FeedStyle = styled.div`
     display: none;
   }
 
-  > a {
+  > ul {
     position: absolute;
     width: 0;
     height: 0;

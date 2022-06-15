@@ -13,6 +13,15 @@ const StylesStyle = styled.ul<IStylesStyleProps>`
   li {
     padding: 4px;
   }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
 `
 
 export { StylesStyle }

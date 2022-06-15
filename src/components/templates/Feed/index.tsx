@@ -21,10 +21,37 @@ const Feed = () => {
       </Head>
 
       <FeedStyle>
-        <a href='#main'>Pular para postagens</a>
-        <a href='#leftSide'>Pular para editar filtros de postagens</a>
-        <a href='#rightSide'>Pular para sugestões</a>
-        <a href='#nav'>Pular para navegação</a>
+        <ul id='shortcuts' aria-label='Atalhos'>
+          <li>
+            <a href='#main' target='_self'>
+              Postagens
+            </a>
+          </li>
+
+          <li>
+            <a href='#createPost' target='_self'>
+              Criar postagem
+            </a>
+          </li>
+
+          <li>
+            <a href='#leftSide' target='_self'>
+              Filtros de postagens
+            </a>
+          </li>
+
+          <li>
+            <a href='#rightSide' target='_self'>
+              Sugestões
+            </a>
+          </li>
+
+          <li>
+            <a href='#nav' target='_self'>
+              Navegação
+            </a>
+          </li>
+        </ul>
 
         <FeedContext.Provider value={contextValue}>
           <Navbar />

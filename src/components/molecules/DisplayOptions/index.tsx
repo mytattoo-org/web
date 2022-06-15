@@ -20,7 +20,7 @@ const DisplayOptions = () => {
 
   return (
     <DisplayOptionsStyle aria-label='Opções de visualização das postagens'>
-      <li className='feedOrientation'>
+      <li className='feedOrientation' aria-hidden>
         <label
           htmlFor='horizontal'
           aria-label='Visualizar postagens na horizontal'
@@ -37,7 +37,7 @@ const DisplayOptions = () => {
         </label>
       </li>
 
-      <li className='feedOrientation'>
+      <li className='feedOrientation' aria-hidden>
         <label htmlFor='vertical' aria-label='Visualizar postagens na vertical'>
           <input
             type='radio'
@@ -56,15 +56,19 @@ const DisplayOptions = () => {
         <button
           type='button'
           id='filterButton'
+          aria-haspopup='menu'
           onClick={onFilterClick}
+          aria-expanded={showLeftSide}
           aria-label={filterAriaLabel}
         >
-          {showLeftSide ? (
-            <DisabledFilter aria-live='polite' />
-          ) : (
-            <Filter aria-live='polite' />
-          )}
+          {showLeftSide ? <DisabledFilter /> : <Filter />}
         </button>
+
+        {showLeftSide && (
+          <a className='shortcut' href='#filters' target='_self'>
+            Pular para filtros
+          </a>
+        )}
       </li>
     </DisplayOptionsStyle>
   )

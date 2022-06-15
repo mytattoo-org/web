@@ -27,6 +27,13 @@ const RightSideStyle = styled.aside<IRightSideStyleProps>`
     background-color: ${({ theme }) => theme.colors.secondary};
     border: solid 4px ${({ theme }) => theme.colors.background};
   }
+
+  > a {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 `
 
 export { RightSideStyle }

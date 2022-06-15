@@ -66,6 +66,13 @@ const DisplayOptionsStyle = styled.ul`
     }
   }
 
+  .shortcut {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
   @media screen and (min-width: 1080px) {
     .feedOrientation {
       display: block;
