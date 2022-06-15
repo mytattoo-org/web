@@ -30,7 +30,7 @@ const useFeed = () => {
 
     setTimeout(() => {
       setFeedback({ open: false })
-    }, 3000)
+    }, 1000)
   }
 
   const contextValue: IFeedContext = {

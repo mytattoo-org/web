@@ -4,6 +4,9 @@
   "env": {
     "api": "http://localhost:3001"
   },
+
+  "viewportWidth": 1080,
+  "viewportHeight": 720,
   "fixturesFolder": "./src/tests/cypress/fixtures",
   "integrationFolder": "./src/tests/cypress/integration",
   "pluginsFile": "./src/tests/cypress/plugins",
