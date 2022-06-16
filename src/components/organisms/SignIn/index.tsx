@@ -44,7 +44,6 @@ const SignIn = (props: ISignInProps) => {
 
           <SignInButton
             type='submit'
-            variant='secondary'
             active={enableSubmit}
             data-cy='signInSubmit'
             disabled={!enableSubmit}

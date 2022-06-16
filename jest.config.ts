@@ -12,7 +12,7 @@ const jestConfig: Config.InitialOptions = {
   testPathIgnorePatterns: ['<rootDir>/src/tests'],
   coverageDirectory: '<rootDir>/src/tests/jest/coverage',
   setupFilesAfterEnv: ['<rootDir>/src/tests/jest/jest.setup.ts'],
-  testMatch: ['<rootDir>/src/**/*.spec.ts', '<rootDir>/src/**/*.spec.tsx'],
+  testMatch: ['<rootDir>/src/**/*spec.ts', '<rootDir>/src/**/*spec.tsx'],
   coveragePathIgnorePatterns: [
     'styles.ts',
     '.types.ts',

@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -112,28 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,9 +124,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,28 +166,19 @@ import { RecommendationsStyle } from './styles'
 import type { IRecommendationsProps } from './types'
 &nbsp;
 import DropArrow from 'components/atoms/DropArrow'
+import Presence from 'components/atoms/Presence'
 &nbsp;
 import UserCard from 'components/molecules/UserCard'
 &nbsp;
-import avatar from '@public/avatar2.jpg'
+import { motion } from 'framer-motion'
 &nbsp;
-const fakeRecommendations = <span class="cstat-no" title="statement not covered" >[</span>
-  {
-    avatar: avatar,
-    id: '1',
-    name: 'Vidan Tattoo',
-    smallBio: 'The best of the world'
-  },
-  {
-    avatar: avatar,
-    id: '2',
-    name: 'Vidan Tattoo',
-    smallBio: 'The best of the world'
-  }
-]
-&nbsp;
-const Recommendations = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> title, ...props }: IRecommendationsProps) =&gt; {</span>
-  const { onArrowClick, show } = <span class="cstat-no" title="statement not covered" >useRecommendations()</span>
+const Recommendations = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+  title,
+  startOpen = <span class="branch-0 cbranch-no" title="branch not covered" >false,</span>
+  ...props
+}: IRecommendationsProps) =&gt; {
+  const { onArrowClick, show, animations, recommendations } =
+<span class="cstat-no" title="statement not covered" >    useRecommendations(startOpen)</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;RecommendationsStyle {...props}&gt;
@@ -210,22 +187,24 @@ const Recommendations = <span class="cstat-no" title="statement not covered" ><s
 &nbsp;
         &lt;button
           type='button'
+          aria-expanded={show}
+          aria-haspopup='menu'
           onClick={onArrowClick}
           aria-label={show ? `Esconder ${title}` : `Mostrar ${title}`}
         &gt;
-          &lt;DropArrow condition={show} aria-live='polite' /&gt;
+          &lt;DropArrow condition={show} /&gt;
         &lt;/button&gt;
       &lt;/header&gt;
 &nbsp;
-      {show &amp;&amp; (
-        &lt;ul&gt;
-          {fakeRecommendations.map(<span class="fstat-no" title="function not covered" >({</span> avatar, id, name, smallBio }) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;li key={id}&gt;</span>
+      &lt;Presence condition={show} {...animations.presence}&gt;
+        &lt;motion.ul role='list' {...animations.ul(recommendations.length)}&gt;
+          {recommendations.map(<span class="fstat-no" title="function not covered" >({</span> avatar, id, name, smallBio }) =&gt; (
+<span class="cstat-no" title="statement not covered" >            &lt;motion.li role='listitem' key={id} {...animations.li}&gt;</span>
               &lt;UserCard name={name} smallBio={smallBio} avatar={avatar} /&gt;
-            &lt;/li&gt;
+            &lt;/motion.li&gt;
           ))}
-        &lt;/ul&gt;
-      )}
+        &lt;/motion.ul&gt;
+      &lt;/Presence&gt;
     &lt;/RecommendationsStyle&gt;
   )
 }
@@ -238,7 +217,7 @@ export default Recommendations
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue May 10 2022 18:36:04 GMT-0300 (Horário Padrão de Brasília)
+                at Thu Jun 16 2022 01:17:49 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -24,14 +24,12 @@ const WithIcon = Template.bind({})
 const WithoutIcon = Template.bind({})
 
 WithIcon.args = {
-  variant: 'primary',
-  children: 'Button',
+  icon: <Plus />,
   disabled: false,
-  icon: <Plus />
+  children: 'Button'
 } as ComponentStory<typeof Button>['args']
 
 WithoutIcon.args = {
-  variant: 'primary',
   children: 'Button',
   disabled: false
 } as ComponentStory<typeof Button>['args']

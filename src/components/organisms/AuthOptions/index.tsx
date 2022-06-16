@@ -18,11 +18,7 @@ const AuthOptions = (props: IAuthOptionsProps) => {
       ) : (
         <>
           <li>
-            <SignInButton
-              variant='secondary'
-              onClick={onSignInClick}
-              data-cy='openSignInModal'
-            >
+            <SignInButton onClick={onSignInClick} data-cy='openSignInModal'>
               Entrar
             </SignInButton>
           </li>

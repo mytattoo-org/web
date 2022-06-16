@@ -1,8 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-interface IButtonStyleProps {
-  variant?: 'primary' | 'secondary'
-}
+interface IButtonStyleProps {}
 
 interface IButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
