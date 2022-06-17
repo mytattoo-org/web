@@ -14,23 +14,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Add/Update submodules
         run: |
           yarn submodules:init
           yarn submodules:update
 
-      - name: Log
-        run: ls
-
       - name: Install
         run: yarn install
 
-      - name: Build
-        run: yarn build
+      - name: Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
       - name: Jest
         run: yarn jest
+
+      - name: Build
+        run: yarn build
 
       - name: Cypress
         uses: cypress-io/github-action@v2.9.7
@@ -41,4 +45,4 @@ jobs:
           record: true
           install: false
           start: yarn start
-          spec: src/tests/cypress/integration/withoutApi/**/*.spec.ts
+          spec: src/tests/cypress/integration/**/*spec.ts

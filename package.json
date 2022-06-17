@@ -20,8 +20,7 @@
     "cy:dashboard": "npx cypress run --record --key 597c09d6-ded9-4dc7-a63b-5f7c102257ce",
     "submodules:init": "git submodule update --init",
     "submodules:update": "git submodule foreach git pull origin master",
-    "submodules:add:common": "git submodule add https://github.com/mytattoo-org/common submodules/common",
-    "chromatic": "npx chromatic --project-token=6184dafcfd5d"
+    "submodules:add:common": "git submodule add https://github.com/mytattoo-org/common submodules/common"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
