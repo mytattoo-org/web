@@ -19,18 +19,16 @@ describe('SignIn', () => {
 
     cy.dataCy('signInSubmit').click()
 
-    cy.intercept(
-      { method: 'POST', url: `http://localhost:3001/auth/sign-in` },
-      req => req.reply(signIn.response)
+    cy.intercept({ method: 'POST', url: `/auth/sign-in` }, req =>
+      req.reply(signIn.response)
     ).as('sign-in')
 
     cy.intercept(
-      {
-        method: 'GET',
-        url: `http://localhost:3001/users/${readUsers.request.id}`
-      },
+      { method: 'GET', url: `/users/${readUsers.request.id}` },
       req => req.reply(readUsers.response())
     ).as('users')
+
+    cy.wait(['@users', '@sign-in']).debug()
 
     cy.dataCy('feedback').contains('Sucesso')
     cy.dataCy('feedback').contains(

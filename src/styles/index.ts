@@ -43,7 +43,10 @@ export default createGlobalStyle`
 
       ::-webkit-scrollbar {
         width: 16px;
+      }
 
+      ::-webkit-scrollbar-track {
+        background-color: ${({ theme }) => theme.colors.background};
       }
 
       ::-webkit-scrollbar-thumb {

@@ -18,6 +18,10 @@ const StylesStyle = styled.ul<IStylesStyleProps>`
     width: 4px;
   }
 
+  ::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+
   ::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: ${({ theme }) => theme.colors.secondary};
