@@ -2,15 +2,17 @@ import { useTooltip } from './logic'
 import { TooltipStyle } from './styles'
 import type { ITooltipProps } from './types'
 
+import Alert from 'components/atoms/Icon/icons/Alert'
 import TooltipArrow from 'components/atoms/Icon/icons/TooltipArrow'
 
 import composeClassName from 'utils/composeClassName'
 
 const Tooltip = ({
-  trigger: Trigger,
-  content: Content,
-  className,
   ariaName,
+  className,
+  content: Content,
+  marginTop = 16,
+  trigger: Trigger = <Alert />,
   ...props
 }: ITooltipProps) => {
   const {
@@ -21,14 +23,12 @@ const Tooltip = ({
   } = useTooltip()
 
   return (
-    <TooltipStyle className={composeClassName('Tooltip', className)} {...props}>
-      {isHovering && (
-        <div className='Content'>
-          {Content}
-
-          <TooltipArrow />
-        </div>
-      )}
+    <TooltipStyle
+      marginTop={marginTop}
+      className={composeClassName('Tooltip', className)}
+      {...props}
+    >
+      {isHovering && <div className='Content'>{Content}</div>}
 
       <button
         type='button'
@@ -36,8 +36,10 @@ const Tooltip = ({
         onClick={onTriggerClick}
         onMouseEnter={onTriggerMouseEnter}
         onMouseLeave={onTriggerMouseLeave}
-        aria-label={`${ariaName} tooltip trigger`}
+        aria-label={ariaName ? `${ariaName} tooltip trigger` : undefined}
       >
+        {isHovering && <TooltipArrow />}
+
         {Trigger}
       </button>
     </TooltipStyle>

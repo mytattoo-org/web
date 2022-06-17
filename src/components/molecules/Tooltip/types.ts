@@ -1,13 +1,15 @@
 import { HTMLAttributes, ReactNode } from 'react'
 
-interface ITooltipStyleProps {}
+interface ITooltipStyleProps {
+  marginTop: number
+}
 
 interface ITooltipProps
-  extends ITooltipStyleProps,
+  extends Partial<ITooltipStyleProps>,
     HTMLAttributes<HTMLDivElement> {
-  trigger: ReactNode
+  ariaName?: string
   content: ReactNode
-  ariaName: string
+  trigger?: ReactNode
 }
 
 export type { ITooltipProps, ITooltipStyleProps }

@@ -1,12 +1,12 @@
 import { TestsStyle } from './styles'
 import type { ITestsProps } from './types'
 
-import Button from 'components/molecules/Button'
+import Tooltip from 'components/molecules/Tooltip'
 
 const Tests = (props: ITestsProps) => {
   return (
     <TestsStyle {...props}>
-      <Button disabled>Teste</Button>
+      <Tooltip content={'Hello world my name is Miguel'} />
     </TestsStyle>
   )
 }
