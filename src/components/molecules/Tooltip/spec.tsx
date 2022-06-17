@@ -12,12 +12,8 @@ describe('Tooltip', () => {
       <GlobalProvider>
         <Tooltip
           ariaName='test'
+          content={expectedMessage}
           trigger={<div>Trigger</div>}
-          content={
-            <div aria-label='message' role='alert'>
-              {expectedMessage}
-            </div>
-          }
         />
       </GlobalProvider>
     )
@@ -26,7 +22,7 @@ describe('Tooltip', () => {
 
     await userEvent.hover(trigger)
 
-    const content = screen.getByRole('alert', { name: 'message' })
+    const content = screen.getByRole('alert', { name: 'Tooltip content' })
 
     expect(content.innerHTML).toBe(expectedMessage)
   })

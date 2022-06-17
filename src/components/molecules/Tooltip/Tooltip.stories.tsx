@@ -1,7 +1,5 @@
 import Tooltip from './index'
 
-import Alert from 'components/atoms/Icon/icons/Alert'
-
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 const metadata: ComponentMeta<typeof Tooltip> = {
@@ -16,13 +14,15 @@ const metadata: ComponentMeta<typeof Tooltip> = {
     }
   },
   argTypes: {
+    onMouseOver: { action: true },
     trigger: {
       description:
         'Any component to be used as a trigger to display the content'
     },
     content: {
+      type: 'string',
       description:
-        'Any component to be the content displayed by hovering the trigger'
+        'Any component to be the content of balloon displayed by hovering the trigger'
     },
     ariaName: {
       description:
@@ -38,10 +38,9 @@ const Template: ComponentStory<typeof Tooltip> = args => (
 const Primary = Template.bind({})
 
 Primary.args = {
-  ariaName: 'A simple tooltip',
-  content: <div>Any tooltip content here</div>
+  ariaName: 'Default',
+  content: 'Any tooltip content here'
 } as ComponentStory<typeof Tooltip>['args']
 
 export { Primary }
-
 export default metadata

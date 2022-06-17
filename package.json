@@ -2,21 +2,26 @@
   "name": "my-tattoo",
   "private": false,
   "version": "0.1.0",
-  "author": "Miguel Andrade Barreto",
+  "author": {
+    "name": "Miguel Andrade Barreto"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "clear && jest",
     "audit-fix": "yarn-audit-fix",
-    "docs:build": "build-storybook",
     "docs": "start-storybook -p 6006",
-    "cy:run": "cypress run",
+    "docs:test": "test-storybook",
+    "docs:build": "build-storybook -o .storybook/build",
+    "docs:commit-ui": "npx chromatic --project-token=6184dafcfd5d",
+    "cy": "cypress run",
     "cy:open": "cypress open",
     "cy:dashboard": "npx cypress run --record --key 597c09d6-ded9-4dc7-a63b-5f7c102257ce",
     "submodules:init": "git submodule update --init",
     "submodules:update": "git submodule foreach git pull origin master",
-    "submodules:add:common": "git submodule add https://github.com/mytattoo-org/common submodules/common"
+    "submodules:add:common": "git submodule add https://github.com/mytattoo-org/common submodules/common",
+    "chromatic": "npx chromatic --project-token=6184dafcfd5d"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -42,7 +47,10 @@
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/jest": "^0.0.10",
     "@storybook/react": "^6.4.22",
+    "@storybook/test-runner": "^0.1.1",
+    "@storybook/testing-library": "^0.0.13",
     "@svgr/webpack": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -61,14 +69,15 @@
     "babel-plugin-inline-svg": "^1.2.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^2.0.7",
+    "chromatic": "^6.6.2",
     "cypress": "^9.6.0",
     "eslint": "^8.14.0",
     "eslint-config-next": "^12.1.6",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-storybook": "^0.5.11",
-    "jest": "^28.0.3",
-    "jest-environment-jsdom": "^28.1.0",
+    "jest": "27",
+    "jest-environment-jsdom": "27.4.4",
     "prettier": "^2.6.2",
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^1.1.0",
@@ -77,5 +86,7 @@
     "typescript": "^4.6.4",
     "uuidv4": "^6.2.13",
     "yarn-audit-fix": "^9.3.1"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "my-tattoo@0.1.0"
 }

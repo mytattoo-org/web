@@ -12,7 +12,7 @@ const Tooltip = ({
   className,
   content: Content,
   marginTop = 16,
-  trigger: Trigger = <Alert />,
+  trigger: Trigger = <Alert aria-label='Alert icon' />,
   ...props
 }: ITooltipProps) => {
   const {
@@ -28,7 +28,11 @@ const Tooltip = ({
       className={composeClassName('Tooltip', className)}
       {...props}
     >
-      {isHovering && <div className='Content'>{Content}</div>}
+      {isHovering && (
+        <div className='Content' aria-label='Tooltip content' role='alert'>
+          {Content}
+        </div>
+      )}
 
       <button
         type='button'
