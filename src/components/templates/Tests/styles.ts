@@ -8,6 +8,11 @@ const TestsStyle = styled.div<ITestsStyleProps>`
   justify-content: center;
 
   height: 100vh;
+
+  .Icon.Plus {
+    fill: red;
+    border: solid red 1px;
+  }
 `
 
 export { TestsStyle }

@@ -13,6 +13,7 @@ const TooltipStyle = styled.div<ITooltipStyleProps>`
     border-radius: 4px;
     transform: ${({ marginTop }) => `translateY(calc(-100% - ${marginTop}px))`};
 
+    color: ${({ theme }) => theme.colors.secondary};
     background-color: ${({ theme }) => theme.colors.red};
   }
 
@@ -21,6 +22,8 @@ const TooltipStyle = styled.div<ITooltipStyleProps>`
 
     display: flex;
     justify-content: center;
+
+    color: ${({ theme }) => theme.colors.secondary};
 
     .TooltipArrow {
       position: absolute;
@@ -42,5 +45,4 @@ const TooltipStyle = styled.div<ITooltipStyleProps>`
     }
   }
 `
-
 export { TooltipStyle }

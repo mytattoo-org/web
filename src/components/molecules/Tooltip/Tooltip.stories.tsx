@@ -16,6 +16,7 @@ const metadata: ComponentMeta<typeof Tooltip> = {
   argTypes: {
     onMouseOver: { action: true },
     trigger: {
+      type: 'string',
       description:
         'Any component to be used as a trigger to display the content'
     },

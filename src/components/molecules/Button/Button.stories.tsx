@@ -8,11 +8,7 @@ const metadata: ComponentMeta<typeof Button> = {
   component: Button,
   title: 'Components/Molecules/Button',
   argTypes: {
-    icon: {
-      control: false,
-      description:
-        'Any icon passed by props example <Plus /> (inside Atoms/Icons/Plus)'
-    }
+    icon: { control: false, description: 'Any icon passed by props' }
   }
 }
 
