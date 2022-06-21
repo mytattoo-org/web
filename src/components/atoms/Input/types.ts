@@ -1,9 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 
-interface IInputStyleProps {
-  outline?: string
-  outlined?: boolean
-}
+interface IInputStyleProps {}
 
 interface IUseInputParams {
   onMouseDown: ComponentPropsWithoutRef<'input'>['onMouseDown']

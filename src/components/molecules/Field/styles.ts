@@ -64,7 +64,6 @@ const FieldStyle = styled.div<IFieldStyleProps>`
 
   padding: 4px;
   border-radius: 16px;
-  margin-bottom: 24px;
 
   border: solid 1px ${({ theme }) => theme.colors.secondary};
 

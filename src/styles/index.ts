@@ -14,7 +14,7 @@ export default createGlobalStyle`
     body {
       font-size: ${({ theme }) => theme.fonts.sizes.md};
 
-
+      color: ${({ theme }) => theme.colors.secondary};
       background-color: ${({ theme }) => theme.colors.background};
 
       a {

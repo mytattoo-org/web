@@ -1,15 +1,19 @@
 import { TestsStyle } from './styles'
 import type { ITestsProps } from './types'
 
-import Plus from 'components/atoms/Icon/icons/Plus'
+import Field from 'components/molecules/Field'
 
-import Tooltip from 'components/molecules/Tooltip'
+import { useFormik } from 'formik'
 
 const Tests = (props: ITestsProps) => {
+  const formik = useFormik({
+    initialValues: { username: '' },
+    onSubmit: () => {}
+  })
+
   return (
     <TestsStyle {...props}>
-      <Tooltip content={'Hello world my name is Miguel'} />
-      <Plus />
+      <Field formik={formik} name='username' label='Username' />
     </TestsStyle>
   )
 }

@@ -9,12 +9,18 @@ interface ISignInButtonStyleProps {
 }
 
 const SignInButton = styled(ModalButton)<ISignInButtonStyleProps>`
-  margin-bottom: 24px;
+  margin: 24px 0;
 `
 
 const SignInStyle = styled.section<ISignInStyleProps>`
   nav {
     justify-content: flex-end;
+  }
+
+  form {
+    .Field + .Field {
+      margin-top: 24px;
+    }
   }
 `
 
