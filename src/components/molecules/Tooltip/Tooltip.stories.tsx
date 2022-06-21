@@ -1,6 +1,15 @@
 import Tooltip from './index'
 
+import { addBreakLine } from 'utils/addBreakLine'
+
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+
+const classNames = addBreakLine([
+  '.Tooltip.${className}',
+  '.Tooltip.${className}.Content',
+  '.Tooltip.${className}.Trigger',
+  '.Tooltip.${className}.TooltipArrow'
+])
 
 const metadata: ComponentMeta<typeof Tooltip> = {
   component: Tooltip,
@@ -8,8 +17,7 @@ const metadata: ComponentMeta<typeof Tooltip> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Tooltip styled by classNames:.Tooltip, .Content, .Trigger and .TooltipArrow'
+        component: `Tooltip styled by classNames: ${classNames}`
       }
     }
   },

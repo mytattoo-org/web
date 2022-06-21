@@ -1,11 +1,26 @@
 import Field from './index'
 
+import { addBreakLine } from 'utils/addBreakLine'
+
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { useFormik } from 'formik'
+
+const classNames = addBreakLine([
+  '.Field.${className}',
+  '.Field.${className}.Input',
+  '.Field.${className}.Tooltip'
+])
 
 const metadata: ComponentMeta<typeof Field> = {
   component: Field,
   title: 'Components/Molecules/Field',
+  parameters: {
+    docs: {
+      description: {
+        component: `This is a styled <b>Input</b> with <b>Tooltip</b>, can be styled by classNames: ${classNames}`
+      }
+    }
+  },
   argTypes: {
     name: {
       description: 'Name of input tag'

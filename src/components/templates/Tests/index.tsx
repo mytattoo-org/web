@@ -1,19 +1,19 @@
 import { TestsStyle } from './styles'
 import type { ITestsProps } from './types'
 
-import Field from 'components/molecules/Field'
+import Comment from 'components/molecules/Comment'
 
-import { useFormik } from 'formik'
+import avatar from '@public/temp/avatar.png'
 
 const Tests = (props: ITestsProps) => {
-  const formik = useFormik({
-    initialValues: { username: '' },
-    onSubmit: () => {}
-  })
-
   return (
     <TestsStyle {...props}>
-      <Field formik={formik} name='username' label='Username' />
+      <Comment
+        isArtist
+        avatar={avatar}
+        name='Miguel Andrade'
+        content='Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?'
+      />
     </TestsStyle>
   )
 }

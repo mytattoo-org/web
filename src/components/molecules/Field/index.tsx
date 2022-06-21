@@ -14,8 +14,8 @@ const Field = <FormValues,>({
   name,
   label,
   formik,
-  className,
   ariaName,
+  className,
   ...props
 }: IFieldProps<FormValues>) => {
   const {

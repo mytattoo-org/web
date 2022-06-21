@@ -2,9 +2,11 @@ import Plus from './index'
 
 import theme from 'styles/theme'
 
-import { joinClassNames } from 'utils/joinClassNames'
+import { addBreakLine } from 'utils/addBreakLine'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+
+const classNames = addBreakLine(['.Icon.Plus.${className}'])
 
 const metadata: ComponentMeta<typeof Plus> = {
   component: Plus,
@@ -12,9 +14,7 @@ const metadata: ComponentMeta<typeof Plus> = {
   parameters: {
     docs: {
       description: {
-        component: `Plus is only one example of others icons, they can be styled using classNames: ${joinClassNames(
-          ['Icon', 'Plus']
-        )}`
+        component: `Plus is only one example of others icons, they can be styled using classNames: ${classNames}`
       }
     }
   },
