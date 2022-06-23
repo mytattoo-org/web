@@ -44,15 +44,14 @@ const SignIn = (props: ISignInProps) => {
 
           <SignInButton
             type='submit'
-            data-cy='signIn'
-            variant='secondary'
             active={enableSubmit}
+            data-cy='signInSubmit'
             disabled={!enableSubmit}
           >
             Entrar
           </SignInButton>
 
-          <ModalButton data-cy='signUp' onClick={onSignUpClick}>
+          <ModalButton data-cy='signUpButton' onClick={onSignUpClick}>
             Cadastrar
           </ModalButton>
 

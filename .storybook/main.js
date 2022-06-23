@@ -10,6 +10,9 @@ module.exports = {
   ],
   framework: '@storybook/react',
   extends: '../tsconfig.json',
+  features: {
+    interactionsDebugger: true
+  },
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.scss|.sass$/,

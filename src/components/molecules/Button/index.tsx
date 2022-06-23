@@ -7,12 +7,10 @@ const Button = ({
   children,
   className,
   icon: Icon,
-  variant = 'primary',
   ...props
 }: IButtonProps) => (
   <ButtonStyle
     type='button'
-    variant={variant}
     className={composeClassName('Button', className)}
     {...props}
   >

@@ -1,9 +1,15 @@
 import Tooltip from './index'
 
-import Alert from 'components/atoms/Icon/icons/Alert'
+import { addBreakLine } from 'utils/addBreakLine'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import styled from 'styled-components'
+
+const classNames = addBreakLine([
+  '.Tooltip.${className}',
+  '.Tooltip.${className}.Content',
+  '.Tooltip.${className}.Trigger',
+  '.Tooltip.${className}.TooltipArrow'
+])
 
 const metadata: ComponentMeta<typeof Tooltip> = {
   component: Tooltip,
@@ -11,18 +17,21 @@ const metadata: ComponentMeta<typeof Tooltip> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'Tooltip styled by classNames:.Tooltip, .Content, .Trigger and .TooltipArrow'
+        component: `Tooltip styled by classNames: ${classNames}`
       }
     }
   },
   argTypes: {
+    onMouseOver: { action: true },
     trigger: {
+      type: 'string',
       description:
         'Any component to be used as a trigger to display the content'
     },
     content: {
-      description: 'Any component to be the content displayed by the trigger'
+      type: 'string',
+      description:
+        'Any component to be the content of balloon displayed by hovering the trigger'
     },
     ariaName: {
       description:
@@ -32,60 +41,15 @@ const metadata: ComponentMeta<typeof Tooltip> = {
 }
 
 const Template: ComponentStory<typeof Tooltip> = args => (
-  <Style>
-    <Tooltip {...args}>{args.children}</Tooltip>
-  </Style>
+  <Tooltip {...args}>{args.children}</Tooltip>
 )
 
 const Primary = Template.bind({})
 
 Primary.args = {
-  trigger: <Alert />,
-  ariaName: 'A simple tooltip',
-  content: <div>Any tooltip content here</div>
+  ariaName: 'Default',
+  content: 'Any tooltip content here'
 } as ComponentStory<typeof Tooltip>['args']
 
 export { Primary }
-
 export default metadata
-
-const Style = styled.div`
-  padding-top: 48px;
-
-  .Trigger .Alert {
-    height: 24px;
-
-    path {
-      fill: ${({ theme }) => theme.colors.red};
-    }
-  }
-
-  .Content {
-    left: 0px;
-    padding: 8px;
-    bottom: 36px;
-    border-radius: 5px;
-
-    background-color: ${({ theme }) => theme.colors.red};
-
-    .Alert {
-      height: 18px;
-
-      path {
-        fill: ${({ theme }) => theme.colors.secondary};
-      }
-    }
-
-    .TooltipArrow {
-      position: absolute;
-      left: 9px;
-      bottom: -5px;
-
-      height: 8px;
-
-      path {
-        fill: ${({ theme }) => theme.colors.red};
-      }
-    }
-  }
-`

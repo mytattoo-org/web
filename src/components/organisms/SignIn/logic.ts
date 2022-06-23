@@ -21,17 +21,17 @@ const initialValues: ISignInValues = {
 const useSignIn = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
-  const user = useAppSelector(({ user }) => user)
   const [loading, setLoading] = useState(false)
+  const user = useAppSelector(({ user }) => user)
   const { toggleShowAuthModal, triggeringFeedback } = useContext(FeedContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
-      await dispatch(signInThunk(dataToAuthenticate)).unwrap()
+      const { user } = await dispatch(signInThunk(dataToAuthenticate)).unwrap()
 
       triggeringFeedback({
         title: 'Sucesso',
-        content: `Bem vindo de volta, ${user.user?.username}.`,
+        content: `Bem vindo de volta, ${user?.username}.`,
         color: theme.colors.green
       })
 

@@ -1,9 +1,11 @@
-import GlobalProvider from 'components/providers/GlobalProvider'
+import GlobalProvider from '../src/components/providers/GlobalProvider'
 
+import { Parameters, Story } from '@storybook/react'
 import { themes } from '@storybook/theming'
 import React from 'react'
 
-const parameters = {
+const parameters: Parameters = {
+  layout: 'centered',
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { matchers: { color: /(background|color)$/i, date: /Date$/ } },
   darkMode: {
@@ -12,6 +14,12 @@ const parameters = {
   }
 }
 
-const decorators = [content => <GlobalProvider>{content()}</GlobalProvider>]
+const decorators = [
+  (Story: Story) => (
+    <GlobalProvider>
+      <Story />
+    </GlobalProvider>
+  )
+]
 
 export { parameters, decorators }

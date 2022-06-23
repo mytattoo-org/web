@@ -1,5 +1,5 @@
 import { useSignUp } from './logic'
-import { SignUpStyle } from './styles'
+import { SignUpStyle, SignUpSubmit } from './styles'
 import type { ISignUpProps } from './types'
 
 import Arrow from 'components/atoms/Icon/icons/Arrow'
@@ -17,7 +17,7 @@ const SignUp = (props: ISignUpProps) => {
   return (
     <SignUpStyle {...props}>
       <nav>
-        <button onClick={onArrowClick} data-cy='back'>
+        <button onClick={onArrowClick} data-cy='arrow'>
           <Arrow />
         </button>
 
@@ -51,9 +51,13 @@ const SignUp = (props: ISignUpProps) => {
             ariaName='confirm password'
           />
 
-          <ModalButton type='submit' data-cy='signUp' disabled={!enableSubmit}>
+          <SignUpSubmit
+            type='submit'
+            data-cy='signUpSubmit'
+            disabled={!enableSubmit}
+          >
             Cadastrar
-          </ModalButton>
+          </SignUpSubmit>
 
           {/*
             <GoogleButton icon={<Google size={24} />}>

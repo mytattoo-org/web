@@ -6,7 +6,13 @@ const fakeStylesToFilter = [
   { name: 'Trash', id: '4' },
   { name: 'Maori', id: '1' },
   { name: 'Old School', id: '2' },
-  { name: 'Tribal', id: '3' }
+  { name: 'Tribal2', id: '3' },
+  { name: 'Tribal3', id: '5' },
+  { name: 'Tribal4', id: '6' },
+  { name: 'Tribal5', id: '7' },
+  { name: 'Tribal6', id: '8' },
+  { name: 'Tribal7', id: '9' },
+  { name: 'Tribal8', id: '10' }
 ]
 
 const useLeftSide = () => {

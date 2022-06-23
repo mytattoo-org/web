@@ -14,8 +14,8 @@ const Field = <FormValues,>({
   name,
   label,
   formik,
-  className,
   ariaName,
+  className,
   ...props
 }: IFieldProps<FormValues>) => {
   const {
@@ -77,8 +77,8 @@ const Field = <FormValues,>({
         ) : (
           <ClosedEye
             className='eye'
-            onClick={onClosedEyeClick}
             data-cy='closedEye'
+            onClick={onClosedEyeClick}
           />
         ))}
     </FieldStyle>

@@ -11,8 +11,32 @@ const RightSideStyle = styled.aside<IRightSideStyleProps>`
   padding: 0 24px;
   max-width: 400px;
 
+  overflow-x: hidden;
+  overflow-y: scroll;
+
   section + section {
     margin-top: 24px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border: solid 4px ${({ theme }) => theme.colors.background};
+  }
+
+  > a {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
 `
 

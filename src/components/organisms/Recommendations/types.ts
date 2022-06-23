@@ -1,7 +1,12 @@
+import { MotionProps } from 'framer-motion'
+
 interface IRecommendationsStyleProps {}
 
 interface IRecommendationsProps extends IRecommendationsStyleProps {
   title: string
+  startOpen?: boolean
 }
 
-export type { IRecommendationsProps, IRecommendationsStyleProps }
+type TUlAnimation = (itemsQuantity: number) => MotionProps
+
+export type { IRecommendationsProps, IRecommendationsStyleProps, TUlAnimation }

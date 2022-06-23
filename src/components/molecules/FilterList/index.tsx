@@ -1,0 +1,26 @@
+import { FilterListStyle } from './styles'
+import type { IFilterListProps } from './types'
+
+import Button from 'components/molecules/Button'
+
+import { motion } from 'framer-motion'
+
+const FilterList = ({ filters, onClick, icon }: IFilterListProps) => {
+  return (
+    <FilterListStyle>
+      {filters?.length !== undefined && filters.length > 0 && (
+        <ul>
+          {filters?.map(({ id, name }) => (
+            <motion.li layout key={id}>
+              <Button icon={icon} onClick={() => onClick({ id, name })}>
+                {name}
+              </Button>
+            </motion.li>
+          ))}
+        </ul>
+      )}
+    </FilterListStyle>
+  )
+}
+
+export default FilterList

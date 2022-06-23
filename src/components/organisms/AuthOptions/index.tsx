@@ -18,17 +18,13 @@ const AuthOptions = (props: IAuthOptionsProps) => {
       ) : (
         <>
           <li>
-            <SignInButton
-              data-cy='signIn'
-              variant='secondary'
-              onClick={onSignInClick}
-            >
+            <SignInButton onClick={onSignInClick} data-cy='openSignInModal'>
               Entrar
             </SignInButton>
           </li>
 
           <li>
-            <SignUpButton data-cy='signUp' onClick={onSignUpClick}>
+            <SignUpButton data-cy='openSignUpModal' onClick={onSignUpClick}>
               Registrar
             </SignUpButton>
           </li>

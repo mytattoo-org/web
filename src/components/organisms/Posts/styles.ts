@@ -7,6 +7,13 @@ const PostsStyle = styled.main`
 
   width: 100%;
 
+  > a {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
   > header {
     display: flex;
     align-items: center;
