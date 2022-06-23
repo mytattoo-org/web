@@ -15,17 +15,34 @@ const ProfileOptionsStyle = styled.ul`
       display: none;
     }
 
-    .Icon {
-      width: 25px;
-      height: 25px;
+    button {
+      transition: transform 0.3s ease-in-out;
 
-      &.Heart path {
-        fill: ${({ theme }) => theme.colors.red};
+      :hover {
+        transform: scale(1.1);
       }
 
-      &.ArtistHeart {
-        path {
-          fill: ${({ theme }) => theme.colors.secondary};
+      .Icon {
+        height: 18px;
+
+        &.Heart path {
+          fill: ${({ theme }) => theme.colors.red};
+        }
+
+        &.ArtistHeart {
+          path {
+            fill: ${({ theme }) => theme.colors.secondary};
+
+            & + path {
+              fill: ${({ theme }) => theme.colors.red};
+            }
+          }
+        }
+
+        &.EditProfile {
+          path {
+            fill: ${({ theme }) => theme.colors.secondary};
+          }
         }
       }
     }
@@ -33,7 +50,7 @@ const ProfileOptionsStyle = styled.ul`
     &#avatar {
       position: relative;
 
-      button {
+      button + button {
         position: absolute;
         bottom: 0;
         z-index: 1;
