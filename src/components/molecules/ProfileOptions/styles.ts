@@ -8,6 +8,9 @@ const ProfileOptionsStyle = styled.ul`
   width: 100%;
 
   li {
+    position: relative;
+    z-index: 1;
+
     :not(:last-child) {
       display: none;
     }
@@ -23,6 +26,25 @@ const ProfileOptionsStyle = styled.ul`
       &.ArtistHeart {
         path {
           fill: ${({ theme }) => theme.colors.secondary};
+        }
+      }
+    }
+
+    &#avatar {
+      position: relative;
+
+      button {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        right: -16px;
+
+        .Icon.Logout {
+          height: 16px;
+
+          path {
+            fill: ${({ theme }) => theme.colors.secondary};
+          }
         }
       }
     }

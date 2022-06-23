@@ -23,8 +23,7 @@ const signIn: TSignIn = async data => {
 
       const user = response.data.user
 
-      const expiresTokenDate = add(new Date(), { days: 1 }).toUTCString()
-      document.cookie = `token=${token}; expiresIn=${expiresTokenDate}`
+      localStorage.setItem('@MyTattoo-token', token)
 
       if (user) return { user: { token, ...user }, loading: false }
     }
