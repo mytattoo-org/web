@@ -45,16 +45,22 @@ const DisplayOptionsStyle = styled.ul`
 
   .Icon {
     width: 29px;
-    height: 29px;
+    height: 25px;
+    transition: transform 0.3s ease-in-out;
+
+    :hover {
+      transform: scale(1.1);
+    }
 
     &.DisabledFilter,
     &.Filter {
       width: 24px;
-      height: 29px;
+      height: 24px;
     }
 
     &.DisabledFilter {
-      height: 26px;
+      height: 23px;
+      margin-bottom: 2px;
 
       path {
         fill: ${({ theme }) => theme.colors.primary};

@@ -3,8 +3,6 @@ import type { IInputStyleProps } from './types'
 import styled from 'styled-components'
 
 const InputStyle = styled.input<IInputStyleProps>`
-  width: 100%;
-  height: 100%;
   padding-left: 8px;
   padding-right: 4px;
 
