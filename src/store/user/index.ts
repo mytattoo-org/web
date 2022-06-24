@@ -1,10 +1,10 @@
 import { IUserStore } from './types'
 
-import signInExtraReducers from './extraReducers/signIn'
-import verifyAuthenticationExtraReducers from './extraReducers/verifyAuthentication'
+import { signInExtraReducers } from './extraReducers/signIn'
+import { verifyAuthenticationExtraReducers } from './extraReducers/verifyAuthentication'
 import { logout } from './reducers/logout'
 
-import { TExtraReducers } from 'typescript/redux.types'
+import type { TExtraReducers } from 'typescript/redux.types'
 
 import { createSlice } from '@reduxjs/toolkit'
 
@@ -18,7 +18,7 @@ const extraReducers: TExtraReducers<IUserStore> = builder => {
 }
 
 const userStore = createSlice({
-  name: 'user',
+  name: 'userStore',
   initialState,
   extraReducers,
   reducers: { logout }

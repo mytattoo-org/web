@@ -1,12 +1,38 @@
+import { TVerifyAuthentication } from './types'
+
 import { IUserStore } from '../../types'
-import verifyAuthentication from './verifyAuthentication'
 
 import { TExtraReducers } from 'typescript/redux.types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { api } from 'api'
 
-export const verifyAuthenticationThunk = createAsyncThunk(
-  'user/verify-authentication',
+const verifyAuthentication: TVerifyAuthentication = async (_, { getState }) => {
+  try {
+    const { userStore } = getState()
+
+    if (userStore.user !== undefined) return userStore.user
+
+    const token = localStorage.getItem('@MyTattoo-token')
+
+    if (!token) return undefined
+
+    const { data } = await api.get('/user', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+
+    return data.user
+  } catch (error: any) {
+    throw new Error(
+      error?.response?.data?.error
+        ? error.response.data.error
+        : 'Error inesperado tente novamente mais tarde'
+    )
+  }
+}
+
+const verifyAuthenticationThunk = createAsyncThunk(
+  'userStore/verify-authentication',
   verifyAuthentication
 )
 
@@ -19,7 +45,8 @@ const verifyAuthenticationExtraReducers: TExtraReducers<IUserStore> = ({
   }))
 
   addCase(verifyAuthenticationThunk.fulfilled, (state, { payload }) => ({
-    user: payload || state.user,
+    ...state,
+    user: payload,
     loading: false
   }))
 
@@ -29,4 +56,4 @@ const verifyAuthenticationExtraReducers: TExtraReducers<IUserStore> = ({
   }))
 }
 
-export default verifyAuthenticationExtraReducers
+export { verifyAuthenticationThunk, verifyAuthenticationExtraReducers }
