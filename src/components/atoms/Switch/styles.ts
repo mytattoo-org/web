@@ -24,6 +24,10 @@ const SwitchStyle = styled(motion.div)`
 
     background-color: ${({ theme }) => theme.colors.background};
   }
+
+  input {
+    display: none;
+  }
 `
 
 export { SwitchStyle }

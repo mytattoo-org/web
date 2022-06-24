@@ -1,6 +1,7 @@
 import { EditProfileStyle } from './styles'
 import type { IEditProfileProps } from './types'
 
+import Sad from 'components/atoms/Icon/icons/Sad'
 import Input from 'components/atoms/Input'
 import { Switch } from 'components/atoms/Switch'
 
@@ -13,17 +14,36 @@ import avatar from '@public/temp/avatar.png'
 const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
   return (
     <EditProfileStyle>
-      <img src={avatar} />
-      <Input placeholder='Nome de usuário' value='InSTinToS' />
-      <Input placeholder='Pequena descrição' />
+      <header>
+        <img src={avatar} />
 
-      <Switch />
+        <Input placeholder='Nome de usuário' value='InSTinToS' />
 
-      <Input placeholder='E-mail' />
-      <Input placeholder='Nova senha' />
+        <Input placeholder='Pequena descrição' />
 
-      <Input placeholder='Descrição' />
-      <Button>Excluir conta</Button>
+        <div id='isArtistSwitch'>
+          <Switch id='isArtist' name='isArtist' />
+
+          <label htmlFor='isArtist'>Artista</label>
+        </div>
+      </header>
+
+      <section>
+        <Input placeholder='E-mail' />
+
+        <Input placeholder='Nova senha' />
+
+        <Input placeholder='Descrição' />
+
+        <button type='button'>
+          <Sad />
+          Excluir conta
+        </button>
+      </section>
+
+      <footer>
+        <button type='submit'>Salvar alterações</button>
+      </footer>
     </EditProfileStyle>
   )
 }
