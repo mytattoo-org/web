@@ -1,39 +1,66 @@
+import { useEditProfile } from './logic'
 import { EditProfileStyle } from './styles'
 import type { IEditProfileProps } from './types'
 
+import AddPhoto from 'components/atoms/Icon/icons/AddPhoto'
 import Sad from 'components/atoms/Icon/icons/Sad'
 import Input from 'components/atoms/Input'
 import { Switch } from 'components/atoms/Switch'
-
-import Button from 'components/molecules/Button'
 
 import { TNextPageWithLayout } from 'typescript/next.types'
 
 import avatar from '@public/temp/avatar.png'
 
 const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
+  const { user } = useEditProfile()
+
   return (
     <EditProfileStyle>
       <header>
-        <img src={avatar} />
+        <div id='changeAvatar'>
+          <img src={avatar} />
 
-        <Input placeholder='Nome de usuário' value='InSTinToS' />
+          <label htmlFor='avatar'>
+            <AddPhoto />
+          </label>
 
-        <Input placeholder='Pequena descrição' />
+          <input
+            type='file'
+            id='avatar'
+            name='avatar'
+            accept='image/png, image/jpeg'
+          />
+        </div>
+
+        <Input
+          name='bio'
+          defaultValue={user?.username}
+          placeholder='Nome de usuário'
+        />
+
+        <Input
+          name='short_bio'
+          placeholder='Pequena descrição'
+          defaultValue={user?.short_bio}
+        />
 
         <div id='isArtistSwitch'>
-          <Switch id='isArtist' name='isArtist' />
+          <Switch
+            id='isArtist'
+            name='isArtist'
+            defaultChecked={user?.isArtist}
+          />
 
           <label htmlFor='isArtist'>Artista</label>
         </div>
       </header>
 
       <section>
-        <Input placeholder='E-mail' />
+        <Input placeholder='E-mail' defaultValue={user?.email} />
 
         <Input placeholder='Nova senha' />
 
-        <Input placeholder='Descrição' />
+        <Input placeholder='Descrição' defaultValue={user?.bio} />
 
         <button type='button'>
           <Sad />

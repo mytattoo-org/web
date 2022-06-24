@@ -16,6 +16,10 @@ const SearchStyle = styled.form`
     outline-offset: -6px;
   }
 
+  .Input {
+    width: 100%;
+  }
+
   .Search {
     width: 20px;
     height: 20px;

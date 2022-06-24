@@ -15,8 +15,30 @@ const EditProfileStyle = styled.main`
     justify-content: center;
   }
 
-  img {
-    width: 180px;
+  header {
+    #changeAvatar {
+      position: relative;
+
+      input {
+        display: none;
+      }
+
+      img {
+        width: 180px;
+      }
+
+      .Icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        width: 32px;
+
+        path {
+          fill: ${({ theme }) => theme.colors.secondary};
+        }
+      }
+    }
   }
 
   button {

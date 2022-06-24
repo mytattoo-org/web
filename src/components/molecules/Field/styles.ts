@@ -82,6 +82,10 @@ const FieldStyle = styled.div<IFieldStyleProps>`
     background-color: ${({ theme }) => theme.colors.background};
   }
 
+  .Input {
+    width: 100%;
+  }
+
   .eye {
     width: 30px;
     height: 30px;

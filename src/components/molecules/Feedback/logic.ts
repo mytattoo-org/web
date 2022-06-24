@@ -10,9 +10,9 @@ const useFeedback = (ref: Ref<IForwardFeedback>) => {
   const triggerFeedback: TTriggerFeedback = props => {
     setFeedback({ open: true, ...props })
 
-    // setTimeout(() => {
-    //   setFeedback({ open: false })
-    // }, 1000)
+    setTimeout(() => {
+      setFeedback({ open: false })
+    }, 1000)
   }
 
   useImperativeHandle(ref, () => ({ triggerFeedback }))

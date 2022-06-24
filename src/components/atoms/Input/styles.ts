@@ -15,6 +15,10 @@ const InputStyle = styled.input<IInputStyleProps>`
     -webkit-text-fill-color: ${({ theme }) => theme.colors.secondary};
     box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset;
   }
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export { InputStyle }
