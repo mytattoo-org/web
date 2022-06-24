@@ -22,7 +22,7 @@ const useSignIn = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
-  const user = useAppSelector(({ user }) => user)
+  const userStore = useAppSelector(({ userStore }) => userStore)
   const { toggleShowAuthModal, triggeringFeedback } = useContext(FeedContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
@@ -63,8 +63,8 @@ const useSignIn = () => {
   }
 
   useEffect(() => {
-    setLoading(user.loading)
-  }, [user.loading])
+    setLoading(userStore.loading)
+  }, [userStore.loading])
 
   return { onCloseClick, onSignUpClick, formik, enableSubmit, loading }
 }

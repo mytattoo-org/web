@@ -1,6 +1,10 @@
 import type { IFeedContext, IFeedbackState, IShowAuthModalState } from './types'
 
-import { createContext, useState } from 'react'
+import useAppDispatch from 'hooks/useAppDispatch'
+
+import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthentication'
+
+import { createContext, useEffect, useState } from 'react'
 
 const FeedContext = createContext<IFeedContext>({
   showLeftSide: true,
@@ -8,6 +12,7 @@ const FeedContext = createContext<IFeedContext>({
 } as IFeedContext)
 
 const useFeed = () => {
+  const dispatch = useAppDispatch()
   const [showLeftSide, setShowLeftSide] = useState(true)
   const [feedback, setFeedback] = useState<IFeedbackState>({
     open: false
@@ -32,6 +37,10 @@ const useFeed = () => {
       setFeedback({ open: false })
     }, 1000)
   }
+
+  useEffect(() => {
+    dispatch(verifyAuthenticationThunk())
+  }, [dispatch])
 
   const contextValue: IFeedContext = {
     showLeftSide,

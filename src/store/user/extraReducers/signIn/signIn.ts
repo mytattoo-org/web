@@ -5,7 +5,6 @@ import { TReadUsersResponse } from '@common/types/users/useCases/readUsers.types
 
 import { api } from 'api'
 import { AxiosResponse } from 'axios'
-import { add } from 'date-fns'
 
 const signIn: TSignIn = async data => {
   try {

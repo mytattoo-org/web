@@ -1,6 +1,6 @@
 import useAppDispatch from 'hooks/useAppDispatch'
 
-import { user } from 'store/user'
+import { userStore } from 'store/user'
 
 import { MouseEventHandler } from 'react'
 
@@ -8,7 +8,7 @@ const useProfileOptions = () => {
   const dispatch = useAppDispatch()
 
   const onLogoutClick: MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(user.actions.logout())
+    dispatch(userStore.actions.logout())
   }
 
   return { onLogoutClick }
