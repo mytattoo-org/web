@@ -1,17 +1,15 @@
-import { FeedContext } from 'components/templates/Feed/logic'
-
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useContext } from 'react'
 
 const useAuthModal = () => {
-  const { showAuthModal, toggleShowAuthModal } = useContext(FeedContext)
+  const { showAuthModal, toggleAuthModal } = useContext(NavbarContext)
 
   document.addEventListener('keypress', e => {
-    if (e.key === 'Escape')
-      toggleShowAuthModal({ open: false, page: 'sign-in' })
+    if (e.key === 'Escape') toggleAuthModal({ open: false, page: 'sign-in' })
   })
 
   const onBackgroundClick = () => {
-    toggleShowAuthModal({ open: false, page: 'sign-in' })
+    toggleAuthModal({ open: false, page: 'sign-in' })
   }
 
   return { page: showAuthModal.page, onBackgroundClick }

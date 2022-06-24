@@ -1,4 +1,4 @@
-import type { IFeedContext, IFeedbackState, IShowAuthModalState } from './types'
+import type { IFeedContext, IFeedbackState } from './types'
 
 import useAppDispatch from 'hooks/useAppDispatch'
 
@@ -7,8 +7,7 @@ import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthen
 import { createContext, useEffect, useState } from 'react'
 
 const FeedContext = createContext<IFeedContext>({
-  showLeftSide: true,
-  showAuthModal: { page: 'sign-in', open: false }
+  showLeftSide: true
 } as IFeedContext)
 
 const useFeed = () => {
@@ -17,17 +16,9 @@ const useFeed = () => {
   const [feedback, setFeedback] = useState<IFeedbackState>({
     open: false
   })
-  const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
-    open: false,
-    page: 'sign-in'
-  })
 
   const toggleShowLeftSide = () => {
     setShowLeftSide(prev => !prev)
-  }
-
-  const toggleShowAuthModal = (newState: IShowAuthModalState) => {
-    setShowAuthModal(newState)
   }
 
   const triggeringFeedback = (props: IFeedbackState['props']) => {
@@ -44,13 +35,11 @@ const useFeed = () => {
 
   const contextValue: IFeedContext = {
     showLeftSide,
-    showAuthModal,
     toggleShowLeftSide,
-    triggeringFeedback,
-    toggleShowAuthModal
+    triggeringFeedback
   }
 
-  return { showLeftSide, contextValue, showAuthModal, feedback }
+  return { showLeftSide, contextValue, feedback }
 }
 
 export { useFeed, FeedContext }

@@ -13,21 +13,15 @@ const ProfileOptions = () => {
   return (
     <ProfileOptionsStyle>
       <li>
-        <button type='button'>
-          <Heart />
-        </button>
+        <Heart />
       </li>
 
       <li>
-        <button type='button'>
-          <ArtistHeart />
-        </button>
+        <ArtistHeart />
       </li>
 
       <li>
-        <button type='button'>
-          <EditProfile />
-        </button>
+        <EditProfile href='/edit-profile' />
       </li>
 
       <li id='avatar'>

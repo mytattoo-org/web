@@ -3,16 +3,16 @@ import { FeedStyle } from './styles'
 
 import Feedback from 'components/molecules/Feedback'
 
-import AuthModal from 'components/organisms/AuthModal'
 import LeftSide from 'components/organisms/LeftSide'
-import Navbar from 'components/organisms/Navbar'
 import Posts from 'components/organisms/Posts'
 import RightSide from 'components/organisms/RightSide'
 
+import { TNextPageWithLayout } from 'typescript/next.types'
+
 import Head from 'next/head'
 
-const Feed = () => {
-  const { showLeftSide, showAuthModal, contextValue, feedback } = useFeed()
+const Feed: TNextPageWithLayout = () => {
+  const { showLeftSide, contextValue, feedback } = useFeed()
 
   return (
     <>
@@ -54,16 +54,6 @@ const Feed = () => {
         </ul>
 
         <FeedContext.Provider value={contextValue}>
-          <Navbar />
-
-          {showLeftSide && <LeftSide />}
-
-          <Posts />
-
-          <RightSide />
-
-          {showAuthModal.open && <AuthModal />}
-
           {feedback.open && (
             <Feedback
               color={feedback.props?.color}
@@ -71,6 +61,12 @@ const Feed = () => {
               content={feedback.props?.content}
             />
           )}
+
+          {showLeftSide && <LeftSide />}
+
+          <Posts />
+
+          <RightSide />
         </FeedContext.Provider>
       </FeedStyle>
     </>

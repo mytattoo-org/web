@@ -9,6 +9,7 @@ import { signInThunk } from 'store/user/extraReducers/signIn'
 
 import type { ISignInRequest as ISignInValues } from '@common/types/authentication/useCases/signIn.types'
 
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useFormik } from 'formik'
 import { useContext, useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
@@ -23,7 +24,8 @@ const useSignIn = () => {
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const userStore = useAppSelector(({ userStore }) => userStore)
-  const { toggleShowAuthModal, triggeringFeedback } = useContext(FeedContext)
+  const { triggeringFeedback } = useContext(FeedContext)
+  const { toggleAuthModal } = useContext(NavbarContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
@@ -35,7 +37,7 @@ const useSignIn = () => {
         color: theme.colors.green
       })
 
-      toggleShowAuthModal({ open: false, page: 'sign-in' })
+      toggleAuthModal({ open: false, page: 'sign-in' })
     } catch (error: any) {
       triggeringFeedback({
         title: 'Error',
@@ -55,11 +57,11 @@ const useSignIn = () => {
   const enableSubmit = !password && !usernameOrEmail && formik.dirty
 
   const onSignUpClick = () => {
-    toggleShowAuthModal({ page: 'sign-up', open: true })
+    toggleAuthModal({ page: 'sign-up', open: true })
   }
 
   const onCloseClick = () => {
-    toggleShowAuthModal({ page: 'sign-in', open: false })
+    toggleAuthModal({ page: 'sign-in', open: false })
   }
 
   useEffect(() => {

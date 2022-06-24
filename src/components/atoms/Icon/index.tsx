@@ -3,8 +3,11 @@ import type { IIconProps } from './types'
 
 import composeClassName from 'utils/composeClassName'
 
+import Link from 'next/link'
+
 const Icon = ({
   desc,
+  href,
   title,
   children,
   className,
@@ -27,7 +30,13 @@ const Icon = ({
 
       <desc id={descId}>{desc}</desc>
 
-      {children}
+      {href ? (
+        <Link href={href}>
+          <g>{children}</g>
+        </Link>
+      ) : (
+        children
+      )}
     </IconStyle>
   )
 }

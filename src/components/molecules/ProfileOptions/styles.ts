@@ -15,34 +15,31 @@ const ProfileOptionsStyle = styled.ul`
       display: none;
     }
 
-    button {
+    .Icon {
+      height: 18px;
       transition: transform 0.3s ease-in-out;
 
       :hover {
         transform: scale(1.1);
       }
 
-      .Icon {
-        height: 18px;
+      &.Heart path {
+        fill: ${({ theme }) => theme.colors.red};
+      }
 
-        &.Heart path {
-          fill: ${({ theme }) => theme.colors.red};
-        }
+      &.ArtistHeart {
+        path {
+          fill: ${({ theme }) => theme.colors.secondary};
 
-        &.ArtistHeart {
-          path {
-            fill: ${({ theme }) => theme.colors.secondary};
-
-            & + path {
-              fill: ${({ theme }) => theme.colors.red};
-            }
+          & + path {
+            fill: ${({ theme }) => theme.colors.red};
           }
         }
+      }
 
-        &.EditProfile {
-          path {
-            fill: ${({ theme }) => theme.colors.secondary};
-          }
+      &.EditProfile {
+        path {
+          fill: ${({ theme }) => theme.colors.secondary};
         }
       }
     }
@@ -79,5 +76,4 @@ const ProfileOptionsStyle = styled.ul`
     }
   }
 `
-
 export { ProfileOptionsStyle }

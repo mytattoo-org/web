@@ -2,8 +2,6 @@ import { useAuthOptions } from './logic'
 import { AuthOptionsStyle, SignInButton, SignUpButton } from './styles'
 import type { IAuthOptionsProps } from './types'
 
-import ProfileMenu from '../ProfileMenu'
-
 import DefaultAvatar from 'components/atoms/Icon/icons/DefaultAvatar'
 
 const AuthOptions = (props: IAuthOptionsProps) => {
