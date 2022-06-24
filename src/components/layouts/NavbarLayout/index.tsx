@@ -1,11 +1,13 @@
 import { NavbarContext, useNavbarLayout } from './logic'
 import type { INavbarProps } from './types'
 
+import Feedback from 'components/molecules/Feedback'
+
 import AuthModal from 'components/organisms/AuthModal'
 import Navbar from 'components/organisms/Navbar'
 
 const NavbarLayout = ({ children }: INavbarProps) => {
-  const { context } = useNavbarLayout()
+  const { feedbackRef, context } = useNavbarLayout()
 
   return (
     <>
@@ -13,6 +15,8 @@ const NavbarLayout = ({ children }: INavbarProps) => {
         {context.showAuthModal.open && <AuthModal />}
 
         <Navbar />
+
+        <Feedback ref={feedbackRef} />
       </NavbarContext.Provider>
 
       {children}

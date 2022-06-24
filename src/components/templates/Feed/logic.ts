@@ -1,4 +1,4 @@
-import type { IFeedContext, IFeedbackState } from './types'
+import type { IFeedContext } from './types'
 
 import useAppDispatch from 'hooks/useAppDispatch'
 
@@ -13,20 +13,9 @@ const FeedContext = createContext<IFeedContext>({
 const useFeed = () => {
   const dispatch = useAppDispatch()
   const [showLeftSide, setShowLeftSide] = useState(true)
-  const [feedback, setFeedback] = useState<IFeedbackState>({
-    open: false
-  })
 
   const toggleShowLeftSide = () => {
     setShowLeftSide(prev => !prev)
-  }
-
-  const triggeringFeedback = (props: IFeedbackState['props']) => {
-    setFeedback({ open: true, props })
-
-    setTimeout(() => {
-      setFeedback({ open: false })
-    }, 1000)
   }
 
   useEffect(() => {
@@ -35,11 +24,10 @@ const useFeed = () => {
 
   const contextValue: IFeedContext = {
     showLeftSide,
-    toggleShowLeftSide,
-    triggeringFeedback
+    toggleShowLeftSide
   }
 
-  return { showLeftSide, contextValue, feedback }
+  return { showLeftSide, contextValue }
 }
 
 export { useFeed, FeedContext }

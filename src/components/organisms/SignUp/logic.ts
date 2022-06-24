@@ -21,7 +21,7 @@ const useSignUp = () => {
   const theme = useTheme()
   const [loading, setLoading] = useState(false)
   const { toggleAuthModal } = useContext(NavbarContext)
-  const { triggeringFeedback } = useContext(FeedContext)
+  const { triggerFeedback } = useContext(NavbarContext)
 
   const onSignUpSubmit: TOnSignupSubmit = async (
     dataToCreate: ISignUpValues
@@ -31,19 +31,21 @@ const useSignUp = () => {
     try {
       await api.post('/users', dataToCreate)
 
-      triggeringFeedback({
-        title: 'Sucesso',
-        content: 'Cadastrado com sucesso.',
-        color: theme.colors.green
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Sucesso',
+          color: theme.colors.green,
+          content: 'Cadastrado com sucesso.'
+        })
 
       toggleAuthModal({ page: 'sign-in', open: true })
     } catch (error) {
-      triggeringFeedback({
-        title: 'Error',
-        color: theme.colors.red,
-        content: 'Error ao se cadastrar, tente novamente mais tarde.'
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Error',
+          color: theme.colors.red,
+          content: 'Error ao se cadastrar, tente novamente mais tarde.'
+        })
     } finally {
       setLoading(false)
     }

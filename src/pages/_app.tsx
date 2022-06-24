@@ -16,7 +16,11 @@ const MyApp = ({ Component, pageProps }: TAppPropsWithLayout) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      <GlobalProvider>{getLayout(<Component {...pageProps} />)}</GlobalProvider>
+      <GlobalProvider>
+        <div id='popup'></div>
+
+        {getLayout(<Component {...pageProps} />)}
+      </GlobalProvider>
     </>
   )
 }

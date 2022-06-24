@@ -1,7 +1,5 @@
 import { signInYupSchema } from './schemas'
 
-import { FeedContext } from 'components/templates/Feed/logic'
-
 import useAppDispatch from 'hooks/useAppDispatch'
 import useAppSelector from 'hooks/useAppSelector'
 
@@ -24,26 +22,30 @@ const useSignIn = () => {
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const userStore = useAppSelector(({ userStore }) => userStore)
-  const { triggeringFeedback } = useContext(FeedContext)
   const { toggleAuthModal } = useContext(NavbarContext)
+
+  const { triggerFeedback } = useContext(NavbarContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
       const { user } = await dispatch(signInThunk(dataToAuthenticate)).unwrap()
 
-      triggeringFeedback({
-        title: 'Sucesso',
-        content: `Bem vindo de volta, ${user?.username}.`,
-        color: theme.colors.green
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Sucesso',
+          content: `Bem vindo de volta, ${user?.username}.`,
+          color: theme.colors.green
+        })
 
       toggleAuthModal({ open: false, page: 'sign-in' })
     } catch (error: any) {
-      triggeringFeedback({
-        title: 'Error',
-        color: theme.colors.green,
-        content: error.message || 'Error inesperado tente novamente mais tarde.'
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Error',
+          color: theme.colors.red,
+          content:
+            error.message || 'Error inesperado tente novamente mais tarde.'
+        })
     }
   }
 
@@ -68,7 +70,14 @@ const useSignIn = () => {
     setLoading(userStore.loading)
   }, [userStore.loading])
 
-  return { onCloseClick, onSignUpClick, formik, enableSubmit, loading }
+  return {
+    formik,
+    loading,
+
+    onCloseClick,
+    enableSubmit,
+    onSignUpClick
+  }
 }
 
 export { useSignIn }

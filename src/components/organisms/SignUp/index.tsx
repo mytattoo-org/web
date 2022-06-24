@@ -8,8 +8,6 @@ import Loading from 'components/atoms/Icon/icons/Loading'
 
 import Field from 'components/molecules/Field'
 
-import { ModalButton } from 'components/organisms/AuthModal/styles'
-
 const SignUp = (props: ISignUpProps) => {
   const { formik, onArrowClick, onCloseClick, loading, enableSubmit } =
     useSignUp()
