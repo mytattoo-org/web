@@ -1,24 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEditProfile } from './logic'
 import { EditProfileStyle } from './styles'
 import type { IEditProfileProps } from './types'
 
 import AddPhoto from 'components/atoms/Icon/icons/AddPhoto'
 import Sad from 'components/atoms/Icon/icons/Sad'
-import Input from 'components/atoms/Input'
 import { Switch } from 'components/atoms/Switch'
+
+import Field from 'components/molecules/Field'
+import TextareaField from 'components/molecules/TextareaField'
 
 import { TNextPageWithLayout } from 'typescript/next.types'
 
 import avatar from '@public/temp/avatar.png'
 
 const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
-  const { user } = useEditProfile()
+  const { formik, onAvatarChange } = useEditProfile()
 
   return (
-    <EditProfileStyle>
+    <EditProfileStyle onSubmit={formik.handleSubmit} {...props}>
       <header>
         <div id='changeAvatar'>
-          <img src={avatar} />
+          <img src={avatar} alt='avatar' />
 
           <label htmlFor='avatar'>
             <AddPhoto />
@@ -28,39 +31,40 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
             type='file'
             id='avatar'
             name='avatar'
+            onChange={onAvatarChange}
             accept='image/png, image/jpeg'
           />
         </div>
 
-        <Input
-          name='bio'
-          defaultValue={user?.username}
-          placeholder='Nome de usuário'
-        />
+        <Field placeholder='Nome de usuário' name='username' formik={formik} />
 
-        <Input
+        <Field
+          formik={formik}
+          maxLength={32}
           name='short_bio'
           placeholder='Pequena descrição'
-          defaultValue={user?.short_bio}
         />
 
         <div id='isArtistSwitch'>
-          <Switch
-            id='isArtist'
-            name='isArtist'
-            defaultChecked={user?.isArtist}
-          />
+          <Switch id='is_artist' name='is_artist' />
 
-          <label htmlFor='isArtist'>Artista</label>
+          <label htmlFor='is_artist'>Artista</label>
         </div>
       </header>
 
       <section>
-        <Input placeholder='E-mail' defaultValue={user?.email} />
+        <Field name='email' placeholder='E-mail' formik={formik} />
 
-        <Input placeholder='Nova senha' />
+        <Field name='password' placeholder='Nova senha' formik={formik} />
 
-        <Input placeholder='Descrição' defaultValue={user?.bio} />
+        {/* <Field name='bio' placeholder='Descrição' formik={formik} /> */}
+
+        <TextareaField
+          name='bio'
+          maxLength={200}
+          formik={formik}
+          placeholder='Descrição'
+        />
 
         <button type='button'>
           <Sad />

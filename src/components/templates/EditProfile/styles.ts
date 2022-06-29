@@ -73,12 +73,27 @@ const EditProfileStyle = styled.main`
     }
   }
 
-  .Input {
-    text-align: center;
+  .Field {
+    border: none;
+
+    .Input {
+      text-align: center;
+    }
   }
 
-  .Input,
+  .TextareaField {
+    width: 100%;
+    padding: 8px;
+
+    textarea {
+      max-height: 300px;
+      min-height: ${({ theme }) => `calc(${theme.fonts.sizes.lg} + 12px)`};
+    }
+  }
+
   button,
+  .Field,
+  .TextareaField,
   #isArtistSwitch {
     margin-top: 24px;
   }
