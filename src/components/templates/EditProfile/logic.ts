@@ -9,9 +9,13 @@ import useAppSelector from 'hooks/useAppSelector'
 import { toBase64 } from 'utils/toBase64'
 
 import { useFormik } from 'formik'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 const useEditProfile: TUseEditProfile = () => {
+  const router = useRouter()
   const { user } = useAppSelector(({ userStore }) => userStore)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const formik = useFormik<IEditProfileForm>({
     initialValues: {
@@ -35,7 +39,11 @@ const useEditProfile: TUseEditProfile = () => {
     }
   }
 
-  return { formik, onAvatarChange }
+  useEffect(() => {
+    !user && router.push('/')
+  }, [router, user])
+
+  return { formik, onAvatarChange, showConfirmPassword, setShowConfirmPassword }
 }
 
 export { useEditProfile }

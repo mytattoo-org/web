@@ -15,7 +15,12 @@ import { TNextPageWithLayout } from 'typescript/next.types'
 import avatar from '@public/temp/avatar.png'
 
 const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
-  const { formik, onAvatarChange } = useEditProfile()
+  const {
+    formik,
+    onAvatarChange,
+    showConfirmPassword,
+    setShowConfirmPassword
+  } = useEditProfile()
 
   return (
     <EditProfileStyle onSubmit={formik.handleSubmit} {...props}>
@@ -55,9 +60,22 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
       <section>
         <Field name='email' placeholder='E-mail' formik={formik} />
 
-        <Field name='password' placeholder='Nova senha' formik={formik} />
+        <Field
+          name='password'
+          placeholder='Nova senha'
+          formik={formik}
+          onBlur={e => {
+            setShowConfirmPassword(e.target.value)
+          }}
+        />
 
-        {/* <Field name='bio' placeholder='Descrição' formik={formik} /> */}
+        {showConfirmPassword && (
+          <Field
+            formik={formik}
+            name='confirmPassword'
+            placeholder='Confirmar nova senha'
+          />
+        )}
 
         <TextareaField
           name='bio'

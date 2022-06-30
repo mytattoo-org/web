@@ -14,6 +14,7 @@ const Field = <FormValues,>({
   name,
   label,
   formik,
+  onBlur,
   ariaName,
   className,
   ...props
@@ -66,7 +67,10 @@ const Field = <FormValues,>({
         data-cy={name}
         type={inputType}
         value={inputValue}
-        onBlur={onInputBlur}
+        onBlur={e => {
+          onInputBlur(e)
+          onBlur && onBlur(e)
+        }}
         onChange={onInputChange}
         {...props}
       />
