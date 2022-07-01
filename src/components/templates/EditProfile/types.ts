@@ -13,6 +13,7 @@ interface IEditProfileForm {
   password?: string
   username?: string
   short_bio?: string
+  newPassword?: string
 }
 
 export type {

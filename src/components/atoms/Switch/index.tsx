@@ -4,7 +4,7 @@ import type { ISwitchProps } from './types'
 
 import composeClassName from 'utils/composeClassName'
 
-const Switch = ({ className, label, name, ...props }: ISwitchProps) => {
+const Switch = ({ className, label, name, formik, ...props }: ISwitchProps) => {
   const {
     isOn,
     transition,
@@ -21,7 +21,13 @@ const Switch = ({ className, label, name, ...props }: ISwitchProps) => {
       <Background transition={transition} animate={backgroundAnimation}>
         <Circle animate={circleAnimation} transition={transition} />
 
-        <input type='checkbox' checked={isOn} name={name} {...props} />
+        <input
+          name={name}
+          checked={isOn}
+          type='checkbox'
+          onChange={() => formik.handleChange(name)}
+          {...props}
+        />
       </Background>
 
       {label && <label htmlFor={name}>{label}</label>}

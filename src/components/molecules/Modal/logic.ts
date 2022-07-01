@@ -7,7 +7,6 @@ const useModal = (ref: any) => {
 
   useEffect(() => {
     document.addEventListener('keypress', ({ key }) => {
-      console.log(key)
       key === 'Escape' && onBackgroundClick()
     })
   }, [])

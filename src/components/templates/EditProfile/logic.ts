@@ -4,10 +4,13 @@ import type {
   TUseEditProfile
 } from './types'
 
+import { editProfileYupSchema } from './schemas'
+
 import { IForwardModal } from 'components/molecules/Modal/types'
 
 import useAppSelector from 'hooks/useAppSelector'
 
+import { api } from 'api'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
@@ -26,9 +29,23 @@ const useEditProfile: TUseEditProfile = () => {
       username: user?.username,
       short_bio: user?.short_bio
     },
-    onSubmit: values => {
+    validationSchema: editProfileYupSchema,
+    onSubmit: async values => {
       console.log(values)
       modalRef.current?.triggerModal({ open: false })
+
+      try {
+        await api.patch(`/users/${user?.id}`, {
+          bio: values.bio,
+          email: values.email,
+          avatar: values.avatar,
+          username: values.username,
+          short_bio: values.short_bio,
+          password: values.newPassword
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
   })
 

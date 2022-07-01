@@ -37,13 +37,12 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
         <Field placeholder='Nome de usuário' name='username' formik={formik} />
 
         <Field
-          maxLength={32}
           formik={formik}
           name='short_bio'
           placeholder='Pequena descrição'
         />
 
-        <Switch id='artist' name='artist' label='Artista' />
+        <Switch id='artist' name='artist' label='Artista' formik={formik} />
       </header>
 
       <section>
@@ -68,7 +67,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
 
         <TextareaField
           name='bio'
-          maxLength={200}
+          maxLength={243}
           formik={formik}
           placeholder='Descrição'
         />
@@ -87,9 +86,20 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
 
       <PasswordModal ref={modalRef}>
         <section>
-          <Field formik={formik} name='password' placeholder='Senha atual' />
+          <Field
+            formik={formik}
+            name='password'
+            type='password'
+            placeholder='Senha atual'
+          />
 
-          <Button onClick={() => formik.handleSubmit()}>
+          <Button
+            type='submit'
+            onClick={() => {
+              console.log('submit')
+              formik.handleSubmit()
+            }}
+          >
             Confirmar alterações
           </Button>
         </section>

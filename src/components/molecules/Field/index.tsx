@@ -42,8 +42,8 @@ const Field = <FormValues,>({
     >
       {hasError && (
         <Tooltip
-          ariaName={ariaName || name}
           trigger={<Alert />}
+          ariaName={ariaName || name}
           content={
             <Error>
               <Alert />
