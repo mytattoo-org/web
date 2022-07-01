@@ -17,6 +17,8 @@ const MyApp = ({ Component, pageProps }: TAppPropsWithLayout) => {
       </Head>
 
       <GlobalProvider>
+        <div id='modal'></div>
+
         <div id='popup'></div>
 
         {getLayout(<Component {...pageProps} />)}

@@ -22,10 +22,7 @@ const useFeed = () => {
     dispatch(verifyAuthenticationThunk())
   }, [dispatch])
 
-  const contextValue: IFeedContext = {
-    showLeftSide,
-    toggleShowLeftSide
-  }
+  const contextValue: IFeedContext = { showLeftSide, toggleShowLeftSide }
 
   return { showLeftSide, contextValue }
 }

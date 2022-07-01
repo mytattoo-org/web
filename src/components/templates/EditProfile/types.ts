@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react'
 
 interface IEditProfileProps {}
 
-type TOnAvatarChange = InputHTMLAttributes<HTMLInputElement>['onChange']
+type TOnNewPasswordChange = InputHTMLAttributes<HTMLInputElement>['onBlur']
 
 type TUseEditProfile = () => any
 
@@ -17,7 +17,7 @@ interface IEditProfileForm {
 
 export type {
   TUseEditProfile,
-  TOnAvatarChange,
   IEditProfileForm,
-  IEditProfileProps
+  IEditProfileProps,
+  TOnNewPasswordChange
 }

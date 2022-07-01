@@ -1,5 +1,16 @@
-import { ComponentPropsWithoutRef } from 'react'
+import type { TargetAndTransition, Transition } from 'framer-motion'
+import type { ComponentPropsWithoutRef } from 'react'
 
-interface ISwitchProps extends ComponentPropsWithoutRef<'input'> {}
+interface ISwitchProps extends ComponentPropsWithoutRef<'input'> {
+  label?: string
+}
 
-export type { ISwitchProps }
+type TUseSwitch = () => {
+  isOn: boolean
+  transition: Transition
+  toggleSwitch: () => void
+  circleAnimation: TargetAndTransition
+  backgroundAnimation: TargetAndTransition
+}
+
+export type { ISwitchProps, TUseSwitch }

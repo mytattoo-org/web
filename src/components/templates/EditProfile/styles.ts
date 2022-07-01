@@ -1,44 +1,67 @@
+import Modal from 'components/molecules/Modal'
+
 import styled from 'styled-components'
+
+const PasswordModal = styled(Modal)`
+  display: flex;
+  flex-direction: column;
+
+  section {
+    width: 400px;
+    padding: 24px;
+    border-radius: 8px;
+
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+
+  .Button {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+    margin-top: 24px;
+  }
+`
 
 const EditProfileStyle = styled.main`
   height: 100vh;
   padding: 78px 0 65px 0;
 
+  display: flex;
+  flex-direction: row;
+
   font-size: ${({ theme }) => theme.fonts.sizes.lg};
 
-  &,
-  section,
   header {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-  }
 
-  header {
-    #changeAvatar {
+    label {
       position: relative;
 
-      input {
-        display: none;
-      }
-
-      img {
-        width: 180px;
-      }
-
-      .Icon {
+      .AddPhoto {
         position: absolute;
-        bottom: 0;
-        right: 0;
+        right: 0px;
+        bottom: 0px;
 
         width: 32px;
+        padding: 2px;
 
         path {
           fill: ${({ theme }) => theme.colors.secondary};
         }
       }
     }
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   button {
@@ -74,6 +97,7 @@ const EditProfileStyle = styled.main`
   }
 
   .Field {
+    width: 100%;
     border: none;
 
     .Input {
@@ -94,17 +118,8 @@ const EditProfileStyle = styled.main`
   button,
   .Field,
   .TextareaField,
-  #isArtistSwitch {
+  .Switch {
     margin-top: 24px;
-  }
-
-  #isArtistSwitch {
-    display: flex;
-    align-items: center;
-
-    .Switch {
-      margin-right: 16px;
-    }
   }
 
   @media screen and (min-width: 1080px) {
@@ -112,4 +127,5 @@ const EditProfileStyle = styled.main`
     justify-content: space-evenly;
   }
 `
-export { EditProfileStyle }
+
+export { EditProfileStyle, PasswordModal }

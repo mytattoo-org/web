@@ -1,40 +1,30 @@
-import { SwitchStyle } from './styles'
+import { useSwitch } from './logic'
+import { Background, Circle, SwitchStyle } from './styles'
 import type { ISwitchProps } from './types'
 
 import composeClassName from 'utils/composeClassName'
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { useTheme } from 'styled-components'
-
-const Switch = ({ className, ...props }: ISwitchProps) => {
-  const theme = useTheme()
-  const [isOn, setIsOn] = useState(false)
-
-  const toggleSwitch = () => setIsOn(!isOn)
+const Switch = ({ className, label, name, ...props }: ISwitchProps) => {
+  const {
+    isOn,
+    transition,
+    toggleSwitch,
+    circleAnimation,
+    backgroundAnimation
+  } = useSwitch()
 
   return (
     <SwitchStyle
       onClick={toggleSwitch}
-      transition={{ type: 'tween', duration: 0.3 }}
       className={composeClassName('Switch', className)}
-      animate={{
-        backgroundColor: isOn
-          ? [theme.colors.secondary, theme.colors.primary]
-          : [theme.colors.primary, theme.colors.secondary]
-      }}
     >
-      <motion.div
-        transition={{ type: 'tween', duration: 0.3 }}
-        animate={{
-          x: isOn ? [0, 20] : [20, 0],
-          backgroundColor: isOn
-            ? [theme.colors.background, theme.colors.secondary]
-            : [theme.colors.secondary, theme.colors.background]
-        }}
-      />
+      <Background transition={transition} animate={backgroundAnimation}>
+        <Circle animate={circleAnimation} transition={transition} />
 
-      <input type='checkbox' checked={isOn} {...props} />
+        <input type='checkbox' checked={isOn} name={name} {...props} />
+      </Background>
+
+      {label && <label htmlFor={name}>{label}</label>}
     </SwitchStyle>
   )
 }

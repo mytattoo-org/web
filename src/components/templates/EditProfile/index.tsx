@@ -1,78 +1,67 @@
-/* eslint-disable @next/next/no-img-element */
 import { useEditProfile } from './logic'
-import { EditProfileStyle } from './styles'
+import { EditProfileStyle, PasswordModal } from './styles'
 import type { IEditProfileProps } from './types'
 
+import Avatar from 'components/atoms/Avatar'
+import File from 'components/atoms/File'
 import AddPhoto from 'components/atoms/Icon/icons/AddPhoto'
 import Sad from 'components/atoms/Icon/icons/Sad'
 import { Switch } from 'components/atoms/Switch'
 
+import Button from 'components/molecules/Button'
 import Field from 'components/molecules/Field'
 import TextareaField from 'components/molecules/TextareaField'
 
 import { TNextPageWithLayout } from 'typescript/next.types'
 
-import avatar from '@public/temp/avatar.png'
-
 const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
   const {
     formik,
-    onAvatarChange,
-    showConfirmPassword,
-    setShowConfirmPassword
+    modalRef,
+    onSaveClick,
+    onNewPasswordBlur,
+    showConfirmPassword
   } = useEditProfile()
 
   return (
     <EditProfileStyle onSubmit={formik.handleSubmit} {...props}>
       <header>
-        <div id='changeAvatar'>
-          <img src={avatar} alt='avatar' />
+        <label>
+          <Avatar size={180} />
 
-          <label htmlFor='avatar'>
-            <AddPhoto />
-          </label>
+          <AddPhoto />
 
-          <input
-            type='file'
-            id='avatar'
-            name='avatar'
-            onChange={onAvatarChange}
-            accept='image/png, image/jpeg'
-          />
-        </div>
+          <File id='avatar' name='avatar' formik={formik} />
+        </label>
 
         <Field placeholder='Nome de usuário' name='username' formik={formik} />
 
         <Field
-          formik={formik}
           maxLength={32}
+          formik={formik}
           name='short_bio'
           placeholder='Pequena descrição'
         />
 
-        <div id='isArtistSwitch'>
-          <Switch id='is_artist' name='is_artist' />
-
-          <label htmlFor='is_artist'>Artista</label>
-        </div>
+        <Switch id='artist' name='artist' label='Artista' />
       </header>
 
       <section>
         <Field name='email' placeholder='E-mail' formik={formik} />
 
         <Field
-          name='password'
-          placeholder='Nova senha'
+          type='password'
           formik={formik}
-          onBlur={e => {
-            setShowConfirmPassword(e.target.value)
-          }}
+          name='newPassword'
+          placeholder='Nova senha'
+          onBlur={onNewPasswordBlur}
         />
 
         {showConfirmPassword && (
           <Field
             formik={formik}
-            name='confirmPassword'
+            type='password'
+            name='confirmNewPassword'
             placeholder='Confirmar nova senha'
           />
         )}
@@ -91,8 +80,20 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
       </section>
 
       <footer>
-        <button type='submit'>Salvar alterações</button>
+        <button type='button' onClick={onSaveClick}>
+          Salvar alterações
+        </button>
       </footer>
+
+      <PasswordModal ref={modalRef}>
+        <section>
+          <Field formik={formik} name='password' placeholder='Senha atual' />
+
+          <Button onClick={() => formik.handleSubmit()}>
+            Confirmar alterações
+          </Button>
+        </section>
+      </PasswordModal>
     </EditProfileStyle>
   )
 }
