@@ -26,7 +26,7 @@ const ProfileOptions = () => {
 
       <li id='avatar'>
         <button type='button'>
-          <Avatar size={40} src='/temp/avatar.png' />
+          <Avatar size={40} />
         </button>
 
         <button type='button' onClick={onLogoutClick}>

@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import * as Yup from 'yup'
 
 const username = {
@@ -39,6 +38,10 @@ const email = {
   }
 }
 
+const password = {
+  required: { error: 'Você precisa informar sua senha' }
+}
+
 const newPassword = {
   max: { value: 30, error: 'Senha muito longa!' },
   min: { value: 8, error: `Sua senha deve conter mais que 8 caracteres!` },
@@ -69,6 +72,7 @@ const confirmNewPassword = {
 const editProfileSchema = {
   bio,
   email,
+  password,
   username,
   short_bio,
   newPassword,
@@ -100,6 +104,8 @@ const editProfileYupSchema = Yup.object().shape({
     .email(email.email.error)
     .matches(email.matches.value, email.matches.error)
     .required(email.required.error),
+
+  password: Yup.string().required(password.required.error),
 
   newPassword: Yup.string()
     .min(newPassword.min.value, newPassword.min.error)

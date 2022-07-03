@@ -26,18 +26,12 @@ const ModalStyle = styled.div`
     background-color: transparent;
   }
 
-  .loadingWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .Loading {
+    width: 48px;
+    height: 48px;
 
-    .Loading {
-      width: 48px;
-      height: 48px;
-
-      path {
-        fill: ${({ theme }) => theme.colors.secondary};
-      }
+    path {
+      fill: ${({ theme }) => theme.colors.secondary};
     }
   }
 `

@@ -1,13 +1,14 @@
 import type { TOnFileChange, TUseFile } from './types'
 
-import { toBase64 } from 'utils/toBase64'
+import { fileToBase64 } from 'utils/fileToBase64'
 
 const useFile: TUseFile = ({ formik, onChange }) => {
   const onFileChange: TOnFileChange = async event => {
-    const file = event?.currentTarget?.files
+    const files = event?.currentTarget?.files
 
-    if (file !== null) {
-      const base64Avatar = await toBase64(file[0])
+    if (files !== null) {
+      const base64Avatar = await fileToBase64(files[0])
+
       formik.setFieldValue('avatar', base64Avatar)
     }
 

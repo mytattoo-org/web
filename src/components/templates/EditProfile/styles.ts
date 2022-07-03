@@ -7,11 +7,20 @@ const PasswordModal = styled(Modal)`
   flex-direction: column;
 
   section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
     width: 400px;
     padding: 24px;
     border-radius: 8px;
 
     background-color: ${({ theme }) => theme.colors.background};
+
+    .Field {
+      width: 100%;
+    }
   }
 
   .Button {
