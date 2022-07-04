@@ -50,33 +50,36 @@ const useEditProfile: TUseEditProfile = () => {
   const modalRef = useRef<IForwardModal>(null)
   const [loading, setLoading] = useState(false)
   const feedbackRef = useRef<IForwardFeedback>(null)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { user, loading: userLoading } = useAppSelector(
     ({ userStore }) => userStore
   )
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const triggerFeedback = feedbackRef.current?.triggerFeedback
   const triggerModal = modalRef.current?.triggerModal
-
+  const triggerFeedback = feedbackRef.current?.triggerFeedback
   const initialValues = {
-    artist: false,
-    bio: user?.bio || undefined,
-    email: user?.email || undefined,
-    avatar: user?.avatar || undefined,
-    username: user?.username || undefined,
-    short_bio: user?.short_bio || undefined
+    bio: user?.bio,
+    artist: user?.artist,
+    email: user?.email,
+    avatar: user?.avatar,
+    username: user?.username,
+    short_bio: user?.short_bio
   }
 
   const onSubmit = async (values: IEditProfileForm) => {
     try {
       setLoading(true)
 
-      values.newPassword =
-        values.newPassword === '' ? undefined : values.newPassword
+      values.new_password =
+        values.new_password === '' ? undefined : values.new_password
 
       values.confirmNewPassword = undefined
 
+      console.log(values)
+
       values = setUndefinedIfIsEqual(values, user)
+
+      console.log(values)
 
       const response: AxiosResponse<TUpdateUserResponse> = await api.patch(
         `/users`,
@@ -126,6 +129,20 @@ const useEditProfile: TUseEditProfile = () => {
   useEffect(() => {
     dispatch(verifyAuthenticationThunk())
   }, [dispatch])
+
+  useEffect(() => {
+    if (userLoading === false && user) {
+      formik.setValues({
+        bio: user?.bio,
+        artist: user?.artist,
+        email: user?.email,
+        avatar: user?.avatar,
+        username: user?.username,
+        short_bio: user?.short_bio
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLoading, user])
 
   useEffect(() => {
     if (userLoading === false && !user) router.push('/')

@@ -11,7 +11,7 @@ const Switch = ({ className, label, name, formik, ...props }: ISwitchProps) => {
     toggleSwitch,
     circleAnimation,
     backgroundAnimation
-  } = useSwitch()
+  } = useSwitch({ name, formik })
 
   return (
     <SwitchStyle
@@ -21,13 +21,7 @@ const Switch = ({ className, label, name, formik, ...props }: ISwitchProps) => {
       <Background transition={transition} animate={backgroundAnimation}>
         <Circle animate={circleAnimation} transition={transition} />
 
-        <input
-          name={name}
-          checked={isOn}
-          type='checkbox'
-          onChange={() => formik.handleChange(name)}
-          {...props}
-        />
+        <input name={name} checked={isOn} type='checkbox' {...props} readOnly />
       </Background>
 
       {label && <label htmlFor={name}>{label}</label>}

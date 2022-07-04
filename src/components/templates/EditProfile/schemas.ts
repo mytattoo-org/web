@@ -38,7 +38,7 @@ const editProfileSchema = {
       error: 'Informe um e-mail valido!'
     }
   },
-  newPassword: {
+  new_password: {
     max: { value: 30, error: 'Senha muito longa!' },
     min: { value: 8, error: `Sua senha deve conter mais que 8 caracteres!` },
     matches: [
@@ -68,7 +68,7 @@ const {
   password,
   username,
   short_bio,
-  newPassword,
+  new_password,
   confirmNewPassword
 } = editProfileSchema
 
@@ -100,13 +100,13 @@ const editProfileYupSchema = Yup.object().shape({
 
   password: Yup.string().required(password.required.error),
 
-  newPassword: Yup.string()
-    .min(newPassword.min.value, newPassword.min.error)
-    .max(newPassword.max.value, newPassword.max.error)
-    .matches(newPassword.matches[0].value, newPassword.matches[0].error)
-    .matches(newPassword.matches[1].value, newPassword.matches[1].error)
-    .matches(newPassword.matches[2].value, newPassword.matches[2].error)
-    .matches(newPassword.matches[3].value, newPassword.matches[3].error)
+  new_password: Yup.string()
+    .min(new_password.min.value, new_password.min.error)
+    .max(new_password.max.value, new_password.max.error)
+    .matches(new_password.matches[0].value, new_password.matches[0].error)
+    .matches(new_password.matches[1].value, new_password.matches[1].error)
+    .matches(new_password.matches[2].value, new_password.matches[2].error)
+    .matches(new_password.matches[3].value, new_password.matches[3].error)
     .nullable(),
 
   confirmPassword: Yup.string()

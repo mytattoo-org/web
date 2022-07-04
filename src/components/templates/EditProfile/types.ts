@@ -14,7 +14,7 @@ interface IEditProfileForm {
   password?: string
   username?: string
   short_bio?: string
-  newPassword?: string
+  new_password?: string
   confirmNewPassword?: string
 }
 

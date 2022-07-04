@@ -60,7 +60,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
           <Field
             type='password'
             formik={formik}
-            name='newPassword'
+            name='new_password'
             placeholder='Nova senha'
             autoComplete='new-password'
             onBlur={onNewPasswordBlur}
