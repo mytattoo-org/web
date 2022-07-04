@@ -4,13 +4,13 @@ import type { IAvatarProps } from './types'
 
 import composeClassName from 'utils/composeClassName'
 
-const Avatar = ({ size, className, ...props }: IAvatarProps) => {
+const Avatar = ({ size, className, src, ...props }: IAvatarProps) => {
   const { avatar } = useAvatar()
 
-  return avatar ? (
+  return avatar || src ? (
     <AvatarStyle
       alt='avatar'
-      src={avatar}
+      src={src || avatar}
       style={{ width: size, height: size }}
       className={composeClassName('Avatar', className)}
       {...props}

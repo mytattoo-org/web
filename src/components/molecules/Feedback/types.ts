@@ -23,8 +23,8 @@ interface IForwardFeedback {
 
 export type {
   ITriggerParams,
-  IFeedbackStyleProps,
   IFeedbackState,
   IForwardFeedback,
-  TTriggerFeedback
+  TTriggerFeedback,
+  IFeedbackStyleProps
 }

@@ -9,11 +9,13 @@ type TUseEditProfile = () => any
 interface IEditProfileForm {
   bio?: string
   email?: string
+  artist?: boolean
   avatar?: string
   password?: string
   username?: string
   short_bio?: string
   newPassword?: string
+  confirmNewPassword?: string
 }
 
 export type {

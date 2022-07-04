@@ -32,7 +32,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
       <EditProfileStyle onSubmit={formik.handleSubmit} {...props}>
         <header>
           <label>
-            <Avatar size={180} />
+            <Avatar size={180} src={formik.values.avatar} />
 
             <AddPhoto />
 
@@ -40,9 +40,9 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
           </label>
 
           <Field
-            placeholder='Nome de usuário'
             name='username'
             formik={formik}
+            placeholder='Nome de usuário'
           />
 
           <Field
@@ -62,6 +62,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
             formik={formik}
             name='newPassword'
             placeholder='Nova senha'
+            autoComplete='new-password'
             onBlur={onNewPasswordBlur}
           />
 

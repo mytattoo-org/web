@@ -21,7 +21,7 @@ const verifyAuthentication: TVerifyAuthentication = async (_, { getState }) => {
       headers: { Authorization: `Bearer ${token}` }
     })
 
-    return data.user
+    return { ...data.user, token }
   } catch (error: any) {
     throw new Error(
       error?.response?.data?.error
