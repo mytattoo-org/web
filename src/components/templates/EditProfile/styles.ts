@@ -34,122 +34,136 @@ const PasswordModal = styled(Modal)`
 `
 
 const EditProfileStyle = styled.main`
-  height: 100vh;
-  padding: 78px 0 65px 0;
-
-  display: flex;
-  flex-direction: row;
+  padding: 78px 0 62px 0;
 
   font-size: ${({ theme }) => theme.fonts.sizes.lg};
 
-  header {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+  section {
+    padding: 48px 0;
 
-    label {
-      position: relative;
+    &,
+    form {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
 
-      .AddPhoto {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
+      > div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
 
-        width: 32px;
-        padding: 2px;
+    form {
+      .Switch {
+        margin-top: 24px;
+      }
 
-        path {
-          fill: ${({ theme }) => theme.colors.secondary};
+      .TextareaField {
+        width: 100%;
+        padding: 8px;
+        margin: 24px 0;
+
+        textarea {
+          max-height: 300px;
+          min-height: ${({ theme }) => `calc(${theme.fonts.sizes.lg} + 12px)`};
+        }
+      }
+
+      .Field {
+        width: 100%;
+        min-width: 300px;
+        margin-top: 24px;
+
+        border: solid ${({ theme }) => theme.colors.secondary} 1px solid;
+
+        .Input {
+          text-align: center;
+        }
+      }
+
+      .Field,
+      .bioTextareaField {
+        .Tooltip {
+          .Content {
+            font-size: ${({ theme }) => theme.fonts.sizes.md};
+          }
+
+          .TooltipArrow {
+            left: 4px;
+          }
+        }
+      }
+
+      #sad {
+        display: flex;
+        align-items: center;
+
+        color: ${({ theme }) => theme.colors.red};
+
+        .Icon {
+          height: 32px;
+          margin-right: 16px;
+
+          path {
+            fill: ${({ theme }) => theme.colors.red};
+          }
+        }
+      }
+
+      #avatar {
+        width: 180px;
+        height: 180px;
+
+        position: relative;
+
+        .AddPhoto {
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+
+          width: 32px;
+          padding: 2px;
+
+          path {
+            fill: ${({ theme }) => theme.colors.secondary};
+          }
         }
       }
     }
   }
 
-  section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  button#sad {
-    display: flex;
-    align-items: center;
-
-    color: ${({ theme }) => theme.colors.red};
-
-    .Icon {
-      height: 32px;
-      margin-right: 16px;
-
-      path {
-        fill: ${({ theme }) => theme.colors.red};
-      }
-    }
-  }
-
   footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     button {
       justify-content: center;
 
-      width: 100vw;
       padding: 16px;
       margin-top: 0px;
+      min-width: 100vw;
 
       color: ${({ theme }) => theme.colors.secondary};
       background-color: ${({ theme }) => theme.colors.green};
     }
   }
 
-  .Switch {
-    margin-top: 24px;
-  }
-
-  .TextareaField {
-    width: 100%;
-    padding: 8px;
-    margin: 24px 0;
-
-    textarea {
-      max-height: 300px;
-      min-height: ${({ theme }) => `calc(${theme.fonts.sizes.lg} + 12px)`};
-    }
-  }
-
-  .Field {
-    width: 100%;
-    min-width: 360px;
-    border: solid ${({ theme }) => theme.colors.secondary} 1px solid;
-
-    .Input {
-      text-align: center;
-    }
-
-    &.Field {
-      margin-top: 24px;
-    }
-  }
-
-  .Field,
-  .bioTextareaField {
-    .Tooltip {
-      .Content {
-        font-size: ${({ theme }) => theme.fonts.sizes.md};
-      }
-
-      .TooltipArrow {
-        left: 4px;
-      }
-    }
-  }
-
   @media screen and (min-width: 1080px) {
-    flex-direction: row;
-    justify-content: space-evenly;
+    height: 100vh;
+
+    section {
+      padding: 0px;
+      height: 100%;
+
+      form {
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        width: 100%;
+      }
+    }
   }
 `
 
