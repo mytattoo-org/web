@@ -82,7 +82,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
             placeholder='Descrição'
           />
 
-          <button type='button'>
+          <button type='button' id='sad'>
             <Sad />
             Excluir conta
           </button>

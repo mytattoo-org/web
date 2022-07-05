@@ -6,8 +6,11 @@ import styled, { css } from 'styled-components'
 
 const Error = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 8px 16px;
+  height: 100%;
+
   border-radius: 8px;
   margin-bottom: 16px;
 
@@ -22,17 +25,9 @@ const Error = styled.div`
 `
 
 const Tooltip = styled(OriginalTooltip)`
-  .Trigger .Alert {
-    height: 18px;
-
-    path {
-      fill: ${({ theme }) => theme.colors.red};
-    }
-  }
-
   .Content {
-    left: -13px;
-    bottom: 16px;
+    left: 0px;
+    padding-left: 8px;
 
     .Alert {
       height: 18px;
@@ -41,10 +36,23 @@ const Tooltip = styled(OriginalTooltip)`
         fill: ${({ theme }) => theme.colors.secondary};
       }
     }
+  }
+
+  .Trigger {
+    margin: 0 16px;
+
+    .Alert {
+      height: 18px;
+
+      path {
+        fill: ${({ theme }) => theme.colors.red};
+      }
+    }
 
     .TooltipArrow {
       position: absolute;
-      left: 18px;
+      z-index: 2;
+      left: 5px;
       bottom: 8px;
 
       height: 8px;
@@ -87,8 +95,14 @@ const FieldStyle = styled.div<IFieldStyleProps>`
   }
 
   .eye {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
+
+    max-width: 24px;
+    max-height: 24px;
+
+    min-width: 24px;
+    min-height: 24px;
 
     margin: 0 16px;
 
@@ -100,12 +114,12 @@ const FieldStyle = styled.div<IFieldStyleProps>`
   ${({ hasError, theme }) =>
     hasError &&
     css`
-      padding-left: 12px;
-
       border: solid ${theme.colors.red} 1px;
 
-      .eye path {
-        stroke: ${theme.colors.red};
+      .eye {
+        path {
+          stroke: ${theme.colors.red};
+        }
       }
     `};
 

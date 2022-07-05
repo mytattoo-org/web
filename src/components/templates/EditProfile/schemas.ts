@@ -27,7 +27,7 @@ const editProfileSchema = {
       error: 'Descrição deve conter até 243 caracteres!'
     },
     matches: {
-      value: /^.*$/,
+      value: /^(.?)*(\s?)*$/,
       error: 'Descrição deve conter apenas números ou letras!'
     }
   },
@@ -109,8 +109,8 @@ const editProfileYupSchema = Yup.object().shape({
     .matches(new_password.matches[3].value, new_password.matches[3].error)
     .nullable(),
 
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], confirmNewPassword.match.error)
+  confirmNewPassword: Yup.string()
+    .oneOf([Yup.ref('new_password')], confirmNewPassword.match.error)
     .nullable()
 })
 

@@ -7,8 +7,7 @@ const TooltipStyle = styled.div<ITooltipStyleProps>`
     position: absolute;
     z-index: 1;
 
-    display: flex;
-
+    height: 100%;
     padding: 4px;
     border-radius: 4px;
     transform: ${({ marginTop }) => `translateY(calc(-100% - ${marginTop}px))`};

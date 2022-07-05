@@ -6,10 +6,12 @@ import styled, { css } from 'styled-components'
 
 const Error = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 8px 16px;
+  height: 100%;
+
   border-radius: 8px;
-  margin-bottom: 16px;
 
   color: ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.red};
@@ -22,17 +24,12 @@ const Error = styled.div`
 `
 
 const Tooltip = styled(OriginalTooltip)`
-  .Trigger .Alert {
-    height: 18px;
-
-    path {
-      fill: ${({ theme }) => theme.colors.red};
-    }
+  .Trigger {
+    margin: 0 16px;
   }
 
   .Content {
     left: -13px;
-    bottom: 16px;
 
     .Alert {
       height: 18px;

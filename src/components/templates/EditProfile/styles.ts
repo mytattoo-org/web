@@ -73,7 +73,7 @@ const EditProfileStyle = styled.main`
     justify-content: center;
   }
 
-  button {
+  button#sad {
     display: flex;
     align-items: center;
 
@@ -105,18 +105,14 @@ const EditProfileStyle = styled.main`
     }
   }
 
-  .Field {
-    width: 100%;
-    border: none;
-
-    .Input {
-      text-align: center;
-    }
+  .Switch {
+    margin-top: 24px;
   }
 
   .TextareaField {
     width: 100%;
     padding: 8px;
+    margin: 24px 0;
 
     textarea {
       max-height: 300px;
@@ -124,11 +120,31 @@ const EditProfileStyle = styled.main`
     }
   }
 
-  button,
+  .Field {
+    width: 100%;
+    min-width: 360px;
+    border: solid ${({ theme }) => theme.colors.secondary} 1px solid;
+
+    .Input {
+      text-align: center;
+    }
+
+    &.Field {
+      margin-top: 24px;
+    }
+  }
+
   .Field,
-  .TextareaField,
-  .Switch {
-    margin-top: 24px;
+  .bioTextareaField {
+    .Tooltip {
+      .Content {
+        font-size: ${({ theme }) => theme.fonts.sizes.md};
+      }
+
+      .TooltipArrow {
+        left: 4px;
+      }
+    }
   }
 
   @media screen and (min-width: 1080px) {
