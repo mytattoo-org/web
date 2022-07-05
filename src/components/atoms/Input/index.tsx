@@ -1,4 +1,3 @@
-import { useInput } from './logic'
 import { InputStyle } from './styles'
 import type { IInputProps } from './types'
 

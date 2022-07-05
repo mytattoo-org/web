@@ -112,7 +112,7 @@ const EditProfileStyle = styled.main`
         }
       }
 
-      #avatar {
+      #changeAvatar {
         width: 180px;
         height: 180px;
 

@@ -33,7 +33,7 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
         <section>
           <form onSubmit={formik.handleSubmit}>
             <div>
-              <label id='avatar' htmlFor='avatar'>
+              <label id='changeAvatar'>
                 <Avatar size={180} src={formik.values.avatar} />
 
                 <AddPhoto />
@@ -98,13 +98,13 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
         </section>
 
         <footer>
-          <button type='button' onClick={onSaveClick}>
+          <button data-cy='save' type='button' onClick={onSaveClick}>
             Salvar alterações
           </button>
         </footer>
       </EditProfileStyle>
 
-      <PasswordModal ref={modalRef}>
+      <PasswordModal ref={modalRef} data-cy='passwordModal'>
         <section>
           {loading ? (
             <Loading />
@@ -117,7 +117,11 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
                 placeholder='Senha atual'
               />
 
-              <Button type='submit' onClick={formik.handleSubmit}>
+              <Button
+                type='submit'
+                data-cy='submitEditProfile'
+                onClick={formik.handleSubmit}
+              >
                 Confirmar alterações
               </Button>
             </>
