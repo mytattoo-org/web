@@ -29,73 +29,82 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
 
   return (
     <>
-      <EditProfileStyle onSubmit={formik.handleSubmit} {...props}>
-        <header>
-          <label>
-            <Avatar size={180} src={formik.values.avatar} />
-
-            <AddPhoto />
-
-            <File id='avatar' name='avatar' formik={formik} />
-          </label>
-
-          <Field
-            name='username'
-            formik={formik}
-            placeholder='Nome de usuário'
-          />
-
-          <Field
-            formik={formik}
-            name='short_bio'
-            placeholder='Pequena descrição'
-          />
-
-          <Switch id='artist' name='artist' label='Artista' formik={formik} />
-        </header>
-
+      <EditProfileStyle {...props}>
         <section>
-          <Field name='email' placeholder='E-mail' formik={formik} />
+          <form onSubmit={formik.handleSubmit}>
+            <div>
+              <label id='changeAvatar'>
+                <Avatar size={180} src={formik.values.avatar} />
 
-          <Field
-            type='password'
-            formik={formik}
-            name='new_password'
-            placeholder='Nova senha'
-            autoComplete='new-password'
-            onBlur={onNewPasswordBlur}
-          />
+                <AddPhoto />
 
-          {showConfirmPassword && (
-            <Field
-              formik={formik}
-              type='password'
-              name='confirmNewPassword'
-              placeholder='Confirmar nova senha'
-            />
-          )}
+                <File id='avatar' name='avatar' formik={formik} />
+              </label>
 
-          <TextareaField
-            name='bio'
-            maxLength={243}
-            formik={formik}
-            placeholder='Descrição'
-          />
+              <Field
+                name='username'
+                formik={formik}
+                placeholder='Nome de usuário'
+              />
 
-          <button type='button' id='sad'>
-            <Sad />
-            Excluir conta
-          </button>
+              <Field
+                formik={formik}
+                name='short_bio'
+                placeholder='Pequena descrição'
+              />
+
+              <Switch
+                id='artist'
+                name='artist'
+                label='Artista'
+                formik={formik}
+              />
+            </div>
+
+            <div>
+              <Field name='email' placeholder='E-mail' formik={formik} />
+
+              <Field
+                type='password'
+                formik={formik}
+                name='new_password'
+                placeholder='Nova senha'
+                autoComplete='new-password'
+                onBlur={onNewPasswordBlur}
+              />
+
+              {showConfirmPassword && (
+                <Field
+                  formik={formik}
+                  type='password'
+                  name='confirmNewPassword'
+                  placeholder='Confirmar nova senha'
+                />
+              )}
+
+              <TextareaField
+                name='bio'
+                maxLength={243}
+                formik={formik}
+                placeholder='Descrição'
+              />
+
+              <button type='button' id='sad'>
+                <Sad />
+                Excluir conta
+              </button>
+            </div>
+          </form>
         </section>
 
         <footer>
-          <button type='button' onClick={onSaveClick}>
+          <button data-cy='save' type='button' onClick={onSaveClick}>
             Salvar alterações
           </button>
         </footer>
       </EditProfileStyle>
 
-      <PasswordModal ref={modalRef}>
+      <PasswordModal ref={modalRef} data-cy='passwordModal'>
         <section>
           {loading ? (
             <Loading />
@@ -108,7 +117,11 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
                 placeholder='Senha atual'
               />
 
-              <Button type='submit' onClick={formik.handleSubmit}>
+              <Button
+                type='submit'
+                data-cy='submitEditProfile'
+                onClick={formik.handleSubmit}
+              >
                 Confirmar alterações
               </Button>
             </>

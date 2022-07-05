@@ -10,6 +10,7 @@ const Avatar = ({ size, className, src, ...props }: IAvatarProps) => {
   return avatar || src ? (
     <AvatarStyle
       alt='avatar'
+      data-cy='avatar'
       src={src || avatar}
       style={{ width: size, height: size }}
       className={composeClassName('Avatar', className)}
@@ -17,6 +18,7 @@ const Avatar = ({ size, className, src, ...props }: IAvatarProps) => {
     />
   ) : (
     <DefaultAvatar
+      data-cy='avatar'
       style={{ width: size, height: size }}
       className={composeClassName('Avatar', className)}
     />

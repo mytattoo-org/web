@@ -6,6 +6,7 @@ import composeClassName from 'utils/composeClassName'
 
 const Loading = ({ className, ...props }: IIconProps) => (
   <LoadingStyle
+    data-cy='loading'
     viewBox='0 0 24 24'
     className={composeClassName('Loading', className)}
     {...props}

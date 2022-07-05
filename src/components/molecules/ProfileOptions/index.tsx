@@ -7,21 +7,34 @@ import EditProfile from 'components/atoms/Icon/icons/EditProfile'
 import Heart from 'components/atoms/Icon/icons/Heart'
 import Logout from 'components/atoms/Icon/icons/Logout'
 
+import { useRouter } from 'next/router'
+
 const ProfileOptions = () => {
   const { onLogoutClick } = useProfileOptions()
+
+  const router = useRouter()
 
   return (
     <ProfileOptionsStyle>
       <li>
-        <Heart />
+        <button data-cy='likes' onClick={() => router.push('likes')}>
+          <Heart data-cy='likes' />
+        </button>
       </li>
 
       <li>
-        <ArtistHeart />
+        <button data-cy='following' onClick={() => router.push('following')}>
+          <ArtistHeart data-cy='following' />
+        </button>
       </li>
 
       <li>
-        <EditProfile href='/edit-profile' />
+        <button
+          onClick={() => router.push('edit-profile')}
+          data-cy='edit-profile'
+        >
+          <EditProfile href='/edit-profile' />
+        </button>
       </li>
 
       <li id='avatar'>

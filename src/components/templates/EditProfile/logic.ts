@@ -75,11 +75,7 @@ const useEditProfile: TUseEditProfile = () => {
 
       values.confirmNewPassword = undefined
 
-      console.log(values)
-
       values = setUndefinedIfIsEqual(values, user)
-
-      console.log(values)
 
       const response: AxiosResponse<TUpdateUserResponse> = await api.patch(
         `/users`,
@@ -141,6 +137,11 @@ const useEditProfile: TUseEditProfile = () => {
         short_bio: user?.short_bio
       })
     }
+
+    formik.setFieldValue('new_password', '')
+    formik.setFieldValue('confirmNewPassword', '')
+    setShowConfirmPassword(false)
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLoading, user])
 
