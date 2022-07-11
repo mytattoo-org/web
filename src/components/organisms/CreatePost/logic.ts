@@ -1,23 +1,18 @@
-import useAppSelector from 'hooks/useAppSelector'
+import useAppDispatch from 'hooks/useAppDispatch'
 
-import { TCreatePostResponse } from '@common/types/posts/useCases/createPost.types'
+import { createPostThunk } from 'store/posts/extraReducers/createPost'
 
-import { api } from 'api'
-import { AxiosResponse } from 'axios'
 import { useFormik } from 'formik'
 
 const useCreatePost = () => {
-  const { user } = useAppSelector(({ userStore }) => userStore)
+  const dispatch = useAppDispatch()
 
   const formik = useFormik({
+    initialValues: { image: '', description: '' },
     onSubmit: async formData => {
-      const response: AxiosResponse<TCreatePostResponse> = await api.post(
-        '/posts',
-        formData,
-        { headers: { Authorization: `Bearer ${user?.token}` } }
-      )
-    },
-    initialValues: { image: '', description: '' }
+      dispatch(createPostThunk(formData))
+      formik.resetForm()
+    }
   })
 
   return { formik }

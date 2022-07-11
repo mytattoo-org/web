@@ -1,23 +1,19 @@
-import { TFeedResponse } from '@common/types/posts/useCases/readFeed.types'
+import useAppDispatch from 'hooks/useAppDispatch'
+import useAppSelector from 'hooks/useAppSelector'
 
-import { api } from 'api'
-import { AxiosResponse } from 'axios'
-import { useEffect, useState } from 'react'
+import { readFeedThunk } from 'store/posts/extraReducers/readFeed'
+
+import { useEffect } from 'react'
 import { useTheme } from 'styled-components'
 
 const usePosts = () => {
   const theme = useTheme()
-  const [posts, setPosts] = useState<TFeedResponse['posts']>([])
-
-  const getPosts = async () => {
-    const response: AxiosResponse<TFeedResponse> = await api.get('/feed')
-
-    setPosts(response.data.posts)
-  }
+  const dispatch = useAppDispatch()
+  const { posts } = useAppSelector(({ postsStore }) => postsStore.feed)
 
   useEffect(() => {
-    getPosts()
-  }, [])
+    dispatch(readFeedThunk())
+  }, [dispatch])
 
   return { theme, posts }
 }
