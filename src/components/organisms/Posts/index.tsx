@@ -5,7 +5,7 @@ import CreatePost from '../CreatePost'
 import Post from '../Post'
 
 const Posts = () => {
-  const { formattedPosts } = usePosts()
+  const { posts } = usePosts()
 
   return (
     <PostsStyle>
@@ -13,16 +13,18 @@ const Posts = () => {
         Voltar para atalhos
       </a>
 
-      <CreatePost forwardedAs='header' aria-label='Criar postagem' />
+      <header>
+        <CreatePost />
+      </header>
 
       <a href='#shortcuts' target='_self' tabIndex={0}>
         Voltar para atalhos
       </a>
 
       <ul aria-label='Postagens' id='main'>
-        {formattedPosts.map(({ headerData, id }) => (
-          <li key={id}>
-            <Post forwardedAs='section' postHeader={headerData} />
+        {posts?.map(post => (
+          <li key={post.id}>
+            <Post forwardedAs='section' postData={post} />
           </li>
         ))}
       </ul>

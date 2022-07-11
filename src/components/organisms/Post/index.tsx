@@ -7,14 +7,14 @@ import PostFooter from 'components/organisms/PostFooter'
 
 import Image from 'next/image'
 
-const Post = ({ postHeader, forwardedAs, ...props }: IPostProps) => (
+const Post = ({ postData, forwardedAs, ...props }: IPostProps) => (
   <PostStyle as={forwardedAs} {...props}>
     <article>
       <PostHeader
-        name={postHeader.name}
-        avatar={postHeader.avatar}
-        isArtist={postHeader.isArtist}
-        description={postHeader.description}
+        name={postData.author.username}
+        avatar={postData.author.avatar}
+        isArtist={postData.author.artist}
+        description={postData.description}
       />
 
       <Image
@@ -22,10 +22,10 @@ const Post = ({ postHeader, forwardedAs, ...props }: IPostProps) => (
         width='100%'
         height='100%'
         priority={true}
-        src='/temp/tattoo.png'
+        objectFit='cover'
         layout='responsive'
-        objectFit='contain'
-        alt='Tatuagem no antebraço com a representação do deus Anúbis'
+        src={postData.image}
+        alt='Imagem da postagem'
       />
     </article>
 

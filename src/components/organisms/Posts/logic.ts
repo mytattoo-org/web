@@ -1,46 +1,25 @@
-import type { IFormattedData, TPostsResponse } from './types'
+import { TFeedResponse } from '@common/types/posts/useCases/readFeed.types'
 
+import { api } from 'api'
+import { AxiosResponse } from 'axios'
+import { useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
-
-const fakePosts: TPostsResponse = [
-  {
-    id: '2',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit dolor, eos possimus sint, quam aliquam veniam obcaecati, eius libero numquam perspiciatis dolorem! Sed, adipisci odio minima odit dolorum libero vero.',
-    author: {
-      name: 'Vitor Daniel',
-      isArtist: true,
-      avatar: '/temp/avatar2.jpg'
-    }
-  },
-  {
-    id: '1',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit dolor, eos possimus sint, quam aliquam veniam obcaecati, eius libero numquam perspiciatis dolorem! Sed, adipisci odio minima odit dolorum libero vero.',
-    author: {
-      name: 'Miguel Andrade',
-      isArtist: false,
-      avatar: '/temp/avatar.png'
-    }
-  }
-]
 
 const usePosts = () => {
   const theme = useTheme()
+  const [posts, setPosts] = useState<TFeedResponse['posts']>([])
 
-  const formattedPosts: IFormattedData[] = fakePosts.map(
-    ({ id, author, description }) => ({
-      id: id,
-      headerData: {
-        description,
-        avatar: author.avatar,
-        isArtist: author.isArtist,
-        name: author.name
-      }
-    })
-  )
+  const getPosts = async () => {
+    const response: AxiosResponse<TFeedResponse> = await api.get('/feed')
 
-  return { formattedPosts, theme }
+    setPosts(response.data.posts)
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+  return { theme, posts }
 }
 
 export { usePosts }

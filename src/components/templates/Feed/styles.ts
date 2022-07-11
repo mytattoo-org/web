@@ -15,11 +15,8 @@ const FeedStyle = styled.div`
     display: none;
   }
 
-  > ul {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
+  #shortcuts {
+    display: none;
   }
 
   @media screen and (min-width: 1080px) {
