@@ -1,50 +1,82 @@
 import { useProfileOptions } from './logic'
-import { ProfileOptionsStyle } from './styles'
+import { ProfileOptionsStyle, Sidebar } from './styles'
+
+import {
+  labelAnimationProps,
+  navbarItemsAnimationProps,
+  sidebarAnimationProps,
+  sidebarItemsAnimationProps
+} from './animations'
 
 import Avatar from 'components/atoms/Avatar'
 import ArtistHeart from 'components/atoms/Icon/icons/ArtistHeart'
 import EditProfile from 'components/atoms/Icon/icons/EditProfile'
 import Heart from 'components/atoms/Icon/icons/Heart'
 import Logout from 'components/atoms/Icon/icons/Logout'
+import Presence from 'components/atoms/Presence'
 
-import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
+
+const options = [
+  {
+    label: 'Seguindo',
+    name: 'following',
+    icon: <Heart data-cy='likes' />
+  },
+  {
+    label: 'Curtidas',
+    name: 'Likes',
+    icon: <ArtistHeart data-cy='following' />
+  },
+  {
+    name: 'edit-profile',
+    label: 'Editar perfil',
+    icon: <EditProfile data-cy='edit-profile' />
+  }
+]
 
 const ProfileOptions = () => {
-  const { onLogoutClick } = useProfileOptions()
-
-  const router = useRouter()
+  const { onLogoutClick, showSidebar, setShowSidebar, router } =
+    useProfileOptions()
 
   return (
-    <ProfileOptionsStyle>
-      <li>
-        <button data-cy='likes' onClick={() => router.push('likes')}>
-          <Heart data-cy='likes' />
-        </button>
-      </li>
+    <ProfileOptionsStyle showSidebar={showSidebar}>
+      {options.map(({ icon: Icon, name }, index) => (
+        <Presence key={name} condition={!showSidebar}>
+          <motion.li {...navbarItemsAnimationProps(options, index)}>
+            <button type='button' onClick={() => router.push(name)}>
+              {Icon}
+            </button>
+          </motion.li>
+        </Presence>
+      ))}
 
       <li>
-        <button data-cy='following' onClick={() => router.push('following')}>
-          <ArtistHeart data-cy='following' />
-        </button>
-      </li>
+        <div id='avatar'>
+          <button type='button' onClick={() => setShowSidebar(!showSidebar)}>
+            <Avatar size={40} />
+          </button>
 
-      <li>
-        <button
-          onClick={() => router.push('edit-profile')}
-          data-cy='edit-profile'
-        >
-          <EditProfile href='/edit-profile' />
-        </button>
-      </li>
+          <button type='button' onClick={onLogoutClick}>
+            <Logout />
+          </button>
+        </div>
 
-      <li id='avatar'>
-        <button type='button'>
-          <Avatar size={40} />
-        </button>
+        <Sidebar {...sidebarAnimationProps(options, showSidebar)}>
+          {options.map(({ label, icon: Icon, name }, index) => (
+            <Presence key={name} condition={showSidebar}>
+              <motion.li {...sidebarItemsAnimationProps(options, index)}>
+                <button type='button' onClick={() => router.push(name)}>
+                  {Icon}
 
-        <button type='button' onClick={onLogoutClick}>
-          <Logout />
-        </button>
+                  <motion.span {...labelAnimationProps(options, index)}>
+                    {label}
+                  </motion.span>
+                </button>
+              </motion.li>
+            </Presence>
+          ))}
+        </Sidebar>
       </li>
     </ProfileOptionsStyle>
   )

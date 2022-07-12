@@ -4,7 +4,10 @@ import styled from 'styled-components'
 
 const LeftSideStyle = styled.aside<ILeftSideStyleProps>`
   left: 0;
+
   flex-flow: column nowrap;
+
+  height: calc(100vh - 78px);
 
   header {
     padding: 0 24px;
@@ -38,6 +41,7 @@ const LeftSideStyle = styled.aside<ILeftSideStyleProps>`
     display: flex;
     flex: 1;
     flex-flow: column nowrap;
+
     padding: 12px;
 
     > li {

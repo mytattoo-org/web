@@ -1,72 +1,114 @@
+import { ISidebarProps } from './types'
+
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const ProfileOptionsStyle = styled.ul`
+const Sidebar = styled(motion.ul)`
+  position: fixed;
+  top: 0px;
+  right: 0px;
+
+  padding-top: 78px;
+  border-radius: 4px;
+  padding-bottom: 16px;
+
+  li button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 16px 32px;
+
+    .Icon {
+      display: flex;
+
+      height: 22px;
+    }
+
+    span {
+      text-align: left;
+
+      white-space: nowrap;
+
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+`
+
+const ProfileOptionsStyle = styled.ul<ISidebarProps>`
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
   width: 100%;
 
-  li {
+  > li {
     position: relative;
-    z-index: 1;
 
-    :not(:last-child) {
-      display: none;
+    &:not(:last-child) {
+      width: 24px;
+    }
+  }
+
+  .Icon {
+    height: 18px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
     }
 
-    .Icon {
-      height: 18px;
-      transition: transform 0.3s ease-in-out;
-
-      :hover {
-        transform: scale(1.1);
-      }
-
-      &.Heart path {
+    &.Heart {
+      path {
         fill: ${({ theme }) => theme.colors.red};
       }
+    }
 
-      &.ArtistHeart {
-        path {
-          fill: ${({ theme }) => theme.colors.secondary};
+    &.ArtistHeart {
+      path {
+        fill: ${({ theme }) => theme.colors.secondary};
 
-          & + path {
-            fill: ${({ theme }) => theme.colors.red};
-          }
-        }
-      }
-
-      &.EditProfile {
-        path {
-          fill: ${({ theme }) => theme.colors.secondary};
+        & + path {
+          fill: ${({ theme }) => theme.colors.red};
         }
       }
     }
 
-    &#avatar {
-      position: relative;
-      margin-right: 16px;
+    &.EditProfile path {
+      fill: ${({ theme }) => theme.colors.secondary};
+    }
+  }
 
-      button + button {
+  #avatar {
+    position: relative;
+
+    background-color: ${({ theme }) => theme.colors.background};
+
+    button {
+      position: relative;
+      z-index: 1;
+
+      .Avatar {
+        transform: ${({ showSidebar }) => `scale(${showSidebar ? 1.2 : 1.0})`};
+        transition: all 0.3s ease-in-out;
+      }
+
+      & + button {
         position: absolute;
         bottom: 0;
-        z-index: 1;
-        right: -16px;
 
         .Icon.Logout {
           height: 16px;
 
-          path {
-            fill: ${({ theme }) => theme.colors.secondary};
-          }
+          fill: ${({ theme }) => theme.colors.secondary};
         }
       }
     }
   }
 
   @media screen and (min-width: 1080px) {
-    li {
+    > li {
       &:not(:last-child) {
         display: block;
       }
@@ -77,4 +119,5 @@ const ProfileOptionsStyle = styled.ul`
     }
   }
 `
-export { ProfileOptionsStyle }
+
+export { ProfileOptionsStyle, Sidebar }
