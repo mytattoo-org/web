@@ -1,6 +1,6 @@
 interface IWindowSize {
-  innerWidth?: number
-  innerHeight?: number
+  innerWidth: number
+  innerHeight: number
 }
 
 export type { IWindowSize }

@@ -1,7 +1,6 @@
 import type { IFeedContext } from './types'
 
 import useAppDispatch from 'hooks/useAppDispatch'
-import useWindowSize from 'hooks/useWindowSize'
 
 import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthentication'
 
@@ -15,10 +14,6 @@ const useFeed = () => {
   const dispatch = useAppDispatch()
   const [showLeftSide, setShowLeftSide] = useState(true)
 
-  const { innerWidth } = useWindowSize()
-
-  const maxSize = (innerWidth || globalThis.innerWidth) - 600 - 24 - 36
-
   const toggleShowLeftSide = () => {
     setShowLeftSide(prev => !prev)
   }
@@ -29,7 +24,7 @@ const useFeed = () => {
 
   const contextValue: IFeedContext = { showLeftSide, toggleShowLeftSide }
 
-  return { showLeftSide, contextValue, maxSize }
+  return { showLeftSide, contextValue }
 }
 
 export { useFeed, FeedContext }

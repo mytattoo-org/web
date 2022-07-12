@@ -4,31 +4,39 @@ import { PostsStyle } from './styles'
 import CreatePost from '../CreatePost'
 import Post from '../Post'
 
+import { Resizable } from 'components/atoms/Resizable'
+
 const Posts = () => {
-  const { posts } = usePosts()
+  const { resizable, posts } = usePosts()
 
   return (
-    <PostsStyle>
-      <a href='#shortcuts' target='_self' tabIndex={0}>
-        Voltar para atalhos
-      </a>
+    <Resizable
+      minWidth={resizable.minWidth}
+      maxWidth={resizable.maxWidth}
+      initialWidth={resizable.initialWidth}
+    >
+      <PostsStyle>
+        <a href='#shortcuts' target='_self' tabIndex={0}>
+          Voltar para atalhos
+        </a>
 
-      <header>
-        <CreatePost />
-      </header>
+        <header>
+          <CreatePost />
+        </header>
 
-      <a href='#shortcuts' target='_self' tabIndex={0}>
-        Voltar para atalhos
-      </a>
+        <a href='#shortcuts' target='_self' tabIndex={0}>
+          Voltar para atalhos
+        </a>
 
-      <ul aria-label='Postagens' id='main'>
-        {posts?.map(post => (
-          <li key={post.id}>
-            <Post forwardedAs='section' postData={post} />
-          </li>
-        ))}
-      </ul>
-    </PostsStyle>
+        <ul aria-label='Postagens' id='main'>
+          {posts?.map(post => (
+            <li key={post.id}>
+              <Post forwardedAs='section' postData={post} />
+            </li>
+          ))}
+        </ul>
+      </PostsStyle>
+    </Resizable>
   )
 }
 

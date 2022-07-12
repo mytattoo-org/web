@@ -8,19 +8,23 @@ const getDimensions = () => ({
 })
 
 const useWindowSize = (): IWindowSize => {
-  const [dimensions, setDimensions] = useState<IWindowSize>({
-    innerHeight: undefined,
-    innerWidth: undefined
-  })
+  const [dimensions, setDimensions] = useState<IWindowSize>(getDimensions())
 
   useEffect(() => {
     const resize = () => {
-      setDimensions(getDimensions())
+      setDimensions(prev => {
+        const newDimensions = getDimensions()
+
+        return prev === newDimensions ? prev : newDimensions
+      })
     }
 
+    if (!dimensions) resize()
+
     globalThis.addEventListener('resize', resize)
+
     return () => globalThis.removeEventListener('resize', resize)
-  }, [])
+  }, [dimensions])
 
   return dimensions
 }

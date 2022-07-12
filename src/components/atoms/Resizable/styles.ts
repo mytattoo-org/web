@@ -9,11 +9,9 @@ const ResizableStyle = styled.div`
 
   .Handle {
     position: fixed;
-    left: calc(300px - 12px);
     top: 78px;
+    left: 8px;
     z-index: 3;
-
-    cursor: row-resize;
 
     .Icon {
       width: 24px;
@@ -26,6 +24,12 @@ const ResizableStyle = styled.div`
       &:active {
         fill: ${({ theme }) => theme.colors.primary};
       }
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    .Handle {
+      left: 300px;
     }
   }
 `

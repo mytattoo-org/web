@@ -1,8 +1,6 @@
 import { FeedContext, useFeed } from './logic'
 import { FeedStyle } from './styles'
 
-import { Resizable } from 'components/atoms/Resizable'
-
 import LeftSide from 'components/organisms/LeftSide'
 import Posts from 'components/organisms/Posts'
 import RightSide from 'components/organisms/RightSide'
@@ -12,7 +10,7 @@ import { TNextPageWithLayout } from 'typescript/next.types'
 import Head from 'next/head'
 
 const Feed: TNextPageWithLayout = () => {
-  const { showLeftSide, contextValue, maxSize } = useFeed()
+  const { showLeftSide, contextValue } = useFeed()
 
   return (
     <>
@@ -56,13 +54,7 @@ const Feed: TNextPageWithLayout = () => {
         <FeedContext.Provider value={contextValue}>
           {showLeftSide && <LeftSide />}
 
-          <Resizable
-            minWidth={300}
-            maxWidth={maxSize}
-            initialWidth={globalThis.innerHeight * 0.7}
-          >
-            <Posts />
-          </Resizable>
+          <Posts />
 
           <RightSide />
         </FeedContext.Provider>
