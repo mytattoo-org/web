@@ -1,9 +1,16 @@
 import type { TUseResizable } from './types'
 
 import { DragHandlers, useMotionValue } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const useResizable: TUseResizable = ({ maxWidth, minWidth, initialWidth }) => {
+const useResizable: TUseResizable = ({
+  maxWidth,
+  minWidth,
+  initialWidth,
+  realCondition
+}) => {
+  const constraintsRef = useRef(null)
+  const [condition, setCondition] = useState(true)
   const resizableWith = useMotionValue(initialWidth || minWidth)
 
   const handleDrag: DragHandlers['onDrag'] = (_event, info) => {
@@ -22,6 +29,13 @@ const useResizable: TUseResizable = ({ maxWidth, minWidth, initialWidth }) => {
     [initialWidth, minWidth, resizableWith]
   )
 
-  return { handleDrag, resizableWith }
+  useEffect(() => {
+    realCondition !== undefined
+      ? setCondition(realCondition)
+      : setCondition(true)
+  }, [realCondition])
+
+  return { handleDrag, resizableWith, constraintsRef, condition }
 }
+
 export { useResizable }

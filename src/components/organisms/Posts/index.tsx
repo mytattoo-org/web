@@ -13,6 +13,7 @@ const Posts = () => {
     <Resizable
       minWidth={resizable.minWidth}
       maxWidth={resizable.maxWidth}
+      condition={resizable.condition}
       initialWidth={resizable.initialWidth}
     >
       <PostsStyle>

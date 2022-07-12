@@ -7,24 +7,25 @@ import HorizontalResizer from '../Icon/icons/HorizontalResizer'
 import composeClassName from 'utils/composeClassName'
 
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
 
 const Resizable = ({
   children,
   minWidth,
   maxWidth,
   className,
-  initialWidth
+  initialWidth,
+  condition: realCondition = true
 }: IResizableProps) => {
-  const { handleDrag, resizableWith } = useResizable({
-    minWidth,
-    maxWidth,
-    initialWidth
-  })
+  const { handleDrag, resizableWith, condition, constraintsRef } = useResizable(
+    {
+      minWidth,
+      maxWidth,
+      initialWidth,
+      realCondition
+    }
+  )
 
-  const constraintsRef = useRef(null)
-
-  return (
+  return condition ? (
     <ResizableStyle className={composeClassName('Resizable', className)}>
       <div className='Handle' ref={constraintsRef}>
         <motion.div
@@ -42,6 +43,8 @@ const Resizable = ({
         {children}
       </motion.div>
     </ResizableStyle>
+  ) : (
+    <>{children}</>
   )
 }
 

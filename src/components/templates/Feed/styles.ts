@@ -20,11 +20,6 @@ const FeedStyle = styled.div`
   }
 
   @media screen and (min-width: 1080px) {
-    > main {
-      width: calc(70vh);
-      max-width: calc(100vw - 16px - 600px - 24px);
-    }
-
     > aside {
       position: fixed;
       display: flex;

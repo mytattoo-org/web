@@ -14,24 +14,26 @@ const usePosts = () => {
   const { posts } = useAppSelector(({ postsStore }) => postsStore.feed)
 
   const getResizableProps = () => {
-    let resizableIcon = 24 * 2
+    let scroll = 8
     let otherElements = 0
-    let resizableMarginRight = 24 * 2
+    let resizableIconSize = 24 + 16
 
     if (innerWidth > 1080) {
-      resizableIcon = 24 * 2
+      scroll = 16
       otherElements = 300 * 2
-      resizableMarginRight = 24 * 2
+      resizableIconSize = 24 + 16
     }
 
-    const margin = resizableIcon + otherElements + resizableMarginRight
+    const margin = otherElements + resizableIconSize + scroll
 
     const minWidth = 300
     const maxWidth = innerWidth - margin
     const idealSize = innerHeight * 0.7
     const initialWidth = idealSize < maxWidth ? idealSize : maxWidth
 
-    return { maxWidth, minWidth, initialWidth }
+    const condition = innerWidth > 768
+
+    return { maxWidth, minWidth, initialWidth, condition }
   }
 
   useEffect(() => {

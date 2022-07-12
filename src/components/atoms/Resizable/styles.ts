@@ -13,9 +13,13 @@ const ResizableStyle = styled.div`
     left: 8px;
     z-index: 3;
 
+    width: 24px;
+    height: 24px;
+
     .Icon {
       width: 24px;
       height: 24px;
+
       margin-top: 17px;
       transform: translateY(-50%);
 
@@ -29,7 +33,7 @@ const ResizableStyle = styled.div`
 
   @media screen and (min-width: 1080px) {
     .Handle {
-      left: 300px;
+      left: 308px;
     }
   }
 `

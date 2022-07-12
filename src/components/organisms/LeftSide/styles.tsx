@@ -8,6 +8,7 @@ const LeftSideStyle = styled.aside<ILeftSideStyleProps>`
 
   header {
     padding: 0 24px;
+    padding-right: 0px;
 
     input {
       height: 100%;

@@ -25,6 +25,7 @@ const Post = ({ postData, forwardedAs, ...props }: IPostProps) => (
         objectFit='cover'
         layout='responsive'
         src={postData.image}
+        className='postImage'
         alt='Imagem da postagem'
       />
     </article>

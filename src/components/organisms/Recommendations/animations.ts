@@ -4,9 +4,9 @@ import { AnimatePresenceProps, MotionProps, Transition } from 'framer-motion'
 
 const li: MotionProps = {
   transition: {
-    type: 'spring',
-    duration: 0.8,
-    bounce: 0.3
+    bounce: 0.3,
+    duration: 0.3,
+    type: 'spring'
   },
   variants: {
     exit: { opacity: 0, x: 500 },
@@ -15,8 +15,12 @@ const li: MotionProps = {
   }
 }
 
+const presence: AnimatePresenceProps = {
+  initial: false
+}
+
 const ul: TUlAnimation = itemsQuantity => {
-  const staggerChildrenTime = 0.2
+  const staggerChildrenTime = 0.1
 
   const commonTransition: Transition = {
     type: 'tween',
@@ -44,10 +48,6 @@ const ul: TUlAnimation = itemsQuantity => {
       }
     }
   }
-}
-
-const presence: AnimatePresenceProps = {
-  initial: false
 }
 
 const animations = { ul, li, presence }
