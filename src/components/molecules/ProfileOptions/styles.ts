@@ -46,6 +46,7 @@ const ProfileOptionsStyle = styled.ul`
 
     &#avatar {
       position: relative;
+      margin-right: 16px;
 
       button + button {
         position: absolute;

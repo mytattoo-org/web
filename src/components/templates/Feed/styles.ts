@@ -20,17 +20,16 @@ const FeedStyle = styled.div`
   }
 
   @media screen and (min-width: 1080px) {
-    > section {
-      width: calc(50vw - 16px);
+    > main {
+      width: calc(70vh);
+      max-width: calc(100vw - 16px - 600px - 24px);
     }
 
     > aside {
       position: fixed;
-
       display: flex;
 
-      width: 25vw;
-      height: calc(100vh - 78px);
+      width: 300px;
     }
   }
 `

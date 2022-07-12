@@ -29,13 +29,13 @@ const CreatePost = ({ ...props }: ICreatePostProps) => {
       {formik.values.image && (
         <div id='image'>
           <Image
-            src={formik.values.image}
             tabIndex={0}
             width='100%'
             height='100%'
             priority={true}
-            layout='responsive'
             objectFit='cover'
+            layout='responsive'
+            src={formik.values.image}
             alt='Imagem para ser postada'
           />
         </div>

@@ -19,11 +19,11 @@ const PostsStyle = styled.main`
     align-items: center;
     flex-direction: column;
 
-    width: clamp(200px, 100% - 16px, 65vh);
+    width: 100%;
   }
 
   > ul {
-    width: clamp(200px, 100% - 16px, 65vh);
+    width: 100%;
 
     > li {
       display: flex;
@@ -33,10 +33,6 @@ const PostsStyle = styled.main`
 
       margin-top: 24px;
     }
-  }
-
-  @media screen and (min-width: 1080px) {
-    width: calc(50vw - 16px);
   }
 `
 
