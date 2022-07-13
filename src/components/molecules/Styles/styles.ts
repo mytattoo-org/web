@@ -1,8 +1,9 @@
 import type { IStylesStyleProps } from './types'
 
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const StylesStyle = styled.ul<IStylesStyleProps>`
+const StylesStyle = styled(motion.ul)<IStylesStyleProps>`
   display: flex;
   flex-wrap: wrap;
 

@@ -34,11 +34,7 @@ const PostActionsStyle = styled.ul`
 
   .HeartButton .Icon,
   .IconButton .Icon {
-    width: 24px;
     height: 24px;
-
-    width: max(2em, 24px);
-    height: max(2em, 24px);
   }
 
   .IconButton .Tattoo path {
