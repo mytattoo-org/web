@@ -1,23 +1,17 @@
 import { useProfileOptions } from './logic'
-import { ProfileOptionsStyle, Sidebar } from './styles'
+import { AvatarLi, Navbar, ProfileOptionsStyle, Sidebar } from './styles'
 
-import {
-  labelAnimationProps,
-  navbarItemsAnimationProps,
-  sidebarAnimationProps,
-  sidebarItemsAnimationProps
-} from './animations'
+import ListItem from './ListItem'
+import { IOption } from './ListItem/types'
+import { sidebarAnimationProps } from './animations'
 
 import Avatar from 'components/atoms/Avatar'
 import ArtistHeart from 'components/atoms/Icon/icons/ArtistHeart'
 import EditProfile from 'components/atoms/Icon/icons/EditProfile'
 import Heart from 'components/atoms/Icon/icons/Heart'
 import Logout from 'components/atoms/Icon/icons/Logout'
-import Presence from 'components/atoms/Presence'
 
-import { motion } from 'framer-motion'
-
-const options = [
+const options: IOption[] = [
   {
     label: 'Seguindo',
     name: 'following',
@@ -36,23 +30,21 @@ const options = [
 ]
 
 const ProfileOptions = () => {
-  const { onLogoutClick, showSidebar, setShowSidebar, router } =
-    useProfileOptions()
+  const { onLogoutClick, showSidebar, setShowSidebar } = useProfileOptions()
 
   return (
-    <ProfileOptionsStyle showSidebar={showSidebar}>
-      {options.map(({ icon: Icon, name }, index) => (
-        <Presence key={name} condition={!showSidebar}>
-          <motion.li {...navbarItemsAnimationProps(options, index)}>
-            <button type='button' onClick={() => router.push(name)}>
-              {Icon}
-            </button>
-          </motion.li>
-        </Presence>
-      ))}
+    <ProfileOptionsStyle>
+      <Navbar>
+        {options.map(({ name }, index) => (
+          <ListItem
+            key={name}
+            index={index}
+            options={options}
+            condition={!showSidebar}
+          />
+        ))}
 
-      <li>
-        <div id='avatar'>
+        <AvatarLi showSidebar={showSidebar}>
           <button type='button' onClick={() => setShowSidebar(!showSidebar)}>
             <Avatar size={40} />
           </button>
@@ -60,26 +52,21 @@ const ProfileOptions = () => {
           <button type='button' onClick={onLogoutClick}>
             <Logout />
           </button>
-        </div>
+        </AvatarLi>
+      </Navbar>
 
-        <Sidebar {...sidebarAnimationProps(options, showSidebar)}>
-          {options.map(({ label, icon: Icon, name }, index) => (
-            <Presence key={name} condition={showSidebar}>
-              <motion.li {...sidebarItemsAnimationProps(options, index)}>
-                <button type='button' onClick={() => router.push(name)}>
-                  {Icon}
-
-                  <motion.span {...labelAnimationProps(options, index)}>
-                    {label}
-                  </motion.span>
-                </button>
-              </motion.li>
-            </Presence>
-          ))}
-        </Sidebar>
-      </li>
+      <Sidebar {...sidebarAnimationProps(options, showSidebar)}>
+        {options.map(({ name }, index) => (
+          <ListItem
+            onSidebar
+            key={name}
+            index={index}
+            options={options}
+            condition={showSidebar}
+          />
+        ))}
+      </Sidebar>
     </ProfileOptionsStyle>
   )
 }
-
 export default ProfileOptions

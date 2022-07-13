@@ -12,19 +12,14 @@ import { useFormik } from 'formik'
 import { useContext, useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
 
-const initialValues: ISignInValues = {
-  password: '',
-  usernameOrEmail: ''
-}
+const initialValues: ISignInValues = { password: '', usernameOrEmail: '' }
 
 const useSignIn = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const userStore = useAppSelector(({ userStore }) => userStore)
-  const { toggleAuthModal } = useContext(NavbarContext)
-
-  const { triggerFeedback } = useContext(NavbarContext)
+  const { toggleAuthModal, triggerFeedback } = useContext(NavbarContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
@@ -67,17 +62,10 @@ const useSignIn = () => {
   }
 
   useEffect(() => {
-    setLoading(userStore.loading)
+    setLoading(userStore.loading || false)
   }, [userStore.loading])
 
-  return {
-    formik,
-    loading,
-
-    onCloseClick,
-    enableSubmit,
-    onSignUpClick
-  }
+  return { formik, loading, onCloseClick, enableSubmit, onSignUpClick }
 }
 
 export { useSignIn }

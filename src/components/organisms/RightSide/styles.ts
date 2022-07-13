@@ -8,6 +8,7 @@ const RightSideStyle = styled.aside<IRightSideStyleProps>`
   display: flex;
   flex-flow: column nowrap;
 
+  height: 100vh;
   padding: 0 24px;
   max-width: 400px;
 

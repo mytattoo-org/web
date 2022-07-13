@@ -3,121 +3,123 @@ import { ISidebarProps } from './types'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
+const AvatarLi = styled.li<ISidebarProps>`
+  button {
+    position: relative;
+    z-index: 1;
+
+    .Avatar {
+      transform: ${({ showSidebar }) => `scale(${showSidebar ? 1.2 : 1})`};
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    & + button {
+      position: absolute;
+      bottom: 0;
+
+      .Icon.Logout {
+        height: 16px;
+
+        fill: ${({ theme }) => theme.colors.secondary};
+      }
+    }
+  }
+`
+
+const Navbar = styled.ul`
+  display: flex;
+
+  .ListItem {
+    display: flex;
+
+    margin-right: 16px;
+
+    .Icon {
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+`
+
 const Sidebar = styled(motion.ul)`
   position: fixed;
   top: 0px;
   right: 0px;
 
   padding-top: 78px;
-  border-radius: 4px;
-  padding-bottom: 16px;
+  border-radius: 8px;
 
-  li button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    padding: 16px 32px;
-
-    .Icon {
-      display: flex;
-
-      height: 22px;
-    }
-
-    span {
-      text-align: left;
-
-      white-space: nowrap;
-
-      color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-`
-
-const ProfileOptionsStyle = styled.ul<ISidebarProps>`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 100%;
-
-  > li {
-    position: relative;
-
-    &:not(:last-child) {
-      width: 24px;
-    }
-  }
-
-  .Icon {
-    height: 18px;
-    transition: transform 0.3s ease-in-out;
-
+  .ListItem {
     &:hover {
-      transform: scale(1.1);
-    }
+      transition: all 0.3s ease-in-out;
 
-    &.Heart {
-      path {
-        fill: ${({ theme }) => theme.colors.red};
-      }
-    }
-
-    &.ArtistHeart {
-      path {
-        fill: ${({ theme }) => theme.colors.secondary};
-
-        & + path {
-          fill: ${({ theme }) => theme.colors.red};
-        }
-      }
-    }
-
-    &.EditProfile path {
-      fill: ${({ theme }) => theme.colors.secondary};
-    }
-  }
-
-  #avatar {
-    position: relative;
-
-    background-color: ${({ theme }) => theme.colors.background};
-
-    button {
-      position: relative;
-      z-index: 1;
-
-      .Avatar {
-        transform: ${({ showSidebar }) => `scale(${showSidebar ? 1.2 : 1.0})`};
+      button .Icon {
+        transform: scale(1.1);
         transition: all 0.3s ease-in-out;
       }
 
-      & + button {
-        position: absolute;
-        bottom: 0;
+      hr {
+        width: 100%;
 
-        .Icon.Logout {
-          height: 16px;
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
 
-          fill: ${({ theme }) => theme.colors.secondary};
-        }
+        background-color: ${({ theme }) => theme.colors.secondary};
       }
     }
-  }
 
-  @media screen and (min-width: 1080px) {
-    > li {
-      &:not(:last-child) {
-        display: block;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      padding: 16px 32px;
+
+      cursor: pointer;
+
+      div {
+        text-align: left;
+        white-space: nowrap;
+
+        color: ${({ theme }) => theme.colors.secondary};
       }
 
-      & + li {
-        margin-left: 16px;
+      .Icon {
+        height: 20px;
       }
+    }
+
+    hr {
+      width: 0;
+      opacity: 0;
+      height: 2px;
+      border: none;
     }
   }
 `
 
-export { ProfileOptionsStyle, Sidebar }
+const ProfileOptionsStyle = styled.div`
+  position: absolute;
+  right: 32px;
+
+  .Icon {
+    height: 18px;
+
+    fill: ${({ theme }) => theme.colors.secondary};
+
+    &.Heart {
+      fill: ${({ theme }) => theme.colors.red};
+    }
+  }
+`
+
+export { Navbar, Sidebar, ProfileOptionsStyle, AvatarLi }

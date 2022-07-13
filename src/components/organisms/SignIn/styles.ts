@@ -18,6 +18,13 @@ const SignInStyle = styled.section<ISignInStyleProps>`
   }
 
   form {
+    .Logo {
+      height: 100px;
+      padding: 16px 0;
+
+      fill: ${({ theme }) => theme.colors.primary};
+    }
+
     .Field + .Field {
       margin-top: 24px;
     }

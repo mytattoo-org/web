@@ -55,11 +55,9 @@ const SignIn = (props: ISignInProps) => {
             Cadastrar
           </ModalButton>
 
-          {/*
-            <GoogleButton icon={<Google size={24} />}>
-              Entrar com o Google
-            </GoogleButton>
-          */}
+          {/* <GoogleButton icon={<Google size={24} />}>
+            Entrar com o Google
+          </GoogleButton> */}
         </form>
       )}
     </SignInStyle>

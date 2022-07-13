@@ -8,7 +8,8 @@ const theme = {
   },
   fonts: {
     sizes: {
-      md: 'clamp(1rem, 0.6250rem + 1.6667vw, 1.5rem)',
+      md: 'clamp(1.4rem, 1.2627rem + 0.4292vw, 1.6rem)',
+      xmd: 'clamp(1.5rem, 1.2627rem + 0.4292vw, 1.7rem)',
       lg: 'clamp(1.8rem, 0.6250rem + 1.6667vw, 2rem)'
     }
   }
