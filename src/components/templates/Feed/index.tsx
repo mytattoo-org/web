@@ -1,4 +1,4 @@
-import { FeedContext, useFeed } from './logic'
+import { useFeed } from './logic'
 import { FeedStyle } from './styles'
 
 import LeftSide from 'components/organisms/LeftSide'
@@ -10,8 +10,8 @@ import { TNextPageWithLayout } from 'typescript/next.types'
 import Head from 'next/head'
 
 const Feed: TNextPageWithLayout = () => {
-  const { showLeftSide, contextValue } = useFeed()
-
+  const { showFilters } = useFeed()
+  console.log(showFilters)
   return (
     <>
       <Head>
@@ -51,13 +51,11 @@ const Feed: TNextPageWithLayout = () => {
           </li>
         </ul>
 
-        <FeedContext.Provider value={contextValue}>
-          {showLeftSide && <LeftSide />}
+        {showFilters && <LeftSide />}
 
-          <Posts />
+        <Posts />
 
-          <RightSide />
-        </FeedContext.Provider>
+        <RightSide />
       </FeedStyle>
     </>
   )

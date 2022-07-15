@@ -4,13 +4,18 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 const AvatarLi = styled.li<ISidebarProps>`
+  position: relative;
+
+  width: 100%;
+
   button {
     position: relative;
-    z-index: 1;
+    z-index: 3;
+    padding-right: 8px;
 
     .Avatar {
-      transform: ${({ showSidebar }) => `scale(${showSidebar ? 1.2 : 1})`};
       transition: all 0.3s ease-in-out;
+      transform: ${({ showSidebar }) => `scale(${showSidebar ? 1.2 : 1})`};
 
       &:hover {
         transform: scale(1.1);
@@ -20,7 +25,8 @@ const AvatarLi = styled.li<ISidebarProps>`
 
     & + button {
       position: absolute;
-      bottom: 0;
+      bottom: 0px;
+      right: -16px;
 
       .Icon.Logout {
         height: 16px;
@@ -35,8 +41,7 @@ const Navbar = styled.ul`
   display: flex;
 
   .ListItem {
-    display: flex;
-
+    display: none;
     margin-right: 16px;
 
     .Icon {
@@ -45,6 +50,12 @@ const Navbar = styled.ul`
       &:hover {
         transform: scale(1.2);
       }
+    }
+  }
+
+  @media screen and (min-width: 786px) {
+    .ListItem {
+      display: flex;
     }
   }
 `
@@ -58,6 +69,8 @@ const Sidebar = styled(motion.ul)`
   border-radius: 8px;
 
   .ListItem {
+    position: relative;
+
     &:hover {
       transition: all 0.3s ease-in-out;
 
@@ -68,7 +81,6 @@ const Sidebar = styled(motion.ul)`
 
       hr {
         width: 100%;
-
         opacity: 1;
         transition: all 0.3s ease-in-out;
 
@@ -108,8 +120,10 @@ const Sidebar = styled(motion.ul)`
 `
 
 const ProfileOptionsStyle = styled.div`
-  position: absolute;
-  right: 32px;
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
 
   .Icon {
     height: 18px;

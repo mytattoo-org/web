@@ -1,7 +1,16 @@
 import styled from 'styled-components'
 
-const ResizableStyle = styled.div`
+interface IResizableStyleProps {
+  condition?: boolean
+}
+
+const ResizableStyle = styled.div<IResizableStyleProps>`
   position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
 
   .Content {
     width: 100%;
@@ -10,7 +19,7 @@ const ResizableStyle = styled.div`
   .Handle {
     position: fixed;
     top: 78px;
-    left: 8px;
+    left: 16px;
     z-index: 3;
 
     width: 24px;
@@ -19,7 +28,6 @@ const ResizableStyle = styled.div`
     .Icon {
       width: 24px;
       height: 24px;
-
       margin-top: 17px;
       transform: translateY(-50%);
 
@@ -33,7 +41,7 @@ const ResizableStyle = styled.div`
 
   @media screen and (min-width: 1080px) {
     .Handle {
-      left: 308px;
+      left: 316px;
     }
   }
 `

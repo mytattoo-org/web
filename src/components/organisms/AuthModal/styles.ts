@@ -1,26 +1,5 @@
-import Button from 'components/molecules/Button'
-
 import { darken, transparentize } from 'polished'
 import styled from 'styled-components'
-
-const ModalButton = styled(Button)`
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-  height: 50px;
-`
-
-const GoogleButton = styled(ModalButton).attrs({ type: 'button' })`
-  color: gray;
-  margin-top: 24px;
-
-  background-color: white;
-
-  span {
-    margin-left: 16px;
-  }
-`
 
 const AuthModalStyle = styled.div`
   position: fixed;
@@ -38,7 +17,6 @@ const AuthModalStyle = styled.div`
     transparentize(0.3, darken(0.3, theme.colors.background))};
 
   > section {
-    width: 400px;
     padding: 24px;
     border-radius: 8px;
 
@@ -96,4 +74,4 @@ const AuthModalStyle = styled.div`
   }
 `
 
-export { ModalButton, GoogleButton, AuthModalStyle }
+export { AuthModalStyle }

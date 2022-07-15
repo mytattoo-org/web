@@ -1,22 +1,19 @@
 import type { TSelectedDisplay } from './types'
 
-import { FeedContext } from 'components/templates/Feed/logic'
-
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
 
 const useDisplayOptions = () => {
   const theme = useTheme()
   const router = useRouter()
-  const { showLeftSide, toggleShowLeftSide } = useContext(FeedContext)
+  const { showFilters, toggleShowFilters } = useContext(NavbarContext)
+  const [backToPosts, setBackToPosts] = useState(router.pathname !== '/')
   const [selectedDisplay, setSelectedDisplay] =
     useState<TSelectedDisplay>('vertical')
 
-  const [backToPosts, setBackToPosts] = useState(router.pathname !== '/')
-
-  const filterAriaLabel = showLeftSide
+  const filterAriaLabel = showFilters
     ? 'Desabilitar filtros'
     : 'Habilitar filtros'
 
@@ -25,7 +22,7 @@ const useDisplayOptions = () => {
   }
 
   const onFilterClick = () => {
-    showLeftSide ? toggleShowLeftSide() : toggleShowLeftSide()
+    toggleShowFilters()
   }
 
   useEffect(() => {
@@ -43,14 +40,14 @@ const useDisplayOptions = () => {
       : theme.colors.secondary
 
   return {
+    theme,
     onLiClick,
-    showLeftSide,
+    backToPosts,
+    showFilters,
     onFilterClick,
     verticalColor,
     filterAriaLabel,
-    horizontalColor,
-    theme,
-    backToPosts
+    horizontalColor
   }
 }
 

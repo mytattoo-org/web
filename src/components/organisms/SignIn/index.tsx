@@ -1,13 +1,12 @@
 import { useSignIn } from './logic'
-import { SignInButton, SignInStyle } from './styles'
+import { SignInStyle } from './styles'
 import type { ISignInProps } from './types'
 
 import Close from 'components/atoms/Icon/icons/Close'
 import Loading from 'components/atoms/Icon/icons/Loading'
 
+import Button from 'components/molecules/Button'
 import Field from 'components/molecules/Field'
-
-import { ModalButton } from 'components/organisms/AuthModal/styles'
 
 const SignIn = (props: ISignInProps) => {
   const { formik, loading, onCloseClick, enableSubmit, onSignUpClick } =
@@ -42,22 +41,13 @@ const SignIn = (props: ISignInProps) => {
             ariaName='password'
           />
 
-          <SignInButton
-            type='submit'
-            active={enableSubmit}
-            data-cy='signInSubmit'
-            disabled={!enableSubmit}
-          >
+          <Button type='submit' data-cy='signInSubmit' disabled={!enableSubmit}>
             Entrar
-          </SignInButton>
+          </Button>
 
-          <ModalButton data-cy='signUpButton' onClick={onSignUpClick}>
+          <Button data-cy='signUpButton' onClick={onSignUpClick}>
             Cadastrar
-          </ModalButton>
-
-          {/* <GoogleButton icon={<Google size={24} />}>
-            Entrar com o Google
-          </GoogleButton> */}
+          </Button>
         </form>
       )}
     </SignInStyle>

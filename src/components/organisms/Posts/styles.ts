@@ -6,7 +6,7 @@ const PostsStyle = styled.main`
   flex-direction: column;
 
   width: 100%;
-  padding: 8px;
+  padding: 0 16px;
 
   > a {
     position: absolute;
@@ -37,8 +37,8 @@ const PostsStyle = styled.main`
   }
 
   @media screen and (min-width: 768px) {
-    margin-left: calc((24px + 16px) / 2);
     padding: 0px;
+    margin-left: calc((24px + 16px) / 2);
   }
 `
 

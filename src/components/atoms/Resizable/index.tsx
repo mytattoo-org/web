@@ -3,6 +3,7 @@ import { ResizableStyle } from './styles'
 import type { IResizableProps } from './types'
 
 import HorizontalResizer from '../Icon/icons/HorizontalResizer'
+import Presence from '../Presence'
 
 import composeClassName from 'utils/composeClassName'
 
@@ -17,34 +18,33 @@ const Resizable = ({
   condition: realCondition = true
 }: IResizableProps) => {
   const { handleDrag, resizableWith, condition, constraintsRef } = useResizable(
-    {
-      minWidth,
-      maxWidth,
-      initialWidth,
-      realCondition
-    }
+    { minWidth, maxWidth, initialWidth, realCondition }
   )
 
-  return condition ? (
-    <ResizableStyle className={composeClassName('Resizable', className)}>
-      <div className='Handle' ref={constraintsRef}>
-        <motion.div
-          drag='x'
-          dragElastic={0}
-          onDrag={handleDrag}
-          dragMomentum={false}
-          dragConstraints={constraintsRef}
-        >
-          <HorizontalResizer />
-        </motion.div>
-      </div>
+  return (
+    <>
+      <Presence condition={condition}>
+        <ResizableStyle className={composeClassName('Resizable', className)}>
+          <div className='Handle' ref={constraintsRef}>
+            <motion.div
+              drag='x'
+              dragElastic={0}
+              onDrag={handleDrag}
+              dragMomentum={false}
+              dragConstraints={constraintsRef || null}
+            >
+              <HorizontalResizer />
+            </motion.div>
+          </div>
 
-      <motion.div style={{ width: resizableWith }} className='Content'>
-        {children}
-      </motion.div>
-    </ResizableStyle>
-  ) : (
-    <>{children}</>
+          <motion.div style={{ width: resizableWith }} className='Content'>
+            {children}
+          </motion.div>
+        </ResizableStyle>
+      </Presence>
+
+      <>{!condition && children}</>
+    </>
   )
 }
 

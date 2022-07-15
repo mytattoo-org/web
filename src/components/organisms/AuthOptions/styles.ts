@@ -36,4 +36,5 @@ const SignInButton = styled(Button)`
 const SignUpButton = styled(Button)`
   border-radius: 16px;
 `
+
 export { AuthOptionsStyle, SignUpButton, SignInButton }

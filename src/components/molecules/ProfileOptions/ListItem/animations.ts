@@ -27,13 +27,15 @@ const itemAnimationProps = (options: any[], index: number) => {
   const totalMove = iconsSize * position + iconsSize / 2
 
   const variants: Variants = {
-    initial: { x: totalMove, scale: 0.7 },
+    initial: { x: totalMove, scale: 0.7, opacity: 0 },
     enter: {
       x: 0,
       scale: 1,
-      transition: { ...transition, delay: 0.2 + 0.6 + 0.1 * options.length }
+      opacity: 1,
+      transition: { ...transition, delay: 0.4 + 0.1 * options.length }
     },
     exit: {
+      opacity: 0,
       scale: 0.7,
       x: totalMove,
       transition: { ...transition, delay: 0.3 }
@@ -46,9 +48,10 @@ const itemAnimationProps = (options: any[], index: number) => {
 const sidebarItemAnimationProps = (options: any[], index: number) => ({
   ...framerProps,
   variants: {
-    initial: { y: -60 * (index + 1) },
-    enter: { y: 0, transition: { ...transition, delay: 0.3 } },
+    initial: { y: -60 * (index + 1), opacity: 0 },
+    enter: { y: 0, opacity: 1, transition: { ...transition, delay: 0.3 } },
     exit: {
+      opacity: 0,
       y: -60 * (index + 1),
       transition: { ...transition, delay: 0.3 + 0.1 * options.length }
     }

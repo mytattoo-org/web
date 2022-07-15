@@ -16,12 +16,11 @@ const usePosts = () => {
   const getResizableProps = () => {
     let scroll = 8
     let otherElements = 0
-    let resizableIconSize = 24 + 16
+    const resizableIconSize = 56
 
     if (innerWidth > 1080) {
       scroll = 16
       otherElements = 300 * 2
-      resizableIconSize = 24 + 16
     }
 
     const margin = otherElements + resizableIconSize + scroll

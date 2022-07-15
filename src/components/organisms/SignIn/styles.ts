@@ -1,16 +1,6 @@
 import type { ISignInStyleProps } from './types'
 
-import { ModalButton } from '../AuthModal/styles'
-
 import styled from 'styled-components'
-
-interface ISignInButtonStyleProps {
-  active?: boolean
-}
-
-const SignInButton = styled(ModalButton)<ISignInButtonStyleProps>`
-  margin: 24px 0;
-`
 
 const SignInStyle = styled.section<ISignInStyleProps>`
   nav {
@@ -25,10 +15,20 @@ const SignInStyle = styled.section<ISignInStyleProps>`
       fill: ${({ theme }) => theme.colors.primary};
     }
 
-    .Field + .Field {
+    .Field {
+      width: 350px;
+
+      + .Field {
+        margin-top: 24px;
+      }
+    }
+
+    .Button {
+      height: 50px;
+
       margin-top: 24px;
     }
   }
 `
 
-export { SignInStyle, SignInButton }
+export { SignInStyle }

@@ -55,7 +55,10 @@ const DisplayOptionsStyle = styled.ul`
     &.DisabledFilter,
     &.Filter {
       width: 24px;
-      height: 24px;
+    }
+
+    &.Filter {
+      height: 21px;
     }
 
     &.DisabledFilter {

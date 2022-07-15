@@ -7,23 +7,32 @@ import { createContext } from 'react'
 
 const NavbarContext = createContext({
   showAuthModal: { page: 'sign-in', open: false },
-  triggerFeedback: undefined
+  showFilters: true
 } as INavbarContext)
 
 const useNavbarLayout = () => {
   const feedbackRef = useRef<IForwardFeedback>(null)
+
+  const [showFilters, setShowFilters] = useState(true)
+
   const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
     open: false,
     page: 'sign-in'
   })
 
-  const toggleAuthModal = (newState: IShowAuthModalState) => {
+  const toggleAuthModal: INavbarContext['toggleAuthModal'] = newState => {
     setShowAuthModal(newState)
   }
 
+  const toggleShowFilters: INavbarContext['toggleShowFilters'] = newState => {
+    newState ? setShowFilters(newState) : setShowFilters(prev => !prev)
+  }
+
   const context: INavbarContext = {
+    showFilters,
     showAuthModal,
     toggleAuthModal,
+    toggleShowFilters,
     triggerFeedback: feedbackRef.current?.triggerFeedback
   }
 

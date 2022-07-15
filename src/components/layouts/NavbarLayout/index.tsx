@@ -17,9 +17,9 @@ const NavbarLayout = ({ children }: INavbarProps) => {
         <Navbar />
 
         <Feedback ref={feedbackRef} />
-      </NavbarContext.Provider>
 
-      {children}
+        {children}
+      </NavbarContext.Provider>
     </>
   )
 }

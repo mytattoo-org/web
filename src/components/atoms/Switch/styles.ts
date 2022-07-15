@@ -18,9 +18,6 @@ const Background = styled(motion.div)`
 `
 
 const Circle = styled(motion.div)`
-  position: relative;
-  z-index: 2;
-
   width: 20px;
   height: 20px;
   border-radius: 20px;

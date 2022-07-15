@@ -10,13 +10,13 @@ import Filter from 'components/atoms/Icon/icons/Filter'
 
 const DisplayOptions = () => {
   const {
+    theme,
     onLiClick,
     backToPosts,
-    showLeftSide,
+    showFilters,
     onFilterClick,
     verticalColor,
     horizontalColor,
-    theme,
     filterAriaLabel
   } = useDisplayOptions()
 
@@ -66,20 +66,13 @@ const DisplayOptions = () => {
           <li>
             <button
               type='button'
-              id='filterButton'
               aria-haspopup='menu'
               onClick={onFilterClick}
               aria-label={filterAriaLabel}
-              aria-expanded={showLeftSide}
+              aria-expanded={showFilters}
             >
-              {showLeftSide ? <DisabledFilter /> : <Filter />}
+              {showFilters ? <DisabledFilter /> : <Filter />}
             </button>
-
-            {showLeftSide && (
-              <a className='shortcut' href='#filters' target='_self'>
-                Pular para filtros
-              </a>
-            )}
           </li>
         </>
       )}

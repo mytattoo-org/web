@@ -5,7 +5,9 @@ import styled, { css } from 'styled-components'
 const ButtonStyle = styled.button<IButtonStyleProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
 
+  width: 100%;
   padding: 4px 8px;
   border-radius: 4px;
 
