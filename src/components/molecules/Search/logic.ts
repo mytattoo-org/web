@@ -5,7 +5,9 @@ import { FormikConfig, useFormik } from 'formik'
 const initialValues: IValues = { search: '' }
 
 const useSearch = () => {
-  const onSearchFormSubmit: FormikConfig<IValues>['onSubmit'] = values => {}
+  const onSearchFormSubmit: FormikConfig<IValues>['onSubmit'] = values => {
+    console.log(values)
+  }
 
   const formik = useFormik({ initialValues, onSubmit: onSearchFormSubmit })
 

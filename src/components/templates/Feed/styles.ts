@@ -8,7 +8,6 @@ const FeedStyle = styled.div`
   padding: 78px 0;
 
   > section {
-    width: 100%;
   }
 
   > aside {

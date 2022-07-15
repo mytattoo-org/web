@@ -7,37 +7,49 @@ import Post from '../Post'
 import { Resizable } from 'components/atoms/Resizable'
 
 const Posts = () => {
-  const { resizable, posts } = usePosts()
+  const { resizable, posts, showFilters, resizableRef, iconPlusMargin } =
+    usePosts()
 
   return (
-    <Resizable
-      minWidth={resizable.minWidth}
-      maxWidth={resizable.maxWidth}
-      condition={resizable.condition}
-      initialWidth={resizable.initialWidth}
-    >
-      <PostsStyle>
-        <a href='#shortcuts' target='_self' tabIndex={0}>
+    <PostsStyle showFilters={showFilters} iconPlusMargin={iconPlusMargin}>
+      <Resizable
+        ref={resizableRef}
+        minWidth={resizable.minWidth}
+        maxWidth={resizable.maxWidth}
+        condition={resizable.condition}
+        initialWidth={resizable.initialWidth}
+      >
+        <a
+          tabIndex={0}
+          target='_self'
+          href='#shortcuts'
+          className='backToShortcuts'
+        >
           Voltar para atalhos
         </a>
 
-        <header>
+        <header className='createPost'>
           <CreatePost />
         </header>
 
-        <a href='#shortcuts' target='_self' tabIndex={0}>
+        <a
+          tabIndex={0}
+          target='_self'
+          href='#shortcuts'
+          className='backToShortcuts'
+        >
           Voltar para atalhos
         </a>
 
-        <ul aria-label='Postagens' id='main'>
+        <ul aria-label='Postagens' id='main' className='posts'>
           {posts?.map(post => (
             <li key={post.id}>
               <Post forwardedAs='section' postData={post} />
             </li>
           ))}
         </ul>
-      </PostsStyle>
-    </Resizable>
+      </Resizable>
+    </PostsStyle>
   )
 }
 

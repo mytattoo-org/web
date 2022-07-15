@@ -10,17 +10,15 @@ const NavbarLayout = ({ children }: INavbarProps) => {
   const { feedbackRef, context } = useNavbarLayout()
 
   return (
-    <>
-      <NavbarContext.Provider value={context}>
-        {context.showAuthModal.open && <AuthModal />}
+    <NavbarContext.Provider value={context}>
+      {context.showAuthModal.open && <AuthModal />}
 
-        <Navbar />
+      <Navbar />
 
-        <Feedback ref={feedbackRef} />
+      <Feedback ref={feedbackRef} />
 
-        {children}
-      </NavbarContext.Provider>
-    </>
+      {children}
+    </NavbarContext.Provider>
   )
 }
 

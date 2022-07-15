@@ -52,8 +52,7 @@ const NavbarStyle = styled.nav`
       }
 
       &:nth-child(2) {
-        max-width: 644px;
-        margin-left: 40px;
+        max-width: 650px;
         padding: 0px;
       }
 

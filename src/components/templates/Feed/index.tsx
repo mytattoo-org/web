@@ -11,7 +11,7 @@ import Head from 'next/head'
 
 const Feed: TNextPageWithLayout = () => {
   const { showFilters } = useFeed()
-  console.log(showFilters)
+
   return (
     <>
       <Head>

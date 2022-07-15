@@ -14,6 +14,8 @@ import { LayoutGroup } from 'framer-motion'
 const LeftSide = (props: ILeftSideProps) => {
   const { filters, onFilterClick } = useLeftSide()
 
+  console.log(filters)
+
   return (
     <LeftSideStyle
       id='filters'
@@ -40,7 +42,9 @@ const LeftSide = (props: ILeftSideProps) => {
             <FilterList
               icon={<Plus />}
               filters={filters?.unsigned}
-              onClick={filterData => onFilterClick(filterData, 'add')}
+              onClick={filterData => {
+                onFilterClick(filterData, 'add')
+              }}
             />
           </li>
 

@@ -1,9 +1,16 @@
 import type { TUseResizable } from './types'
 
 import { DragHandlers, useMotionValue } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
 
 const useResizable: TUseResizable = ({
+  ref,
   maxWidth,
   minWidth,
   initialWidth,
@@ -11,22 +18,28 @@ const useResizable: TUseResizable = ({
 }) => {
   const constraintsRef = useRef(null)
   const [condition, setCondition] = useState(true)
-  const resizableWith = useMotionValue(initialWidth || minWidth)
+  const resizableWidth = useMotionValue(initialWidth || minWidth)
 
   const handleDrag: DragHandlers['onDrag'] = (_event, info) => {
     const distance = info.delta.x < 0 ? info.delta.x * 6 : info.delta.x * 3
-    const newWidth = resizableWith.get() - distance
+    const newWidth = resizableWidth.get() - distance
     const newSizeIsBetween = newWidth > minWidth && newWidth < maxWidth
 
-    if (newSizeIsBetween) resizableWith.set(resizableWith.get() - distance)
+    if (newSizeIsBetween) resizableWidth.set(resizableWidth.get() - distance)
   }
+
+  const resetSize = useCallback(() => {
+    resizableWidth.set(initialWidth || minWidth)
+  }, [initialWidth, minWidth, resizableWidth])
+
+  useImperativeHandle(ref, () => ({ resetSize }), [resetSize])
 
   useEffect(
     () =>
       globalThis.addEventListener('resize', () => {
-        resizableWith.set(initialWidth || minWidth)
+        resizableWidth.set(initialWidth || minWidth)
       }),
-    [initialWidth, minWidth, resizableWith]
+    [initialWidth, minWidth, resizableWidth]
   )
 
   useEffect(() => {
@@ -35,7 +48,7 @@ const useResizable: TUseResizable = ({
       : setCondition(true)
   }, [realCondition])
 
-  return { handleDrag, resizableWith, constraintsRef, condition }
+  return { handleDrag, resizableWidth, constraintsRef, condition }
 }
 
 export { useResizable }

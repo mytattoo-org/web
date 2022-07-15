@@ -12,9 +12,7 @@ const NavbarContext = createContext({
 
 const useNavbarLayout = () => {
   const feedbackRef = useRef<IForwardFeedback>(null)
-
   const [showFilters, setShowFilters] = useState(true)
-
   const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
     open: false,
     page: 'sign-in'

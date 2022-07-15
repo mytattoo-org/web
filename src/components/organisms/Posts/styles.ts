@@ -1,6 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const PostsStyle = styled.main`
+interface IPostsStyle {
+  showFilters?: boolean
+  iconPlusMargin?: number
+}
+
+const PostsStyle = styled.main<IPostsStyle>`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -8,14 +13,39 @@ const PostsStyle = styled.main`
   width: 100%;
   padding: 0 16px;
 
-  > a {
+  .Resizable {
+    position: relative;
+
+    .Content {
+      width: 100%;
+    }
+
+    .Handle {
+      position: fixed;
+      top: 78px;
+      left: 16px;
+      z-index: 3;
+
+      width: 24px;
+      height: 24px;
+
+      .Icon {
+        fill: ${({ theme }) => theme.colors.secondary};
+
+        &:active {
+          fill: ${({ theme }) => theme.colors.primary};
+        }
+      }
+    }
+  }
+
+  .backToShortcuts {
     position: absolute;
-    width: 0;
-    height: 0;
+
     opacity: 0;
   }
 
-  > header {
+  .createPost {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,7 +53,7 @@ const PostsStyle = styled.main`
     width: 100%;
   }
 
-  > ul {
+  .posts {
     width: 100%;
 
     > li {
@@ -37,8 +67,21 @@ const PostsStyle = styled.main`
   }
 
   @media screen and (min-width: 768px) {
+    width: auto;
     padding: 0px;
-    margin-left: calc((24px + 16px) / 2);
+    padding-left: ${({ iconPlusMargin }) => iconPlusMargin}px;
+
+    ${({ showFilters }) =>
+      !showFilters &&
+      css`
+        margin-right: 300px;
+      `};
+  }
+
+  @media screen and (min-width: 1080px) {
+    .Resizable .Handle {
+      left: ${({ showFilters }) => (showFilters ? 316 : 16)}px;
+    }
   }
 `
 
