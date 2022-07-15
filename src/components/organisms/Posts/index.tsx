@@ -7,11 +7,21 @@ import Post from '../Post'
 import { Resizable } from 'components/atoms/Resizable'
 
 const Posts = () => {
-  const { resizable, posts, showFilters, resizableRef, iconPlusMargin } =
-    usePosts()
+  const {
+    resizable,
+    posts,
+    showFilters,
+    resizableRef,
+    iconPlusMargin,
+    showSuggestions
+  } = usePosts()
 
   return (
-    <PostsStyle showFilters={showFilters} iconPlusMargin={iconPlusMargin}>
+    <PostsStyle
+      showFilters={showFilters}
+      showSuggestions={showSuggestions}
+      iconPlusMargin={iconPlusMargin}
+    >
       <Resizable
         ref={resizableRef}
         minWidth={resizable.minWidth}

@@ -14,8 +14,6 @@ import { LayoutGroup } from 'framer-motion'
 const LeftSide = (props: ILeftSideProps) => {
   const { filters, onFilterClick } = useLeftSide()
 
-  console.log(filters)
-
   return (
     <LeftSideStyle
       id='filters'

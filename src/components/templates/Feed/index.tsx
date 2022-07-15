@@ -10,7 +10,7 @@ import { TNextPageWithLayout } from 'typescript/next.types'
 import Head from 'next/head'
 
 const Feed: TNextPageWithLayout = () => {
-  const { showFilters } = useFeed()
+  const { showFilters, showSuggestions } = useFeed()
 
   return (
     <>
@@ -55,7 +55,7 @@ const Feed: TNextPageWithLayout = () => {
 
         <Posts />
 
-        <RightSide />
+        {showSuggestions && <RightSide />}
       </FeedStyle>
     </>
   )

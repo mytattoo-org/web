@@ -13,23 +13,25 @@ import { useTheme } from 'styled-components'
 const usePosts = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
-  const resizableRef = useRef<IForwardedResizable>(null)
-  const { showFilters } = useContext(NavbarContext)
   const { innerWidth, innerHeight } = useWindowSize()
+  const resizableRef = useRef<IForwardedResizable>(null)
+  const { showFilters, showSuggestions } = useContext(NavbarContext)
   const { posts } = useAppSelector(({ postsStore }) => postsStore.feed)
 
-  const iconPlusMargin = 24 + 16
+  const iconPlusMargin = 24 + 24
 
   const getResizableProps = () => {
     let scroll = 8
     let otherElements = 0
 
-    const xMargin = 16 * 2
+    const xMargin = 24 * 2
     const totalMarginPlusIcon = xMargin + iconPlusMargin
 
     if (innerWidth > 1080) {
       scroll = 16
-      otherElements = 300 * (showFilters ? 2 : 1)
+
+      if (showFilters && showSuggestions) otherElements = 300 * 2
+      else if (showFilters || showSuggestions) otherElements = 300 * 1
     }
 
     const margin = otherElements + totalMarginPlusIcon + scroll
@@ -45,8 +47,8 @@ const usePosts = () => {
   }
 
   useEffect(() => {
-    resizableRef.current?.resetSize()
-  }, [showFilters])
+    resizableRef.current?.resetSize && resizableRef.current?.resetSize()
+  }, [showFilters, showSuggestions])
 
   useEffect(() => {
     dispatch(readFeedThunk())
@@ -58,6 +60,7 @@ const usePosts = () => {
     showFilters,
     resizableRef,
     iconPlusMargin,
+    showSuggestions,
     resizable: getResizableProps()
   }
 }

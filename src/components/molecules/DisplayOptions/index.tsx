@@ -1,23 +1,22 @@
 import { useDisplayOptions } from './logic'
-import {
-  DisplayHorizontal,
-  DisplayOptionsStyle,
-  DisplayVertical
-} from './styles'
+import { DisplayOptionsStyle } from './styles'
 
 import DisabledFilter from 'components/atoms/Icon/icons/DisabledFilter'
+import DisplayHorizontal from 'components/atoms/Icon/icons/DisplayHorizontal'
+import DisplayVertical from 'components/atoms/Icon/icons/DisplayVertical'
 import Filter from 'components/atoms/Icon/icons/Filter'
+import Suggestion from 'components/atoms/Icon/icons/Suggestion'
 
 const DisplayOptions = () => {
   const {
     theme,
+    colors,
     onLiClick,
     backToPosts,
     showFilters,
     onFilterClick,
-    verticalColor,
-    horizontalColor,
-    filterAriaLabel
+    filterAriaLabel,
+    onSuggestionClick
   } = useDisplayOptions()
 
   return (
@@ -41,7 +40,7 @@ const DisplayOptions = () => {
                 onClick={() => onLiClick('horizontal')}
               />
 
-              <DisplayHorizontal color={horizontalColor} />
+              <DisplayHorizontal color={colors.horizontal} />
             </label>
           </li>
 
@@ -59,7 +58,7 @@ const DisplayOptions = () => {
                 onClick={() => onLiClick('vertical')}
               />
 
-              <DisplayVertical color={verticalColor} />
+              <DisplayVertical color={colors.vertical} />
             </label>
           </li>
 
@@ -71,7 +70,23 @@ const DisplayOptions = () => {
               aria-label={filterAriaLabel}
               aria-expanded={showFilters}
             >
-              {showFilters ? <DisabledFilter /> : <Filter />}
+              {showFilters ? (
+                <DisabledFilter color={colors.filter} />
+              ) : (
+                <Filter color={colors.filter} />
+              )}
+            </button>
+          </li>
+
+          <li>
+            <button
+              type='button'
+              aria-haspopup='menu'
+              onClick={onSuggestionClick}
+              aria-expanded={showFilters}
+              aria-label={filterAriaLabel}
+            >
+              <Suggestion color={colors.suggestion} />
             </button>
           </li>
         </>

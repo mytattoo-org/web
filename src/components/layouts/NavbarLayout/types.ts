@@ -8,11 +8,13 @@ interface IShowAuthModalState {
 }
 
 interface INavbarContext {
-  showFilters?: boolean
+  showFilters: boolean
+  showSuggestions: boolean
   triggerFeedback?: TTriggerFeedback
   showAuthModal: IShowAuthModalState
-  toggleAuthModal: (newState: IShowAuthModalState) => void
   toggleShowFilters: (newState?: boolean) => void
+  toggleShowSuggestions: (newState?: boolean) => void
+  toggleAuthModal: (newState: IShowAuthModalState) => void
 }
 
 interface INavbarProps {

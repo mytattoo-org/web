@@ -8,13 +8,13 @@ import { useContext, useEffect } from 'react'
 const useFeed = () => {
   const dispatch = useAppDispatch()
 
-  const { showFilters } = useContext(NavbarContext)
+  const { showFilters, showSuggestions } = useContext(NavbarContext)
 
   useEffect(() => {
     dispatch(verifyAuthenticationThunk())
   }, [dispatch])
 
-  return { showFilters }
+  return { showFilters, showSuggestions }
 }
 
 export { useFeed }

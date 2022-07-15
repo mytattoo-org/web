@@ -6,6 +6,7 @@ const SearchStyle = styled.form`
 
   width: 100%;
   height: 40px;
+  margin-left: 40px;
   padding-right: 8px;
   border-radius: 16px;
 

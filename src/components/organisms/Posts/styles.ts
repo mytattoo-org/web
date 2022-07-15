@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 interface IPostsStyle {
   showFilters?: boolean
   iconPlusMargin?: number
+  showSuggestions?: boolean
 }
 
 const PostsStyle = styled.main<IPostsStyle>`
@@ -23,7 +24,7 @@ const PostsStyle = styled.main<IPostsStyle>`
     .Handle {
       position: fixed;
       top: 78px;
-      left: 16px;
+      left: 24px;
       z-index: 3;
 
       width: 24px;
@@ -70,18 +71,31 @@ const PostsStyle = styled.main<IPostsStyle>`
     width: auto;
     padding: 0px;
     padding-left: ${({ iconPlusMargin }) => iconPlusMargin}px;
-
-    ${({ showFilters }) =>
-      !showFilters &&
-      css`
-        margin-right: 300px;
-      `};
   }
 
   @media screen and (min-width: 1080px) {
     .Resizable .Handle {
-      left: ${({ showFilters }) => (showFilters ? 316 : 16)}px;
+      left: ${({ showFilters }) => (showFilters ? 324 : 24)}px;
     }
+
+    ${({ showFilters }) =>
+      showFilters &&
+      css`
+        margin-left: 300px;
+      `};
+
+    ${({ showSuggestions }) =>
+      showSuggestions &&
+      css`
+        margin-left: -300px;
+      `};
+
+    ${({ showFilters, showSuggestions }) =>
+      showFilters &&
+      showSuggestions &&
+      css`
+        margin-left: 0px;
+      `};
   }
 `
 

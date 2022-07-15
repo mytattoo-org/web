@@ -13,6 +13,7 @@ const NavbarContext = createContext({
 const useNavbarLayout = () => {
   const feedbackRef = useRef<IForwardFeedback>(null)
   const [showFilters, setShowFilters] = useState(true)
+  const [showSuggestions, setShowSuggestions] = useState(true)
   const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
     open: false,
     page: 'sign-in'
@@ -26,11 +27,20 @@ const useNavbarLayout = () => {
     newState ? setShowFilters(newState) : setShowFilters(prev => !prev)
   }
 
+  const toggleShowSuggestions: INavbarContext['toggleShowSuggestions'] =
+    newState => {
+      newState
+        ? setShowSuggestions(newState)
+        : setShowSuggestions(prev => !prev)
+    }
+
   const context: INavbarContext = {
     showFilters,
     showAuthModal,
     toggleAuthModal,
+    showSuggestions,
     toggleShowFilters,
+    toggleShowSuggestions,
     triggerFeedback: feedbackRef.current?.triggerFeedback
   }
 

@@ -8,7 +8,12 @@ import { useTheme } from 'styled-components'
 const useDisplayOptions = () => {
   const theme = useTheme()
   const router = useRouter()
-  const { showFilters, toggleShowFilters } = useContext(NavbarContext)
+  const {
+    showFilters,
+    showSuggestions,
+    toggleShowFilters,
+    toggleShowSuggestions
+  } = useContext(NavbarContext)
   const [backToPosts, setBackToPosts] = useState(router.pathname !== '/')
   const [selectedDisplay, setSelectedDisplay] =
     useState<TSelectedDisplay>('vertical')
@@ -25,29 +30,33 @@ const useDisplayOptions = () => {
     toggleShowFilters()
   }
 
+  const onSuggestionClick = () => {
+    toggleShowSuggestions()
+  }
+
+  const getColor = (isActive: boolean) =>
+    isActive ? theme.colors.primary : theme.colors.secondary
+
   useEffect(() => {
     setBackToPosts(router.pathname !== '/')
   }, [router])
 
-  const verticalColor =
-    selectedDisplay === 'vertical'
-      ? theme.colors.primary
-      : theme.colors.secondary
-
-  const horizontalColor =
-    selectedDisplay === 'horizontal'
-      ? theme.colors.primary
-      : theme.colors.secondary
+  const colors = {
+    filter: getColor(showFilters),
+    suggestion: getColor(showSuggestions),
+    vertical: getColor(selectedDisplay === 'vertical'),
+    horizontal: getColor(selectedDisplay === 'horizontal')
+  }
 
   return {
     theme,
+    colors,
     onLiClick,
     backToPosts,
     showFilters,
     onFilterClick,
-    verticalColor,
     filterAriaLabel,
-    horizontalColor
+    onSuggestionClick
   }
 }
 
