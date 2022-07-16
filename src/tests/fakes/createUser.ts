@@ -13,6 +13,7 @@ const request: ICreateUserRequest = {
 
 const response: TCreateUserResponse = {
   createdUser: {
+    avatar: '',
     id: uuid(),
     email: request.email,
     username: request.username,

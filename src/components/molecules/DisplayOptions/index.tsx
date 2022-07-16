@@ -67,8 +67,9 @@ const DisplayOptions = () => {
               type='button'
               aria-haspopup='menu'
               onClick={onFilterClick}
-              aria-label={filterAriaLabel}
+              data-cy='toggleFilters'
               aria-expanded={showFilters}
+              aria-label={filterAriaLabel}
             >
               {showFilters ? (
                 <DisabledFilter color={colors.filter} />
@@ -82,6 +83,7 @@ const DisplayOptions = () => {
             <button
               type='button'
               aria-haspopup='menu'
+              data-cy='toggleSuggestions'
               onClick={onSuggestionClick}
               aria-expanded={showFilters}
               aria-label={filterAriaLabel}

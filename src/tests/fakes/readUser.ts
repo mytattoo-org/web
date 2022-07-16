@@ -17,6 +17,7 @@ const response = (options?: IResponseParams): TReadUsersResponse => {
   if (one) {
     const user: TReadUsersResponse['user'] = {
       id: '1',
+      avatar: '',
       username: 'InSTinToS',
       email: 'instintos@instintos.com',
       created_at: new Date().toISOString(),
@@ -28,6 +29,7 @@ const response = (options?: IResponseParams): TReadUsersResponse => {
 
   const user: TReadUsersResponse['user'] = {
     id: '1',
+    avatar: '',
     username: 'InSTinToS',
     email: 'instintos@instintos.com',
     created_at: new Date().toISOString(),
@@ -36,6 +38,7 @@ const response = (options?: IResponseParams): TReadUsersResponse => {
 
   const user2: TReadUsersResponse['user'] = {
     id: '2',
+    avatar: '',
     username: 'InSTinToS2',
     email: 'instintos2@instintos.com',
     created_at: new Date().toISOString(),
