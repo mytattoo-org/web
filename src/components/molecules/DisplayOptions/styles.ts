@@ -1,21 +1,4 @@
-import { IDisplayProps } from './types'
-
-import OriginalDisplayHorizontal from 'components/atoms/Icon/icons/DisplayHorizontal'
-import OriginalDisplayVertical from 'components/atoms/Icon/icons/DisplayVertical'
-
 import styled from 'styled-components'
-
-const DisplayHorizontal = styled(OriginalDisplayHorizontal)<IDisplayProps>`
-  path {
-    fill: ${({ color }) => color};
-  }
-`
-
-const DisplayVertical = styled(OriginalDisplayVertical)<IDisplayProps>`
-  path {
-    fill: ${({ color }) => color};
-  }
-`
 
 const DisplayOptionsStyle = styled.ul`
   display: flex;
@@ -37,32 +20,31 @@ const DisplayOptionsStyle = styled.ul`
       align-items: center;
       justify-content: center;
     }
+
+    & + li {
+      margin-left: 8px;
+    }
+
+    .Icon {
+      width: 24px;
+      height: 24px;
+      padding: 1px 0;
+      transition: transform 0.3s ease-in-out;
+
+      fill: ${({ theme }) => theme.colors.secondary};
+
+      :hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   .feedOrientation {
     display: none;
-  }
+    margin-left: 0px;
 
-  .Icon {
-    width: 29px;
-    height: 29px;
-
-    &.DisabledFilter,
-    &.Filter {
-      width: 24px;
-      height: 29px;
-    }
-
-    &.DisabledFilter {
-      height: 26px;
-
-      path {
-        fill: ${({ theme }) => theme.colors.primary};
-      }
-    }
-
-    &.Filter path {
-      fill: ${({ theme }) => theme.colors.secondary};
+    .Icon {
+      padding: 0px;
     }
   }
 
@@ -80,4 +62,4 @@ const DisplayOptionsStyle = styled.ul`
   }
 `
 
-export { DisplayOptionsStyle, DisplayVertical, DisplayHorizontal }
+export { DisplayOptionsStyle }

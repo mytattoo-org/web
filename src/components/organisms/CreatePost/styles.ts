@@ -12,7 +12,9 @@ const ShareButton = styled(Button)`
   background-color: ${({ theme }) => transparentize(0.6, theme.colors.primary)};
 `
 
-const AddButton = styled(Button)`
+const AddLabel = styled.label`
+  display: flex;
+
   border: none;
   background-color: transparent;
 
@@ -21,11 +23,18 @@ const AddButton = styled(Button)`
   }
 
   .Icon {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
 
-    svg path {
-      fill: ${({ theme }) => theme.colors.secondary};
+    fill: ${({ theme }) => theme.colors.secondary};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+
+    .Icon {
+      fill: ${({ theme }) => theme.colors.primary};
     }
   }
 
@@ -36,22 +45,29 @@ const AddButton = styled(Button)`
   }
 `
 
-const CreatePostStyle = styled.div<ICreatePostStyleProps>`
+const CreatePostStyle = styled.form<ICreatePostStyleProps>`
   width: 100%;
   padding: 16px;
   border-radius: 8px;
 
   border: solid 1px ${({ theme }) => theme.colors.secondary};
 
-  textarea {
+  #image {
+    margin-bottom: 16px;
+  }
+
+  .TextareaField {
     width: 100%;
     border: none;
-    resize: none;
     height: 100px;
     margin-bottom: 16px;
 
     background-color: transparent;
     color: ${({ theme }) => theme.colors.secondary};
+
+    textarea {
+      resize: none;
+    }
   }
 
   footer {
@@ -70,4 +86,4 @@ const CreatePostStyle = styled.div<ICreatePostStyleProps>`
   }
 `
 
-export { CreatePostStyle, ShareButton, AddButton }
+export { CreatePostStyle, ShareButton, AddLabel }

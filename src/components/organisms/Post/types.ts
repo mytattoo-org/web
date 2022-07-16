@@ -1,9 +1,9 @@
-import { IPostHeaderProps } from 'components/molecules/PostHeader/types'
+import type { IFeed } from '@common/types/posts/models/feedModel.types'
 
 import { HTMLAttributes } from 'react'
 
 interface IPostProps extends HTMLAttributes<HTMLDivElement> {
-  postHeader: IPostHeaderProps
+  postData: IFeed
   forwardedAs?: any
 }
 

@@ -8,32 +8,22 @@ const FeedStyle = styled.div`
   padding: 78px 0;
 
   > section {
-    width: 100%;
   }
 
   > aside {
     display: none;
   }
 
-  > ul {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
+  #shortcuts {
+    display: none;
   }
 
   @media screen and (min-width: 1080px) {
-    > section {
-      width: calc(50vw - 16px);
-    }
-
     > aside {
       position: fixed;
-
       display: flex;
 
-      width: 25vw;
-      height: calc(100vh - 78px);
+      width: 300px;
     }
   }
 `

@@ -4,11 +4,27 @@ interface IFeedbackStyleProps {
   color?: string
 }
 
-interface IFeedbackProps
+interface ITriggerParams
   extends IFeedbackStyleProps,
     HTMLAttributes<HTMLDivElement> {
   title?: string
   content?: string
 }
 
-export type { IFeedbackProps, IFeedbackStyleProps }
+interface IFeedbackState extends ITriggerParams {
+  open: boolean
+}
+
+type TTriggerFeedback = (props: ITriggerParams) => void
+
+interface IForwardFeedback {
+  triggerFeedback: TTriggerFeedback
+}
+
+export type {
+  ITriggerParams,
+  IFeedbackState,
+  IForwardFeedback,
+  TTriggerFeedback,
+  IFeedbackStyleProps
+}

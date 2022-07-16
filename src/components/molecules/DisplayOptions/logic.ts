@@ -1,18 +1,24 @@
 import type { TSelectedDisplay } from './types'
 
-import { FeedContext } from 'components/templates/Feed/logic'
-
-import { useState } from 'react'
-import { useContext } from 'react'
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
 
 const useDisplayOptions = () => {
   const theme = useTheme()
-  const { showLeftSide, toggleShowLeftSide } = useContext(FeedContext)
+  const router = useRouter()
+  const {
+    showFilters,
+    showSuggestions,
+    toggleShowFilters,
+    toggleShowSuggestions
+  } = useContext(NavbarContext)
+  const [backToPosts, setBackToPosts] = useState(router.pathname !== '/')
   const [selectedDisplay, setSelectedDisplay] =
     useState<TSelectedDisplay>('vertical')
 
-  const filterAriaLabel = showLeftSide
+  const filterAriaLabel = showFilters
     ? 'Desabilitar filtros'
     : 'Habilitar filtros'
 
@@ -21,26 +27,36 @@ const useDisplayOptions = () => {
   }
 
   const onFilterClick = () => {
-    showLeftSide ? toggleShowLeftSide() : toggleShowLeftSide()
+    toggleShowFilters()
   }
 
-  const verticalColor =
-    selectedDisplay === 'vertical'
-      ? theme.colors.primary
-      : theme.colors.secondary
+  const onSuggestionClick = () => {
+    toggleShowSuggestions()
+  }
 
-  const horizontalColor =
-    selectedDisplay === 'horizontal'
-      ? theme.colors.primary
-      : theme.colors.secondary
+  const getColor = (isActive: boolean) =>
+    isActive ? theme.colors.primary : theme.colors.secondary
+
+  useEffect(() => {
+    setBackToPosts(router.pathname !== '/')
+  }, [router])
+
+  const colors = {
+    filter: getColor(showFilters),
+    suggestion: getColor(showSuggestions),
+    vertical: getColor(selectedDisplay === 'vertical'),
+    horizontal: getColor(selectedDisplay === 'horizontal')
+  }
 
   return {
+    theme,
+    colors,
     onLiClick,
-    showLeftSide,
+    backToPosts,
+    showFilters,
     onFilterClick,
-    verticalColor,
     filterAriaLabel,
-    horizontalColor
+    onSuggestionClick
   }
 }
 

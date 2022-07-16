@@ -3,6 +3,15 @@ import type { IStylesProps } from './types'
 
 import Button from '../Button'
 
+import Presence from 'components/atoms/Presence'
+
+import {
+  liVariants,
+  ulAnimationProps
+} from 'components/organisms/Comments/animations'
+
+import { motion } from 'framer-motion'
+
 const fakeTattooStyles = [
   'Maori',
   'Old School',
@@ -42,17 +51,20 @@ const fakeTattooStyles = [
   'Aquarela'
 ]
 
-const Styles = ({ showingStyles = true, ...props }: IStylesProps) =>
-  showingStyles ? (
-    <StylesStyle aria-label='Estilos da postagem' {...props}>
+const Styles = ({ showingStyles = true, ...props }: IStylesProps) => (
+  <Presence condition={showingStyles}>
+    <StylesStyle
+      aria-label='Estilos da postagem'
+      {...props}
+      {...ulAnimationProps}
+    >
       {fakeTattooStyles.map(tattooStyle => (
-        <li key={tattooStyle}>
+        <motion.li key={tattooStyle} variants={liVariants}>
           <Button>{tattooStyle}</Button>
-        </li>
+        </motion.li>
       ))}
     </StylesStyle>
-  ) : (
-    <></>
-  )
+  </Presence>
+)
 
 export default Styles

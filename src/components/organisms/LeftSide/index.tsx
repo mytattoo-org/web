@@ -40,7 +40,9 @@ const LeftSide = (props: ILeftSideProps) => {
             <FilterList
               icon={<Plus />}
               filters={filters?.unsigned}
-              onClick={filterData => onFilterClick(filterData, 'add')}
+              onClick={filterData => {
+                onFilterClick(filterData, 'add')
+              }}
             />
           </li>
 

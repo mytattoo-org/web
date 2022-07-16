@@ -1,47 +1,20 @@
-import type { IFeedContext, IFeedbackState, IShowAuthModalState } from './types'
+import useAppDispatch from 'hooks/useAppDispatch'
 
-import { createContext, useState } from 'react'
+import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthentication'
 
-const FeedContext = createContext<IFeedContext>({
-  showLeftSide: true,
-  showAuthModal: { page: 'sign-in', open: false }
-} as IFeedContext)
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
+import { useContext, useEffect } from 'react'
 
 const useFeed = () => {
-  const [showLeftSide, setShowLeftSide] = useState(true)
-  const [feedback, setFeedback] = useState<IFeedbackState>({
-    open: false
-  })
-  const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
-    open: false,
-    page: 'sign-in'
-  })
+  const dispatch = useAppDispatch()
 
-  const toggleShowLeftSide = () => {
-    setShowLeftSide(prev => !prev)
-  }
+  const { showFilters, showSuggestions } = useContext(NavbarContext)
 
-  const toggleShowAuthModal = (newState: IShowAuthModalState) => {
-    setShowAuthModal(newState)
-  }
+  useEffect(() => {
+    dispatch(verifyAuthenticationThunk())
+  }, [dispatch])
 
-  const triggeringFeedback = (props: IFeedbackState['props']) => {
-    setFeedback({ open: true, props })
-
-    setTimeout(() => {
-      setFeedback({ open: false })
-    }, 1000)
-  }
-
-  const contextValue: IFeedContext = {
-    showLeftSide,
-    showAuthModal,
-    toggleShowLeftSide,
-    triggeringFeedback,
-    toggleShowAuthModal
-  }
-
-  return { showLeftSide, contextValue, showAuthModal, feedback }
+  return { showFilters, showSuggestions }
 }
 
-export { useFeed, FeedContext }
+export { useFeed }

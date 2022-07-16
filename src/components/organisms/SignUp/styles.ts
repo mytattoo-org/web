@@ -1,11 +1,11 @@
 import type { ISignUpStyleProps } from './types'
 
-import { ModalButton } from '../AuthModal/styles'
+import Button from 'components/molecules/Button'
 
 import styled from 'styled-components'
 
-const SignUpSubmit = styled(ModalButton)`
-  margin-top: 24px;
+const SignUpSubmit = styled(Button)`
+  height: 50px;
 `
 
 const SignUpStyle = styled.section<ISignUpStyleProps>`
@@ -15,14 +15,16 @@ const SignUpStyle = styled.section<ISignUpStyleProps>`
 
   form {
     .Field {
-      & + .Field {
+      width: 350px;
+
+      + .Field {
         margin-top: 24px;
       }
-
-      .Tooltip .Content {
-        width: min(354px, 100vw - 48px - 16px);
-      }
     }
+  }
+
+  .Button {
+    margin-top: 24px;
   }
 `
 

@@ -3,9 +3,13 @@ import type { IIconProps } from './types'
 
 import composeClassName from 'utils/composeClassName'
 
+import Link from 'next/link'
+
 const Icon = ({
   desc,
+  href,
   title,
+  color,
   children,
   className,
   labelledBy,
@@ -18,8 +22,9 @@ const Icon = ({
   return (
     <IconStyle
       role='img'
-      xmlns='http://www.w3.org/2000/svg'
+      color={color}
       aria-labelledby={ariaLabelledBy}
+      xmlns='http://www.w3.org/2000/svg'
       className={composeClassName('Icon', className)}
       {...props}
     >
@@ -27,7 +32,13 @@ const Icon = ({
 
       <desc id={descId}>{desc}</desc>
 
-      {children}
+      {href ? (
+        <Link href={href}>
+          <g>{children}</g>
+        </Link>
+      ) : (
+        children
+      )}
     </IconStyle>
   )
 }

@@ -1,34 +1,68 @@
-import { AddButton, CreatePostStyle, ShareButton } from './styles'
+import { useCreatePost } from './logic'
+import { AddLabel, CreatePostStyle, ShareButton } from './styles'
 import type { ICreatePostProps } from './types'
 
+import File from 'components/atoms/File'
 import AddPhoto from 'components/atoms/Icon/icons/AddPhoto'
-import Plus from 'components/atoms/Icon/icons/Plus'
-import TextArea from 'components/atoms/TextArea'
 
-const CreatePost = ({ forwardedAs, ...props }: ICreatePostProps) => (
-  <CreatePostStyle as={forwardedAs} {...props}>
-    <TextArea
-      id='createPost'
-      name='createPost'
-      placeholder='Faça uma postagem'
-    />
+// import Plus from 'components/atoms/Icon/icons/Plus'
+import TextareaField from 'components/molecules/TextareaField'
 
-    <footer>
-      <ul>
-        <li>
+import Image from 'next/image'
+
+const CreatePost = ({ ...props }: ICreatePostProps) => {
+  const { formik } = useCreatePost()
+
+  return (
+    <CreatePostStyle
+      {...props}
+      aria-label='Criar postagem'
+      onSubmit={formik.handleSubmit}
+    >
+      <TextareaField
+        formik={formik}
+        id='createPost'
+        name='description'
+        placeholder='Faça uma postagem'
+      />
+
+      {formik.values.image && (
+        <div id='image'>
+          <Image
+            tabIndex={0}
+            width='100%'
+            height='100%'
+            priority={true}
+            objectFit='cover'
+            layout='responsive'
+            src={formik.values.image}
+            alt='Imagem para ser postada'
+          />
+        </div>
+      )}
+
+      <footer>
+        <ul>
+          {/* <li>
           <AddButton icon={<Plus />}>Adicionar vertentes</AddButton>
-        </li>
+        </li> */}
 
-        <li>
-          <AddButton icon={<AddPhoto />}>Adicionar imagem</AddButton>
-        </li>
+          <li>
+            <AddLabel>
+              <File formik={formik} name='image' />
 
-        <li>
-          <ShareButton type='submit'>Publicar</ShareButton>
-        </li>
-      </ul>
-    </footer>
-  </CreatePostStyle>
-)
+              <AddPhoto />
 
+              <span>Adicionar imagem</span>
+            </AddLabel>
+          </li>
+
+          <li>
+            <ShareButton type='submit'>Publicar</ShareButton>
+          </li>
+        </ul>
+      </footer>
+    </CreatePostStyle>
+  )
+}
 export default CreatePost

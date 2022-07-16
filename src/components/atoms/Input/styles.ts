@@ -3,8 +3,6 @@ import type { IInputStyleProps } from './types'
 import styled from 'styled-components'
 
 const InputStyle = styled.input<IInputStyleProps>`
-  width: 100%;
-  height: 100%;
   padding-left: 8px;
   padding-right: 4px;
 
@@ -16,6 +14,10 @@ const InputStyle = styled.input<IInputStyleProps>`
     color: ${({ theme }) => theme.colors.secondary};
     -webkit-text-fill-color: ${({ theme }) => theme.colors.secondary};
     box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset;
+  }
+
+  &:focus {
+    outline: none;
   }
 `
 

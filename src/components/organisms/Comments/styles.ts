@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const CreateCommentStyle = styled.form`
+const CreateCommentStyle = styled(motion.form)`
   label {
     width: 100%;
     border-radius: 4px;
@@ -10,12 +11,14 @@ const CreateCommentStyle = styled.form`
   }
 `
 
-const CommentsStyle = styled.ul`
-  margin: 16px 0;
+const CommentsList = styled(motion.ul)`
+  overflow: hidden;
 
   li {
     margin-bottom: 24px;
   }
 `
 
-export { CommentsStyle, CreateCommentStyle }
+const CommentsStyle = styled(motion.div)``
+
+export { CommentsStyle, CreateCommentStyle, CommentsList }

@@ -5,6 +5,7 @@ import { signUpYupSchema } from './schemas'
 import { FeedContext } from 'components/templates/Feed/logic'
 
 import { api } from 'api'
+import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
 import { useTheme } from 'styled-components'
@@ -19,7 +20,8 @@ const initialValues: ISignUpValues = {
 const useSignUp = () => {
   const theme = useTheme()
   const [loading, setLoading] = useState(false)
-  const { triggeringFeedback, toggleShowAuthModal } = useContext(FeedContext)
+  const { toggleAuthModal } = useContext(NavbarContext)
+  const { triggerFeedback } = useContext(NavbarContext)
 
   const onSignUpSubmit: TOnSignupSubmit = async (
     dataToCreate: ISignUpValues
@@ -29,19 +31,21 @@ const useSignUp = () => {
     try {
       await api.post('/users', dataToCreate)
 
-      triggeringFeedback({
-        title: 'Sucesso',
-        content: 'Cadastrado com sucesso.',
-        color: theme.colors.green
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Sucesso',
+          color: theme.colors.green,
+          content: 'Cadastrado com sucesso.'
+        })
 
-      toggleShowAuthModal({ page: 'sign-in', open: true })
+      toggleAuthModal({ page: 'sign-in', open: true })
     } catch (error) {
-      triggeringFeedback({
-        title: 'Error',
-        color: theme.colors.red,
-        content: 'Error ao se cadastrar, tente novamente mais tarde.'
-      })
+      triggerFeedback &&
+        triggerFeedback({
+          title: 'Error',
+          color: theme.colors.red,
+          content: 'Error ao se cadastrar, tente novamente mais tarde.'
+        })
     } finally {
       setLoading(false)
     }
@@ -58,11 +62,11 @@ const useSignUp = () => {
     !confirmPassword && !email && !password && !username && formik.dirty
 
   const onArrowClick = () => {
-    toggleShowAuthModal({ page: 'sign-in', open: true })
+    toggleAuthModal({ page: 'sign-in', open: true })
   }
 
   const onCloseClick = () => {
-    toggleShowAuthModal({ page: 'sign-in', open: false })
+    toggleAuthModal({ page: 'sign-in', open: false })
   }
 
   return { formik, onArrowClick, onCloseClick, loading, enableSubmit }

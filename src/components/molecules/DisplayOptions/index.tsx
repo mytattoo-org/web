@@ -1,75 +1,96 @@
 import { useDisplayOptions } from './logic'
-import {
-  DisplayHorizontal,
-  DisplayOptionsStyle,
-  DisplayVertical
-} from './styles'
+import { DisplayOptionsStyle } from './styles'
 
 import DisabledFilter from 'components/atoms/Icon/icons/DisabledFilter'
+import DisplayHorizontal from 'components/atoms/Icon/icons/DisplayHorizontal'
+import DisplayVertical from 'components/atoms/Icon/icons/DisplayVertical'
 import Filter from 'components/atoms/Icon/icons/Filter'
+import Suggestion from 'components/atoms/Icon/icons/Suggestion'
 
 const DisplayOptions = () => {
   const {
+    theme,
+    colors,
     onLiClick,
-    showLeftSide,
+    backToPosts,
+    showFilters,
     onFilterClick,
-    verticalColor,
-    horizontalColor,
-    filterAriaLabel
+    filterAriaLabel,
+    onSuggestionClick
   } = useDisplayOptions()
 
   return (
     <DisplayOptionsStyle aria-label='Opções de visualização das postagens'>
-      <li className='feedOrientation' aria-hidden>
-        <label
-          htmlFor='horizontal'
-          aria-label='Visualizar postagens na horizontal'
-        >
-          <input
-            type='radio'
-            id='horizontal'
-            value='horizontal'
-            name='feedOrientation'
-            onClick={() => onLiClick('horizontal')}
-          />
+      {backToPosts ? (
+        <li>
+          <DisplayVertical href='/' color={theme.colors.secondary} />
+        </li>
+      ) : (
+        <>
+          <li className='feedOrientation' aria-hidden>
+            <label
+              htmlFor='horizontal'
+              aria-label='Visualizar postagens na horizontal'
+            >
+              <input
+                type='radio'
+                id='horizontal'
+                value='horizontal'
+                name='feedOrientation'
+                onClick={() => onLiClick('horizontal')}
+              />
 
-          <DisplayHorizontal color={horizontalColor} />
-        </label>
-      </li>
+              <DisplayHorizontal color={colors.horizontal} />
+            </label>
+          </li>
 
-      <li className='feedOrientation' aria-hidden>
-        <label htmlFor='vertical' aria-label='Visualizar postagens na vertical'>
-          <input
-            type='radio'
-            id='vertical'
-            defaultChecked
-            value='vertical'
-            name='feedOrientation'
-            onClick={() => onLiClick('vertical')}
-          />
+          <li className='feedOrientation' aria-hidden>
+            <label
+              htmlFor='vertical'
+              aria-label='Visualizar postagens na vertical'
+            >
+              <input
+                type='radio'
+                id='vertical'
+                defaultChecked
+                value='vertical'
+                name='feedOrientation'
+                onClick={() => onLiClick('vertical')}
+              />
 
-          <DisplayVertical color={verticalColor} />
-        </label>
-      </li>
+              <DisplayVertical color={colors.vertical} />
+            </label>
+          </li>
 
-      <li>
-        <button
-          type='button'
-          id='filterButton'
-          aria-haspopup='menu'
-          onClick={onFilterClick}
-          aria-expanded={showLeftSide}
-          aria-label={filterAriaLabel}
-        >
-          {showLeftSide ? <DisabledFilter /> : <Filter />}
-        </button>
+          <li>
+            <button
+              type='button'
+              aria-haspopup='menu'
+              onClick={onFilterClick}
+              aria-label={filterAriaLabel}
+              aria-expanded={showFilters}
+            >
+              {showFilters ? (
+                <DisabledFilter color={colors.filter} />
+              ) : (
+                <Filter color={colors.filter} />
+              )}
+            </button>
+          </li>
 
-        {showLeftSide && (
-          <a className='shortcut' href='#filters' target='_self'>
-            Pular para filtros
-          </a>
-        )}
-      </li>
+          <li>
+            <button
+              type='button'
+              aria-haspopup='menu'
+              onClick={onSuggestionClick}
+              aria-expanded={showFilters}
+              aria-label={filterAriaLabel}
+            >
+              <Suggestion color={colors.suggestion} />
+            </button>
+          </li>
+        </>
+      )}
     </DisplayOptionsStyle>
   )
 }

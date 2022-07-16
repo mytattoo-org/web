@@ -1,29 +1,61 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const PostsStyle = styled.main`
+interface IPostsStyle {
+  showFilters?: boolean
+  iconPlusMargin?: number
+  showSuggestions?: boolean
+}
+
+const PostsStyle = styled.main<IPostsStyle>`
   display: flex;
   align-items: center;
   flex-direction: column;
 
   width: 100%;
+  padding: 0 16px;
 
-  > a {
+  .Resizable {
+    position: relative;
+
+    .Content {
+      width: 100%;
+    }
+
+    .Handle {
+      position: fixed;
+      top: 78px;
+      left: 24px;
+      z-index: 3;
+
+      width: 24px;
+      height: 24px;
+
+      .Icon {
+        fill: ${({ theme }) => theme.colors.secondary};
+
+        &:active {
+          fill: ${({ theme }) => theme.colors.primary};
+        }
+      }
+    }
+  }
+
+  .backToShortcuts {
     position: absolute;
-    width: 0;
-    height: 0;
+
     opacity: 0;
   }
 
-  > header {
+  .createPost {
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    width: clamp(200px, 100% - 16px, 65vh);
+    width: 100%;
   }
 
-  > ul {
-    width: clamp(200px, 100% - 16px, 65vh);
+  .posts {
+    width: 100%;
 
     > li {
       display: flex;
@@ -35,8 +67,35 @@ const PostsStyle = styled.main`
     }
   }
 
+  @media screen and (min-width: 768px) {
+    width: auto;
+    padding: 0px;
+    padding-left: ${({ iconPlusMargin }) => iconPlusMargin}px;
+  }
+
   @media screen and (min-width: 1080px) {
-    width: calc(50vw - 16px);
+    .Resizable .Handle {
+      left: ${({ showFilters }) => (showFilters ? 324 : 24)}px;
+    }
+
+    ${({ showFilters }) =>
+      showFilters &&
+      css`
+        margin-left: 300px;
+      `};
+
+    ${({ showSuggestions }) =>
+      showSuggestions &&
+      css`
+        margin-left: -300px;
+      `};
+
+    ${({ showFilters, showSuggestions }) =>
+      showFilters &&
+      showSuggestions &&
+      css`
+        margin-left: 0px;
+      `};
   }
 `
 

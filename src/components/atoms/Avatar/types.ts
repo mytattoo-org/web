@@ -5,7 +5,7 @@ interface IAvatarStyleProps {}
 interface IAvatarProps
   extends IAvatarStyleProps,
     ComponentPropsWithoutRef<'img'> {
-  size: number
+  size?: number
 }
 
 export type { IAvatarProps, IAvatarStyleProps }

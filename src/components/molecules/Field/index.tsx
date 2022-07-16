@@ -14,6 +14,7 @@ const Field = <FormValues,>({
   name,
   label,
   formik,
+  onBlur,
   ariaName,
   className,
   ...props
@@ -41,15 +42,15 @@ const Field = <FormValues,>({
     >
       {hasError && (
         <Tooltip
-          ariaName={ariaName || name}
           trigger={<Alert />}
+          ariaName={ariaName || name}
           content={
             <Error>
               <Alert />
 
               <div
-                aria-label={`${ariaName || name} error message`}
                 role='alert'
+                aria-label={`${ariaName || name} error message`}
               >
                 {errorMessage}
               </div>
@@ -58,7 +59,7 @@ const Field = <FormValues,>({
         />
       )}
 
-      <label htmlFor={name}>{label}</label>
+      {label && <label htmlFor={name}>{label}</label>}
 
       <Input
         id={name}
@@ -66,7 +67,10 @@ const Field = <FormValues,>({
         data-cy={name}
         type={inputType}
         value={inputValue}
-        onBlur={onInputBlur}
+        onBlur={e => {
+          onInputBlur(e)
+          onBlur && onBlur(e)
+        }}
         onChange={onInputChange}
         {...props}
       />

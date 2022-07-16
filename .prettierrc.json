@@ -1,13 +1,14 @@
+
 {
   "tabWidth": 2,
   "semi": false,
   "printWidth": 80,
   "singleQuote": true,
   "endOfLine": "auto",
-  "trailingComma": "none",
   "jsxSingleQuote": true,
   "arrowParens": "avoid",
   "bracketSpacing": true,
+  "trailingComma": "none",
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrder": [

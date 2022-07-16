@@ -1,5 +1,7 @@
 import { useComments } from './logic'
-import { CommentsStyle, CreateCommentStyle } from './styles'
+import { CommentsList, CommentsStyle, CreateCommentStyle } from './styles'
+
+import { liVariants, ulAnimationProps } from './animations'
 
 import Input from 'components/atoms/Input'
 
@@ -33,8 +35,8 @@ const Comments = () => {
   const { formik } = useComments()
 
   return (
-    <>
-      <CommentsStyle aria-label='Comentários'>
+    <CommentsStyle>
+      <CommentsList aria-label='Comentários' {...ulAnimationProps}>
         {fakeComments.map(({ name, content, id, avatar, isArtist }) => (
           <Comment
             key={id}
@@ -44,21 +46,25 @@ const Comments = () => {
             forwardedAs='li'
             content={content}
             isArtist={isArtist}
+            variants={liVariants}
           />
         ))}
-      </CommentsStyle>
 
-      <CreateCommentStyle onSubmit={formik.handleSubmit}>
-        <label htmlFor='newComment'>
-          <Input
-            id='newComment'
-            type='text'
-            name='newComment'
-            placeholder='Deixe um comentário!'
-          />
-        </label>
-      </CreateCommentStyle>
-    </>
+        <CreateCommentStyle
+          variants={liVariants}
+          onSubmit={formik.handleSubmit}
+        >
+          <label htmlFor='newComment'>
+            <Input
+              id='newComment'
+              type='text'
+              name='newComment'
+              placeholder='Deixe um comentário!'
+            />
+          </label>
+        </CreateCommentStyle>
+      </CommentsList>
+    </CommentsStyle>
   )
 }
 

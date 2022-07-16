@@ -17,7 +17,7 @@ interface IFieldProps<FormValues>
   extends Omit<IUseFieldParams<FormValues>, 'name' | 'type'>,
     IInputProps {
   name: string
-  label: string
+  label?: string
   ariaName?: string
 }
 

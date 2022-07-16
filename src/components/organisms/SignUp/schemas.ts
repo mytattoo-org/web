@@ -21,8 +21,8 @@ const email = {
 
 const password = {
   required: { error: 'Informe uma senha!' },
+  max: { value: 30, error: 'Senha muito longa!' },
   min: { value: 8, error: `Sua senha deve conter mais que 8 caracteres!` },
-  max: { value: 30, error: 'Nome de usuário muito longo!' },
   matches: [
     {
       value: /^(?=.*[@$!%*?&])/,

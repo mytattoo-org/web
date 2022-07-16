@@ -6,6 +6,7 @@ const SearchStyle = styled.form`
 
   width: 100%;
   height: 40px;
+  margin-left: 40px;
   padding-right: 8px;
   border-radius: 16px;
 
@@ -14,6 +15,10 @@ const SearchStyle = styled.form`
   input:focus {
     border-radius: 8px;
     outline-offset: -6px;
+  }
+
+  .Input {
+    width: 100%;
   }
 
   .Search {

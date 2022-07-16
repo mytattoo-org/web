@@ -6,6 +6,10 @@ const IconStyle = styled.svg<IIconStyleProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  path {
+    fill: ${({ color }) => color};
+  }
 `
 
 export { IconStyle }

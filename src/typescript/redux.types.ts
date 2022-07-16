@@ -18,10 +18,10 @@ type TStoreState = ReturnType<typeof store.getState>
 
 type TStoreDispatch = typeof store.dispatch
 
-type TPayloadCreator<Return, Params, Config> = AsyncThunkPayloadCreator<
+type TPayloadCreator<Return, Params> = AsyncThunkPayloadCreator<
   Return,
   Params,
-  Config
+  { state: TStoreState; dispatch: TStoreDispatch }
 >
 
 export type {

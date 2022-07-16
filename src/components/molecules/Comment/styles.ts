@@ -1,8 +1,9 @@
 import type { ICommentStyleProps } from './types'
 
+import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
-const CommentStyle = styled.div<ICommentStyleProps>`
+const CommentStyle = styled(motion.li)<ICommentStyleProps>`
   display: flex;
 
   p {
