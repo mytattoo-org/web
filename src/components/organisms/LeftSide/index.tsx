@@ -17,6 +17,7 @@ const LeftSide = (props: ILeftSideProps) => {
   return (
     <LeftSideStyle
       id='filters'
+      data-cy='filters'
       aria-label='Editar filtros desejados das postagens'
       {...props}
     >

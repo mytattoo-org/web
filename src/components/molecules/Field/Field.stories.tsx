@@ -41,7 +41,9 @@ const metadata: ComponentMeta<typeof Field> = {
 const Template: ComponentStory<typeof Field> = args => {
   const formik = useFormik({
     initialValues: { username: '' },
-    onSubmit: () => {}
+    onSubmit: values => {
+      console.log(values)
+    }
   })
 
   return <Field {...args} formik={formik} />

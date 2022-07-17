@@ -13,7 +13,7 @@ const Post = ({ postData, forwardedAs, ...props }: IPostProps) => (
       <PostHeader
         name={postData.author.username}
         avatar={postData.author.avatar}
-        isArtist={postData.author.artist}
+        isArtist={!!postData.author.artist}
         description={postData.description}
       />
 

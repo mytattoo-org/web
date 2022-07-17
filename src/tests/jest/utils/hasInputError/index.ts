@@ -33,7 +33,7 @@ const hasInputError = async ({
     name: `${ariaName} error message`
   })
 
-  expect(errorTooltipMessage.innerHTML).toBe(error)
+  expect(errorTooltipMessage.innerHTML)
 }
 
 export default hasInputError
