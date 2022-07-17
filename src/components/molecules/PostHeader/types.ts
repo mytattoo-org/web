@@ -7,7 +7,7 @@ interface IPostHeaderProps {
   name: string
   avatar: string
   isArtist: boolean
-  description: string
+  description?: string
 }
 
 export type { IPostHeaderProps, IPostHeaderStyleProps }

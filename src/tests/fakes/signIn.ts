@@ -8,7 +8,7 @@ const request: ISignInRequest = {
   usernameOrEmail: 'InSTinToS'
 }
 
-const response: TSignInResponse = { id: '1', token: '1' }
+const response = { id: '1', token: '1' }
 
 const signIn = { request, response }
 

@@ -11,7 +11,7 @@ const request: ICreateUserRequest = {
   email: 'instintos@gmail.com'
 }
 
-const response: TCreateUserResponse = {
+const response = {
   createdUser: {
     avatar: '',
     id: uuid(),

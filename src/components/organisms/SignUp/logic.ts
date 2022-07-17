@@ -2,8 +2,6 @@ import type { ISignUpValues, TOnSignupSubmit } from './types'
 
 import { signUpYupSchema } from './schemas'
 
-import { FeedContext } from 'components/templates/Feed/logic'
-
 import { api } from 'api'
 import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useFormik } from 'formik'

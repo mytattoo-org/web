@@ -1,7 +1,4 @@
-import {
-  IReadUsersRequestParams,
-  TReadUsersResponse
-} from '@common/types/users/useCases/readUsers.types'
+import { IReadUsersRequestParams } from '@common/types/users/useCases/readUsers.types'
 
 const request: IReadUsersRequestParams = {
   id: '1'
@@ -11,11 +8,11 @@ interface IResponseParams {
   one?: boolean
 }
 
-const response = (options?: IResponseParams): TReadUsersResponse => {
+const response = (options?: IResponseParams) => {
   const one = options?.one || true
 
   if (one) {
-    const user: TReadUsersResponse['user'] = {
+    const user = {
       id: '1',
       avatar: '',
       username: 'InSTinToS',
@@ -27,7 +24,7 @@ const response = (options?: IResponseParams): TReadUsersResponse => {
     return { user }
   }
 
-  const user: TReadUsersResponse['user'] = {
+  const user = {
     id: '1',
     avatar: '',
     username: 'InSTinToS',
@@ -36,7 +33,7 @@ const response = (options?: IResponseParams): TReadUsersResponse => {
     updated_at: new Date().toISOString()
   }
 
-  const user2: TReadUsersResponse['user'] = {
+  const user2 = {
     id: '2',
     avatar: '',
     username: 'InSTinToS2',
