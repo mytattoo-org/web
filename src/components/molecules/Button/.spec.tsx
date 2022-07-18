@@ -1,10 +1,9 @@
+import Plus from '../../atoms/Icon/icons/Plus'
+import GlobalProvider from '../../providers/GlobalProvider'
 import Button from './index'
 
-import Plus from 'components/atoms/Icon/icons/Plus'
-
-import GlobalProvider from 'components/providers/GlobalProvider'
-
 import { render, screen } from '@testing-library/react'
+import React from 'react'
 
 describe('Button', () => {
   it('should be able to render with icon', () => {

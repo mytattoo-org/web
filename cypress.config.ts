@@ -15,11 +15,5 @@ export default defineConfig({
     supportFile: './src/tests/cypress/support/index.ts',
     specPattern: './src/tests/cypress/e2e/**/*.{ts, tsx, js, jsx}'
   },
-
-  component: {
-    devServer: {
-      framework: 'next',
-      bundler: 'webpack'
-    }
-  }
+  component: { devServer: { framework: 'next', bundler: 'webpack' } }
 })
