@@ -12,7 +12,11 @@ const SignIn = (props: ISignInProps) => {
   const { formik, loading, onCloseClick, enableSubmit, onSignUpClick } =
     useSignIn()
 
-  return (
+  return loading ? (
+    <div className='loadingWrapper' data-cy='loading'>
+      <Loading />
+    </div>
+  ) : (
     <SignInStyle {...props}>
       <nav>
         <button data-cy='close' onClick={onCloseClick}>
@@ -20,36 +24,30 @@ const SignIn = (props: ISignInProps) => {
         </button>
       </nav>
 
-      {loading ? (
-        <div className='loadingWrapper' data-cy='loading'>
-          <Loading />
-        </div>
-      ) : (
-        <form onSubmit={formik.handleSubmit} data-cy='signIn'>
-          <Field
-            formik={formik}
-            name='usernameOrEmail'
-            ariaName='username or email'
-            label='Nome de usuário ou E-mail'
-          />
+      <form onSubmit={formik.handleSubmit} data-cy='signIn'>
+        <Field
+          formik={formik}
+          name='usernameOrEmail'
+          ariaName='username or email'
+          label='Nome de usuário ou E-mail'
+        />
 
-          <Field
-            label='Senha'
-            name='password'
-            type='password'
-            formik={formik}
-            ariaName='password'
-          />
+        <Field
+          label='Senha'
+          name='password'
+          type='password'
+          formik={formik}
+          ariaName='password'
+        />
 
-          <Button type='submit' data-cy='signInSubmit' disabled={!enableSubmit}>
-            Entrar
-          </Button>
+        <Button type='submit' data-cy='signInSubmit' disabled={!enableSubmit}>
+          Entrar
+        </Button>
 
-          <Button data-cy='signUpButton' onClick={onSignUpClick}>
-            Cadastrar
-          </Button>
-        </form>
-      )}
+        <Button data-cy='signUpButton' onClick={onSignUpClick}>
+          Cadastrar
+        </Button>
+      </form>
     </SignInStyle>
   )
 }

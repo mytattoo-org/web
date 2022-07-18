@@ -1,5 +1,5 @@
-import readUsers from 'tests/fakes/readUser'
-import signIn from 'tests/fakes/signIn'
+import readUsers from 'tests/cypress/fakes/readUser'
+import signIn from 'tests/cypress/fakes/signIn'
 
 describe('SignIn', () => {
   beforeEach(() => {

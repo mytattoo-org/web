@@ -1,7 +1,4 @@
-import {
-  ISignInRequest,
-  TSignInResponse
-} from '@common/types/authentication/useCases/signIn.types'
+import { ISignInRequest } from '@common/types/authentication/useCases/signIn.types'
 
 const request: ISignInRequest = {
   password: 'InSTinToS@1234',

@@ -1,4 +1,4 @@
-import createUser from 'tests/fakes/createUser'
+import createUser from 'tests/cypress/fakes/createUser'
 
 describe('SignUp', () => {
   beforeEach(() => {

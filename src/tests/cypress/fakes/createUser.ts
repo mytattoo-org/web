@@ -1,7 +1,4 @@
-import {
-  ICreateUserRequest,
-  TCreateUserResponse
-} from '@common/types/users/useCases/createUser.types'
+import { ICreateUserRequest } from '@common/types/users/useCases/createUser.types'
 
 import { uuid } from 'uuidv4'
 
