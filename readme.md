@@ -4,9 +4,9 @@
 
 ### Latest prints
 
-- #### Sign in Screen
+- #### Sign in page
 
   ![Sign in screen](./public/temp/prints/sign-in.png)
 
-- #### Feed Screen
+- #### Feed page
   ![Feed screen](./public/temp/prints/feed.png)
