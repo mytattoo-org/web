@@ -56,12 +56,6 @@ const SignUp = (props: ISignUpProps) => {
           >
             Cadastrar
           </SignUpSubmit>
-
-          {/*
-            <GoogleButton icon={<Google size={24} />}>
-              Cadastrar com o Google
-            </GoogleButton>
-          */}
         </form>
       )}
     </SignUpStyle>

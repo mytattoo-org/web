@@ -27,6 +27,7 @@ const Error = styled.div`
 const Tooltip = styled(OriginalTooltip)`
   .Content {
     left: 0px;
+    height: 100%;
     padding-left: 8px;
 
     .Alert {

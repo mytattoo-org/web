@@ -52,4 +52,5 @@ Primary.args = {
 } as ComponentStory<typeof Tooltip>['args']
 
 export { Primary }
+
 export default metadata

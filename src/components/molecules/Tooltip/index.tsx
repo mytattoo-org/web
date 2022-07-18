@@ -10,8 +10,8 @@ import composeClassName from 'utils/composeClassName'
 const Tooltip = ({
   ariaName,
   className,
-  content: Content,
   marginTop = 16,
+  content: Content,
   trigger: Trigger = <Alert aria-label='Alert icon' />,
   ...props
 }: ITooltipProps) => {
