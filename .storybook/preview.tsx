@@ -6,12 +6,10 @@ import React from 'react'
 
 const parameters: Parameters = {
   layout: 'centered',
+  light: { ...themes.normal },
   actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: { matchers: { color: /(background|color)$/i, date: /Date$/ } },
-  darkMode: {
-    dark: { ...themes.dark, appBg: '#181818' },
-    light: { ...themes.normal }
-  }
+  dark: { ...themes.dark, appBg: '#181818' },
+  controls: { matchers: { date: /Date$/, color: /(background|color)$/i } }
 }
 
 const decorators = [
