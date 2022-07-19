@@ -1,7 +1,7 @@
 const withImages = require('next-images')
 
 module.exports = withImages({
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     disableStaticImages: true
   },

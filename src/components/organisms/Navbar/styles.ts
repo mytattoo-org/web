@@ -12,10 +12,16 @@ const Content = styled.ul`
   width: 100%;
   height: 100%;
 
+  .Loading {
+    width: 40px;
+    height: 40px;
+    fill: ${({ theme }) => theme.colors.secondary};
+  }
+
   > li {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
     height: 46px;
 

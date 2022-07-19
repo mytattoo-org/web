@@ -111,6 +111,8 @@ const useEditProfile: TUseEditProfile = () => {
   const formik = useFormik<IEditProfileForm>({
     onSubmit,
     initialValues,
+    validateOnBlur: true,
+    validateOnChange: false,
     validationSchema: editProfileYupSchema
   })
 

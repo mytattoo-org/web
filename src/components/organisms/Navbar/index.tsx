@@ -1,6 +1,8 @@
 import { useNavbar } from './logic'
 import { Content, NavbarStyle, Shortcuts } from './styles'
 
+import Loading from 'components/atoms/Icon/icons/Loading'
+
 import DisplayOptions from 'components/molecules/DisplayOptions'
 import ProfileOptions from 'components/molecules/ProfileOptions'
 import Search from 'components/molecules/Search'
@@ -8,7 +10,7 @@ import Search from 'components/molecules/Search'
 import AuthOptions from 'components/organisms/AuthOptions'
 
 const Navbar = () => {
-  const { isAuth, shortcuts } = useNavbar()
+  const { isAuth, shortcuts, loading } = useNavbar()
 
   return (
     <NavbarStyle>
@@ -31,7 +33,15 @@ const Navbar = () => {
           <Search />
         </li>
 
-        <li>{isAuth ? <ProfileOptions /> : <AuthOptions />}</li>
+        <li>
+          {loading ? (
+            <Loading />
+          ) : isAuth ? (
+            <ProfileOptions />
+          ) : (
+            <AuthOptions />
+          )}
+        </li>
       </Content>
     </NavbarStyle>
   )

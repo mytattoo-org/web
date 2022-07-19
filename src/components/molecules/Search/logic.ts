@@ -9,7 +9,12 @@ const useSearch = () => {
     console.log(values)
   }
 
-  const formik = useFormik({ initialValues, onSubmit: onSearchFormSubmit })
+  const formik = useFormik({
+    initialValues,
+    validateOnBlur: true,
+    validateOnChange: false,
+    onSubmit: onSearchFormSubmit
+  })
 
   return { formik }
 }

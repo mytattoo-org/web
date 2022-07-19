@@ -46,6 +46,8 @@ const useSignIn = () => {
 
   const formik = useFormik({
     initialValues,
+    validateOnBlur: true,
+    validateOnChange: false,
     onSubmit: onSignInSubmit,
     validationSchema: signInYupSchema
   })

@@ -10,11 +10,15 @@ const shortcuts: IShortcuts[] = [
 ]
 
 const useNavbar = () => {
-  const { user } = useAppSelector(({ userStore }) => userStore)
+  const { loading, user } = useAppSelector(({ userStore }) => userStore)
 
   const isAuth = user?.id
 
-  return { isAuth, shortcuts }
+  return {
+    isAuth,
+    shortcuts,
+    loading: loading === true || loading === undefined
+  }
 }
 
 export { useNavbar }

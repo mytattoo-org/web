@@ -8,6 +8,8 @@ const useCreatePost = () => {
   const dispatch = useAppDispatch()
 
   const formik = useFormik({
+    validateOnBlur: true,
+    validateOnChange: false,
     initialValues: { image: '', description: '' },
     onSubmit: async formData => {
       dispatch(createPostThunk(formData))

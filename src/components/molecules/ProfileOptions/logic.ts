@@ -15,7 +15,7 @@ const useProfileOptions = () => {
   }
 
   useEffect(() => {
-    setShowSidebar(false)
+    showSidebar && setShowSidebar(false)
   }, [router.pathname])
 
   return { onLogoutClick, setShowSidebar, showSidebar, router }

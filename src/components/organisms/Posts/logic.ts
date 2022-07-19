@@ -1,10 +1,7 @@
 import type { IForwardedResizable } from 'components/atoms/Resizable/types'
 
-import useAppDispatch from 'hooks/useAppDispatch'
 import useAppSelector from 'hooks/useAppSelector'
 import useWindowSize from 'hooks/useWindowSize'
-
-import { readFeedThunk } from 'store/posts/extraReducers/readFeed'
 
 import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useContext, useEffect, useRef } from 'react'
@@ -12,7 +9,7 @@ import { useTheme } from 'styled-components'
 
 const usePosts = () => {
   const theme = useTheme()
-  const dispatch = useAppDispatch()
+
   const { innerWidth, innerHeight } = useWindowSize()
   const resizableRef = useRef<IForwardedResizable>(null)
   const { showFilters, showSuggestions } = useContext(NavbarContext)
@@ -49,10 +46,6 @@ const usePosts = () => {
   useEffect(() => {
     resizableRef.current?.resetSize && resizableRef.current?.resetSize()
   }, [showFilters, showSuggestions])
-
-  useEffect(() => {
-    dispatch(readFeedThunk())
-  }, [dispatch])
 
   return {
     theme,
