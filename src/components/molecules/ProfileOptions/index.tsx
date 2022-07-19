@@ -41,6 +41,9 @@ const ProfileOptions = () => {
             index={index}
             options={options}
             condition={!showSidebar}
+            onClick={() => {
+              setShowSidebar(false)
+            }}
           />
         ))}
 

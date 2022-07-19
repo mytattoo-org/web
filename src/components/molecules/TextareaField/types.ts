@@ -19,6 +19,7 @@ interface IFieldProps<FormValues>
   name: string
   label?: string
   ariaName?: string
+  forwardedAs?: any
 }
 
 export type { IFieldProps, IFieldStyleProps, IUseFieldParams }

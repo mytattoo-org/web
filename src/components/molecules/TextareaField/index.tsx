@@ -13,6 +13,7 @@ const TextareaField = <FormValues,>({
   formik,
   ariaName,
   className,
+  forwardedAs,
   ...props
 }: IFieldProps<FormValues>) => {
   const {
@@ -26,6 +27,7 @@ const TextareaField = <FormValues,>({
 
   return (
     <FieldStyle
+      as={forwardedAs}
       hasError={hasError}
       hasFilled={hasFilled}
       data-cy={name + 'TextareaField'}
@@ -33,6 +35,7 @@ const TextareaField = <FormValues,>({
         `TextareaField ${name}TextareaField`,
         className
       )}
+      {...props}
     >
       {hasError && (
         <Tooltip

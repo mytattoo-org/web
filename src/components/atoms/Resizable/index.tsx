@@ -32,7 +32,7 @@ const Resizable = forwardRef<IForwardedResizable, IResizableProps>(
             ref={ref as any}
             className={composeClassName('Resizable', className)}
           >
-            <div className='Handle' ref={constraintsRef}>
+            <button className='Handle' ref={constraintsRef}>
               <motion.div
                 drag='x'
                 dragElastic={0}
@@ -42,7 +42,7 @@ const Resizable = forwardRef<IForwardedResizable, IResizableProps>(
               >
                 <HorizontalResizer />
               </motion.div>
-            </div>
+            </button>
 
             <motion.div style={{ width: resizableWidth }} className='Content'>
               {children}

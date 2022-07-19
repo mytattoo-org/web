@@ -23,6 +23,7 @@ const CreatePost = ({ ...props }: ICreatePostProps) => {
         formik={formik}
         id='createPost'
         name='description'
+        forwardedAs='header'
         placeholder='Faça uma postagem'
       />
 
@@ -43,10 +44,6 @@ const CreatePost = ({ ...props }: ICreatePostProps) => {
 
       <footer>
         <ul>
-          {/* <li>
-          <AddButton icon={<Plus />}>Adicionar vertentes</AddButton>
-        </li> */}
-
           <li>
             <AddLabel>
               <File formik={formik} name='image' />

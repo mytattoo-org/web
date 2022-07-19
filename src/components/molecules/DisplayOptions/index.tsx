@@ -7,6 +7,8 @@ import DisplayVertical from 'components/atoms/Icon/icons/DisplayVertical'
 import Filter from 'components/atoms/Icon/icons/Filter'
 import Suggestion from 'components/atoms/Icon/icons/Suggestion'
 
+import Link from 'next/link'
+
 const DisplayOptions = () => {
   const {
     theme,
@@ -23,7 +25,9 @@ const DisplayOptions = () => {
     <DisplayOptionsStyle aria-label='Opções de visualização das postagens'>
       {backToPosts ? (
         <li>
-          <DisplayVertical href='/' color={theme.colors.secondary} />
+          <Link href='/'>
+            <DisplayVertical color={theme.colors.secondary} />
+          </Link>
         </li>
       ) : (
         <>

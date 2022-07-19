@@ -7,14 +7,7 @@ const FeedStyle = styled.div`
 
   padding: 78px 0;
 
-  > section {
-  }
-
   > aside {
-    display: none;
-  }
-
-  #shortcuts {
     display: none;
   }
 

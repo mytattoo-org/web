@@ -11,8 +11,8 @@ import composeClassName from 'utils/composeClassName'
 import { motion } from 'framer-motion'
 
 const ListItem = ({
-  options,
   index,
+  options,
   className,
   condition,
   onSidebar = false,

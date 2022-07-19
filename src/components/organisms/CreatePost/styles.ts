@@ -18,6 +18,14 @@ const AddLabel = styled.label`
   border: none;
   background-color: transparent;
 
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+
+    .Icon {
+      fill: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
   span {
     display: none;
   }
@@ -28,14 +36,6 @@ const AddLabel = styled.label`
     margin-right: 8px;
 
     fill: ${({ theme }) => theme.colors.secondary};
-  }
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-
-    .Icon {
-      fill: ${({ theme }) => theme.colors.primary};
-    }
   }
 
   @media screen and (min-width: 528px) {
@@ -52,16 +52,26 @@ const CreatePostStyle = styled.form<ICreatePostStyleProps>`
 
   border: solid 1px ${({ theme }) => theme.colors.secondary};
 
-  #image {
-    margin-bottom: 16px;
+  footer {
+    width: 100%;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      li + li {
+        margin-left: 8px;
+      }
+    }
   }
 
   .TextareaField {
     width: 100%;
-    border: none;
     height: 100px;
     margin-bottom: 16px;
 
+    border: none;
     background-color: transparent;
     color: ${({ theme }) => theme.colors.secondary};
 
@@ -70,19 +80,8 @@ const CreatePostStyle = styled.form<ICreatePostStyleProps>`
     }
   }
 
-  footer {
-    width: 100%;
-
-    ul {
-      display: flex;
-
-      align-items: center;
-      justify-content: flex-end;
-
-      li + li {
-        margin-left: 8px;
-      }
-    }
+  #image {
+    margin-bottom: 16px;
   }
 `
 

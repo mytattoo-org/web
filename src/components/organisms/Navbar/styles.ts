@@ -1,50 +1,40 @@
 import styled from 'styled-components'
 
-const NavbarStyle = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
+const Shortcuts = styled.ul`
+  display: none;
+`
 
+const Content = styled.ul`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  height: 78px;
+  width: 100%;
+  height: 100%;
 
-  background-color: ${({ theme }) => theme.colors.background};
-
-  > ul {
+  > li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
-    width: 100%;
-    height: 100%;
+    height: 46px;
 
-    > li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &:first-child {
+      padding-left: 16px;
+    }
 
-      height: 46px;
+    &:nth-child(2) {
+      width: 100%;
+      padding: 0 16px;
+    }
 
-      &:first-child {
-        padding-left: 16px;
-      }
-
-      &:nth-child(2) {
-        width: 100%;
-        padding: 0 16px;
-      }
-
-      &:last-child {
-        padding-right: 16px;
-      }
+    &:last-child {
+      padding-right: 16px;
     }
   }
 
   @media screen and (min-width: 1080px) {
-    > ul > li {
+    > li {
       min-width: 300px;
 
       &:first-child {
@@ -63,4 +53,18 @@ const NavbarStyle = styled.nav`
   }
 `
 
-export { NavbarStyle }
+const NavbarStyle = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  display: flex;
+
+  height: 78px;
+
+  background-color: ${({ theme }) => theme.colors.background};
+`
+
+export { NavbarStyle, Shortcuts, Content }

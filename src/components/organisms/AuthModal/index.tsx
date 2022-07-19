@@ -2,8 +2,8 @@ import { useAuthModal } from './logic'
 import { AuthModalStyle } from './styles'
 import type { IAuthModalProps } from './types'
 
-import SignIn from '../SignIn'
-import SignUp from '../SignUp'
+import SignIn from 'components/templates/SignIn'
+import SignUp from 'components/templates/SignUp'
 
 const AuthModal = (props: IAuthModalProps) => {
   const { page, onBackgroundClick } = useAuthModal()
