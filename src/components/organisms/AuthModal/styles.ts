@@ -14,7 +14,7 @@ const AuthModalStyle = styled.div`
   justify-content: center;
 
   background-color: ${({ theme }) =>
-    transparentize(0.3, darken(0.3, theme.colors.background))};
+    transparentize(0.1, darken(0.3, theme.colors.background))};
 
   > section {
     padding: 24px;

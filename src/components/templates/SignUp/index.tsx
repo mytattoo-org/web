@@ -5,6 +5,7 @@ import type { ISignUpProps } from './types'
 import Arrow from 'components/atoms/Icon/icons/Arrow'
 import Close from 'components/atoms/Icon/icons/Close'
 import Loading from 'components/atoms/Icon/icons/Loading'
+import Logo from 'components/atoms/Icon/icons/Logo'
 
 import Field from 'components/molecules/Field'
 
@@ -27,6 +28,10 @@ const SignUp = (props: ISignUpProps) => {
           <Close />
         </button>
       </nav>
+
+      <div className='logoWrapper'>
+        <Logo />
+      </div>
 
       <form onSubmit={formik.handleSubmit} data-cy='signUp'>
         <Field name='username' label='Nome de usuário' formik={formik} />

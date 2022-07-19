@@ -3,6 +3,8 @@ import type { ISignInStyleProps } from './types'
 import styled from 'styled-components'
 
 const SignInStyle = styled.section<ISignInStyleProps>`
+  position: relative;
+
   nav {
     justify-content: flex-end;
   }
@@ -27,6 +29,22 @@ const SignInStyle = styled.section<ISignInStyleProps>`
       height: 50px;
 
       margin-top: 24px;
+    }
+  }
+
+  .logoWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding: 24px;
+    border-radius: 16px;
+    padding-bottom: 64px;
+    transform: translate(0%, -50%);
+
+    .Icon {
+      width: 120px;
+      fill: ${({ theme }) => theme.colors.primary};
     }
   }
 `

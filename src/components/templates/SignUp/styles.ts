@@ -9,7 +9,11 @@ const SignUpSubmit = styled(Button)`
 `
 
 const SignUpStyle = styled.section<ISignUpStyleProps>`
+  position: relative;
+
   nav {
+    position: relative;
+    z-index: 2;
     justify-content: space-between;
   }
 
@@ -25,6 +29,22 @@ const SignUpStyle = styled.section<ISignUpStyleProps>`
 
   .Button {
     margin-top: 24px;
+  }
+
+  .logoWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding: 24px;
+    border-radius: 16px;
+    padding-bottom: 64px;
+    transform: translate(0%, -50%);
+
+    .Icon {
+      width: 120px;
+      fill: ${({ theme }) => theme.colors.primary};
+    }
   }
 `
 

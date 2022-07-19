@@ -4,6 +4,7 @@ import type { ISignInProps } from './types'
 
 import Close from 'components/atoms/Icon/icons/Close'
 import Loading from 'components/atoms/Icon/icons/Loading'
+import Logo from 'components/atoms/Icon/icons/Logo'
 
 import Button from 'components/molecules/Button'
 import Field from 'components/molecules/Field'
@@ -23,6 +24,10 @@ const SignIn = (props: ISignInProps) => {
           <Close />
         </button>
       </nav>
+
+      <div className='logoWrapper'>
+        <Logo />
+      </div>
 
       <form onSubmit={formik.handleSubmit} data-cy='signIn'>
         <Field
