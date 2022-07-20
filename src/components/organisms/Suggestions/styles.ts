@@ -1,8 +1,8 @@
-import type { IRecommendationsStyleProps } from './types'
+import type { ISuggestionsStyleProps } from './types'
 
 import styled from 'styled-components'
 
-const RecommendationsStyle = styled.section<IRecommendationsStyleProps>`
+const SuggestionsStyle = styled.section<ISuggestionsStyleProps>`
   header {
     display: flex;
     justify-content: space-between;
@@ -15,4 +15,4 @@ const RecommendationsStyle = styled.section<IRecommendationsStyleProps>`
   }
 `
 
-export { RecommendationsStyle }
+export { SuggestionsStyle }

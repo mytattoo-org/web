@@ -1,7 +1,7 @@
 import { RightSideStyle } from './styles'
 import type { IRightSideProps } from './types'
 
-import Recommendations from 'components/organisms/Recommendations'
+import Recommendations from 'components/organisms/Suggestions'
 
 const RightSide = (props: IRightSideProps) => (
   <RightSideStyle id='rightSide' data-cy='suggestions' {...props}>

@@ -10,7 +10,7 @@ describe('SignUp', () => {
     cy.dataCy('username').type(createUser.request.username)
     cy.dataCy('email').type(createUser.request.email)
     cy.dataCy('password').type(createUser.request.password)
-    cy.dataCy('confirmPassword').type(createUser.request.password)
+    cy.dataCy('confirmPassword').type(createUser.request.password).blur()
 
     cy.dataCy('signUpSubmit').click()
 

@@ -1,6 +1,6 @@
-import { useRecommendations } from './logic'
-import { RecommendationsStyle } from './styles'
-import type { IRecommendationsProps } from './types'
+import { useSuggestions } from './logic'
+import { SuggestionsStyle } from './styles'
+import type { ISuggestionsProps } from './types'
 
 import DropArrow from 'components/atoms/DropArrow'
 import Presence from 'components/atoms/Presence'
@@ -9,16 +9,16 @@ import UserCard from 'components/molecules/UserCard'
 
 import { motion } from 'framer-motion'
 
-const Recommendations = ({
+const Suggestions = ({
   title,
   startOpen = false,
   ...props
-}: IRecommendationsProps) => {
+}: ISuggestionsProps) => {
   const { onArrowClick, show, animations, recommendations } =
-    useRecommendations(startOpen)
+    useSuggestions(startOpen)
 
   return (
-    <RecommendationsStyle {...props}>
+    <SuggestionsStyle {...props}>
       <header>
         <span tabIndex={0}>{title}</span>
 
@@ -42,8 +42,8 @@ const Recommendations = ({
           ))}
         </motion.ul>
       </Presence>
-    </RecommendationsStyle>
+    </SuggestionsStyle>
   )
 }
 
-export default Recommendations
+export default Suggestions
