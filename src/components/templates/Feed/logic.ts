@@ -4,17 +4,21 @@ import { readFeedThunk } from 'store/posts/extraReducers/readFeed'
 import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthentication'
 
 import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
-import { useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 
 const useFeed = () => {
   const dispatch = useAppDispatch()
   const { showFilters, showSuggestions } = useContext(NavbarContext)
 
-  useEffect(() => {
-    dispatch(verifyAuthenticationThunk())
+  const readUserAndFeed = useCallback(async () => {
+    await dispatch(verifyAuthenticationThunk())
 
     dispatch(readFeedThunk())
   }, [dispatch])
+
+  useEffect(() => {
+    readUserAndFeed()
+  }, [readUserAndFeed])
 
   return { showFilters, showSuggestions }
 }

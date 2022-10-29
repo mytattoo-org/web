@@ -9,7 +9,7 @@ const UserCard = ({ avatar, name, smallBio, ...props }: IUserCardProps) => (
 
     <strong>{name}</strong>
 
-    <span className='smallBio'>{smallBio}</span>
+    <span className='smallBio'>123456789X123456789X</span>
   </UserCardStyle>
 )
 

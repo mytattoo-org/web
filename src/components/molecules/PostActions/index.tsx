@@ -12,9 +12,9 @@ import Tattoo from 'components/atoms/Icon/icons/Tattoo'
 
 const PostActions = ({
   commenting,
-  onBalloonClick,
   showingStyles,
-  onTattooClick
+  onTattooClick,
+  onBalloonClick
 }: IPostActionsProps) => {
   const { liked, onHeartClick } = usePostActions()
 
@@ -29,10 +29,10 @@ const PostActions = ({
           aria-haspopup='menu'
           outlined={!commenting}
           onClick={onBalloonClick}
+          aria-expanded={commenting}
           ariaLabel='Esconder comentários'
           icon={<Balloon aria-live='polite' />}
           outlinedAriaLabel='Mostrar comentários'
-          aria-expanded={commenting}
           outlinedIcon={<OutlinedBalloon aria-live='polite' />}
         />
       </li>
@@ -40,14 +40,14 @@ const PostActions = ({
       <li>
         <IconButton
           aria-haspopup='menu'
-          aria-expanded={showingStyles}
-          className='tattooButton'
           onClick={onTattooClick}
+          className='tattooButton'
           outlined={!showingStyles}
+          aria-expanded={showingStyles}
           icon={<Tattoo aria-live='polite' />}
-          outlinedIcon={<OutlinedTattoo aria-live='polite' />}
           ariaLabel='Esconder estilos de tatuagens'
           outlinedAriaLabel='Mostrar estilos de tatuagens'
+          outlinedIcon={<OutlinedTattoo aria-live='polite' />}
         />
       </li>
     </PostActionsStyle>

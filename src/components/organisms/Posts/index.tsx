@@ -8,8 +8,9 @@ import { Resizable } from 'components/atoms/Resizable'
 
 const Posts = () => {
   const {
-    resizable,
+    user,
     posts,
+    resizable,
     showFilters,
     resizableRef,
     iconPlusMargin,
@@ -38,9 +39,7 @@ const Posts = () => {
           Voltar para atalhos
         </a>
 
-        <header className='createPost'>
-          <CreatePost />
-        </header>
+        <header className='createPost'>{user?.token && <CreatePost />}</header>
 
         <a
           tabIndex={0}

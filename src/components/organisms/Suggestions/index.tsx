@@ -35,8 +35,8 @@ const Suggestions = ({
 
       <Presence condition={show} {...animations.presence}>
         <motion.ul role='list' {...animations.ul(recommendations.length)}>
-          {recommendations.map(({ avatar, id, name, smallBio }) => (
-            <motion.li role='listitem' key={id} {...animations.li}>
+          {recommendations.map(({ avatar, name, smallBio }, index) => (
+            <motion.li role='listitem' key={index} {...animations.li}>
               <UserCard name={name} smallBio={smallBio} avatar={avatar} />
             </motion.li>
           ))}

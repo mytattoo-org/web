@@ -10,9 +10,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { api } from 'api'
 import { AxiosResponse } from 'axios'
 
-const readFeed: TReadFeed = async () => {
+const readFeed: TReadFeed = async (_, { getState }) => {
+  const user = getState().userStore.user
+
+  console.log(getState())
+
   try {
-    const response: AxiosResponse<TFeedResponse> = await api.get('/feed')
+    const response: AxiosResponse<TFeedResponse> = user
+      ? await api.get('/feed', {
+          headers: { Authorization: `Bearer ${user.token}` }
+        })
+      : await api.get('/feed')
 
     const posts = response.data.posts
 

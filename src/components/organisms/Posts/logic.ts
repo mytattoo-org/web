@@ -9,9 +9,9 @@ import { useTheme } from 'styled-components'
 
 const usePosts = () => {
   const theme = useTheme()
-
   const { innerWidth, innerHeight } = useWindowSize()
   const resizableRef = useRef<IForwardedResizable>(null)
+  const { user } = useAppSelector(({ userStore }) => userStore)
   const { showFilters, showSuggestions } = useContext(NavbarContext)
   const { posts } = useAppSelector(({ postsStore }) => postsStore.feed)
 
@@ -48,6 +48,7 @@ const usePosts = () => {
   }, [showFilters, showSuggestions])
 
   return {
+    user,
     theme,
     posts,
     showFilters,
