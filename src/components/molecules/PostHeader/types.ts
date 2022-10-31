@@ -1,12 +1,12 @@
 interface IPostHeaderStyleProps {
   avatarSize: number
-  isArtist: boolean
+  isArtist?: boolean
 }
 
 interface IPostHeaderProps {
   name: string
   avatar: string
-  isArtist: boolean
+  isArtist?: boolean
   description?: string
 }
 

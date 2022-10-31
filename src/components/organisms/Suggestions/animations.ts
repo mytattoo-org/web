@@ -1,13 +1,11 @@
 import type { TUlAnimation } from './types'
 
+import { transition } from 'utils/framerMotion/defaults'
+
 import { AnimatePresenceProps, MotionProps, Transition } from 'framer-motion'
 
 const li: MotionProps = {
-  transition: {
-    bounce: 0.3,
-    duration: 0.3,
-    type: 'spring'
-  },
+  transition,
   variants: {
     exit: { opacity: 0, x: 500 },
     animate: { opacity: 1, x: 0 },

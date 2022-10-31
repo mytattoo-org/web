@@ -1,13 +1,21 @@
 import type { IUserCardStyleProps } from './types'
 
 import { darken, lighten } from 'polished'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const UserCardStyle = styled.button<IUserCardStyleProps>`
-  display: grid;
-  grid:
-    'avatar name' 23px
-    'avatar smallBio' 23px / 62px auto;
+  ${({ smallBio }) =>
+    smallBio
+      ? css`
+          display: grid;
+          grid:
+            'avatar name' 23px
+            'avatar smallBio' 23px / 62px auto;
+        `
+      : css`
+          display: flex;
+          align-items: center;
+        `}
 
   padding: 16px;
   border-radius: 4px;
@@ -19,6 +27,7 @@ const UserCardStyle = styled.button<IUserCardStyleProps>`
   strong {
     grid-area: name;
     text-align: left;
+    margin-left: ${({ smallBio }) => (smallBio ? 0 : 16)}px;
 
     color: ${({ theme }) => theme.colors.secondary};
   }

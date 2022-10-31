@@ -7,7 +7,7 @@ import {
 } from './styles'
 import { ICommentsProps } from './types'
 
-import { liVariants, ulAnimationProps } from './animations'
+import { commentsAnimations, liVariants, ulAnimationProps } from './animations'
 
 import Send from 'components/atoms/Icon/icons/Send'
 import Input from 'components/atoms/Input'
@@ -19,7 +19,7 @@ const Comments = ({ comments }: ICommentsProps) => {
   const { formik } = useComments()
 
   return (
-    <CommentsStyle>
+    <CommentsStyle {...commentsAnimations}>
       <CommentsList aria-label='Comentários' {...ulAnimationProps}>
         {comments?.map(({ author, content, id }) => (
           <Comment
@@ -30,12 +30,11 @@ const Comments = ({ comments }: ICommentsProps) => {
             variants={liVariants}
             name={author.username}
             avatar={author.avatar}
-            isArtist={author.artist}
           />
         ))}
       </CommentsList>
 
-      <CreateCommentStyle variants={liVariants} onSubmit={formik.handleSubmit}>
+      <CreateCommentStyle onSubmit={formik.handleSubmit}>
         <NewComment htmlFor='newComment'>
           <Input
             type='text'

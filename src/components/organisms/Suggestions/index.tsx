@@ -14,7 +14,7 @@ const Suggestions = ({
   startOpen = false,
   ...props
 }: ISuggestionsProps) => {
-  const { onArrowClick, show, animations, recommendations } =
+  const { onArrowClick, show, animations, suggestions } =
     useSuggestions(startOpen)
 
   return (
@@ -34,10 +34,10 @@ const Suggestions = ({
       </header>
 
       <Presence condition={show} {...animations.presence}>
-        <motion.ul role='list' {...animations.ul(recommendations.length)}>
-          {recommendations.map(({ avatar, name, smallBio }, index) => (
+        <motion.ul role='list' {...animations.ul(suggestions.length)}>
+          {suggestions.map(({ avatar, username, short_bio }, index) => (
             <motion.li role='listitem' key={index} {...animations.li}>
-              <UserCard name={name} smallBio={smallBio} avatar={avatar} />
+              <UserCard name={username} smallBio={short_bio} avatar={avatar} />
             </motion.li>
           ))}
         </motion.ul>

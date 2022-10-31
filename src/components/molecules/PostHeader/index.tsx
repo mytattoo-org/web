@@ -13,7 +13,7 @@ const PostHeader = ({
   const avatarSize = 40
 
   return (
-    <PostHeaderStyle avatarSize={avatarSize} isArtist={isArtist} {...props}>
+    <PostHeaderStyle avatarSize={avatarSize} {...props}>
       <Avatar
         tabIndex={0}
         src={avatar}

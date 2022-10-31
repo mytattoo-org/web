@@ -15,7 +15,7 @@ const Feed: TNextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>MyTattoo - Postagens</title>
+        <title>MySocial - Postagens</title>
       </Head>
 
       <FeedStyle>

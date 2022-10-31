@@ -19,7 +19,6 @@ const Post = ({ postData, forwardedAs, ...props }: IPostProps) => {
             name={postData.author.username}
             avatar={postData.author.avatar}
             description={postData.description}
-            isArtist={!!postData.author.artist}
           />
 
           <Image

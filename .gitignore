@@ -43,3 +43,4 @@ src/tests/jest/coverage/*
 
 # storybook
 build-storybook.log
+/src/submodules/**/*

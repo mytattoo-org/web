@@ -1,6 +1,10 @@
 import { framerProps, transition } from 'utils/framerMotion/defaults'
 
-import { Variants } from 'framer-motion'
+import { MotionProps, Variants } from 'framer-motion'
+
+const commentsAnimations: MotionProps = {
+  exit: { opacity: 0, height: 0, y: -30, transition: transition }
+}
 
 const ulAnimationProps = {
   ...framerProps,
@@ -29,4 +33,4 @@ const liVariants: Variants = {
   initial: { y: 30, opacity: 0 }
 }
 
-export { ulAnimationProps, liVariants }
+export { ulAnimationProps, liVariants, commentsAnimations }

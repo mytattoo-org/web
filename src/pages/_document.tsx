@@ -43,27 +43,21 @@ class MyDocument extends Document {
       <Html lang='pt-br'>
         <Head>
           <link rel='icon' href={favicon} />
-
-          <link rel='preconnect' href='https://fonts.googleapis.com' />
-
           <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
 
           <link
             href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
             rel='stylesheet'
           />
 
-          <meta charSet='utf-8' />
-          <meta name='application-name' content='MyTattoo' />
           <meta charSet='UTF-8' />
+          <meta name='application-name' content='MySocial' />
           <meta name='author' content='Miguel Andrade Barreto' />
-          <meta
-            name='keywords'
-            content='MyTattoo, Tatuagens, Tatuadores, Rede social'
-          />
+          <meta name='keywords' content='MySocial, Rede social' />
           <meta
             name='description'
-            content='Rede social para pessoas que gostam de tatuagens'
+            content='Rede social com filtros incríveis'
           />
         </Head>
 

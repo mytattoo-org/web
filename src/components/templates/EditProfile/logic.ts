@@ -59,7 +59,6 @@ const useEditProfile: TUseEditProfile = () => {
   const triggerFeedback = feedbackRef.current?.triggerFeedback
   const initialValues = {
     bio: user?.bio,
-    artist: user?.artist,
     email: user?.email,
     avatar: user?.avatar,
     username: user?.username,
@@ -132,7 +131,6 @@ const useEditProfile: TUseEditProfile = () => {
     if (userLoading === false && user) {
       formik.setValues({
         bio: user?.bio,
-        artist: user?.artist,
         email: user?.email,
         avatar: user?.avatar,
         username: user?.username,

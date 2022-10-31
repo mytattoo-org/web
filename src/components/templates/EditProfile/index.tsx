@@ -7,7 +7,6 @@ import File from 'components/atoms/File'
 import AddPhoto from 'components/atoms/Icon/icons/AddPhoto'
 import Loading from 'components/atoms/Icon/icons/Loading'
 import Sad from 'components/atoms/Icon/icons/Sad'
-import { Switch } from 'components/atoms/Switch'
 
 import Button from 'components/molecules/Button'
 import Feedback from 'components/molecules/Feedback'
@@ -51,13 +50,6 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
                 formik={formik}
                 name='short_bio'
                 placeholder='Pequena descrição'
-              />
-
-              <Switch
-                id='artist'
-                name='artist'
-                label='Artista'
-                formik={formik}
               />
             </div>
 

@@ -3,21 +3,15 @@ import type { IFiltersState, TOnFilterClick } from './types'
 import { useEffect, useState } from 'react'
 
 const fakeStylesToFilter = [
-  { name: 'Geométrico', id: '10' },
-  { name: 'Trash', id: '2' },
-  { name: 'Minimalista', id: '14' },
-  { name: 'Maori', id: '3' },
-  { name: 'Old School', id: '11' },
-  { name: 'Tribal', id: '4' },
-  { name: 'Pontilhismo', id: '13' },
-  { name: 'Glitch', id: '5' },
-  { name: 'Aquarela', id: '6' },
-  { name: 'Single Line', id: '15' },
-  { name: 'Colorida', id: '7' },
-  { name: 'Black Work', id: '12' },
-  { name: 'Oriental', id: '8' },
-  { name: 'Realista', id: '9' },
-  { name: 'Preto e branco', id: '16' }
+  { name: 'Trash', id: '1' },
+  { name: 'Glitch', id: '2' },
+  { name: 'Aquarela', id: '3' },
+  { name: 'Colorida', id: '4' },
+  { name: 'Oriental', id: '5' },
+  { name: 'Realista', id: '6' },
+  { name: 'Geométrico', id: '7' },
+  { name: 'Minimalismo', id: '8' },
+  { name: 'Preto e branco', id: '9' }
 ]
 
 const useLeftSide = () => {

@@ -23,8 +23,8 @@ const CommentsList = styled(motion.ul)`
   overflow-x: hidden;
   overflow-y: scroll;
 
-  li {
-    margin-bottom: 24px;
+  li + li {
+    margin-top: 24px;
   }
 `
 

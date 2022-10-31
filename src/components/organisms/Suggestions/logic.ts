@@ -1,60 +1,34 @@
 import { animations } from './animations'
 
-import avatar from '@public/temp/avatar2.jpg'
+import { IUser } from '@common/types/users/models/userModel.types'
+import { TReadUsersResponse } from '@common/types/users/useCases/readUsers.types'
 
-import { useState } from 'react'
-
-const fakeSuggestions = [
-  {
-    avatar: avatar,
-    id: '1',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  },
-  {
-    avatar: avatar,
-    id: '2',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  },
-  {
-    avatar: avatar,
-    id: '3',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  },
-  {
-    avatar: avatar,
-    id: '4',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  },
-  {
-    avatar: avatar,
-    id: '5',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  },
-  {
-    avatar: avatar,
-    id: '6',
-    name: 'Vidan Tattoo',
-    smallBio: 'Vitor D.'
-  }
-]
+import { AxiosResponse } from 'axios'
+import { useEffect, useState } from 'react'
+import { api } from 'services/api'
 
 const useSuggestions = (startOpen: boolean) => {
   const [show, setShow] = useState(startOpen)
+  const [suggestions, setSuggestions] = useState<IUser[]>([])
 
   const onArrowClick = () => {
     setShow(prev => !prev)
   }
 
+  const getSuggestions = async () => {
+    const res: AxiosResponse<TReadUsersResponse> = await api.get('/users')
+    setSuggestions(res.data.users || [])
+  }
+
+  useEffect(() => {
+    getSuggestions()
+  }, [])
+
   return {
     show,
     animations,
     onArrowClick,
-    recommendations: fakeSuggestions
+    suggestions
   }
 }
 
