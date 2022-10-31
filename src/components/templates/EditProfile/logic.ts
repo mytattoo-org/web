@@ -17,15 +17,15 @@ import { verifyAuthenticationThunk } from 'store/user/extraReducers/verifyAuthen
 
 import { TUpdateUserResponse } from '@common/types/users/useCases/updateUser.types'
 
-import { api } from 'api'
 import { AxiosResponse } from 'axios'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
+import { api } from 'services/api'
 import { useTheme } from 'styled-components'
 
 const setUndefinedIfIsEqual = <MainType, ComparedType>(
-  main: MainType,
+  main: any,
   toBeCompared: ComparedType
 ) => {
   const keys = Object.keys(main)
@@ -33,7 +33,7 @@ const setUndefinedIfIsEqual = <MainType, ComparedType>(
 
   for (let i = 0; i < keys.length; i++) {
     if (toBeCompared) {
-      main[keys[i] as keyof MainType] =
+      main[keys[i]] =
         formValues[i] === toBeCompared[keys[i] as keyof ComparedType]
           ? undefined
           : formValues[i]

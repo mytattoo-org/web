@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const PostStyle = styled.section`
   width: 100%;
-  padding: 8px;
-  border-radius: 16px;
+  padding: 16px;
+  border-radius: 8px;
 
   background-color: ${({ theme }) => lighten(0.03, theme.colors.background)};
 

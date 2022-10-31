@@ -1,4 +1,17 @@
+import OriginalHashtag from 'components/atoms/Icon/icons/Hashtag'
+
 import styled from 'styled-components'
+
+const Hashtag = styled(OriginalHashtag)`
+  fill: ${({ theme }) => theme.colors.secondary};
+`
+
+const OutlinedHashtag = styled(OriginalHashtag)`
+  stroke-width: 32px;
+
+  fill: none;
+  stroke: ${({ theme }) => theme.colors.secondary};
+`
 
 const PostActionsStyle = styled.ul`
   position: relative;
@@ -28,18 +41,10 @@ const PostActionsStyle = styled.ul`
     }
   }
 
-  .tattooButton {
-    outline-offset: -2px;
-  }
-
   .HeartButton .Icon,
   .IconButton .Icon {
     height: 24px;
   }
-
-  .IconButton .Tattoo path {
-    fill: ${({ theme }) => theme.colors.primary};
-  }
 `
 
-export { PostActionsStyle }
+export { PostActionsStyle, Hashtag, OutlinedHashtag }

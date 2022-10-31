@@ -1,20 +1,20 @@
-import { PostContext } from 'components/organisms/Post'
+import { PostContext } from 'components/organisms/Post/logic'
 
 import useAppSelector from 'hooks/useAppSelector'
 
 import { ILike } from '@common/types/likes/models/likeModel.types'
 
-import { api } from 'api'
 import { useContext, useState } from 'react'
+import { api } from 'services/api'
 
 const usePostActions = () => {
-  const postContext = useContext(PostContext)
-  const [liked, setLiked] = useState(postContext.liked)
+  const { post } = useContext(PostContext)
+  const [liked, setLiked] = useState(post.liked)
   const { user } = useAppSelector(({ userStore }) => userStore)
 
   const onHeartClick = async () => {
     if (user?.id) {
-      const like: ILike = { user_id: user?.id, post_id: postContext.id }
+      const like: ILike = { user_id: user?.id, post_id: post.id }
 
       try {
         if (liked)

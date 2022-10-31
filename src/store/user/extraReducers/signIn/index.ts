@@ -8,8 +8,8 @@ import { TSignInResponse } from '@common/types/authentication/useCases/signIn.ty
 import { TReadUsersResponse } from '@common/types/users/useCases/readUsers.types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from 'api'
 import { AxiosResponse } from 'axios'
+import { api } from 'services/api'
 
 const signIn: TSignIn = async data => {
   try {

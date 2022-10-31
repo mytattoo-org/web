@@ -1,12 +1,19 @@
+import { PostContext } from '../Post/logic'
+
 import { useFormik } from 'formik'
+import { useContext } from 'react'
 
 const useComments = () => {
+  const { addComment } = useContext(PostContext)
+
   const formik = useFormik({
     validateOnBlur: true,
     validateOnChange: false,
     initialValues: { newComment: '' },
-    onSubmit: values => {
-      console.log(values)
+    onSubmit: async ({ newComment }, { resetForm }) => {
+      await addComment(newComment)
+
+      resetForm()
     }
   })
 

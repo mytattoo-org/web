@@ -5,6 +5,7 @@ import composeClassName from 'utils/composeClassName'
 
 const OutlinedBalloon = ({ className, ...props }: IIconProps) => (
   <Icon
+    fill='white'
     viewBox='0 0 20 20'
     className={composeClassName('OutlinedBalloon', className)}
     {...props}

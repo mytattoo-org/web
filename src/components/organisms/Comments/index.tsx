@@ -1,71 +1,57 @@
 import { useComments } from './logic'
-import { CommentsList, CommentsStyle, CreateCommentStyle } from './styles'
+import {
+  CommentsList,
+  CommentsStyle,
+  CreateCommentStyle,
+  NewComment
+} from './styles'
+import { ICommentsProps } from './types'
 
 import { liVariants, ulAnimationProps } from './animations'
 
+import Send from 'components/atoms/Icon/icons/Send'
 import Input from 'components/atoms/Input'
 
 import Comment from 'components/molecules/Comment'
+import IconButton from 'components/molecules/IconButton'
 
-import avatar2 from '@public/temp/avatar2.jpg'
-import avatar from '@public/temp/avatar.png'
-
-import { memo } from 'react'
-
-const fakeComments = [
-  {
-    id: '1',
-    name: 'Miguel Andrade',
-    avatar,
-    isArtist: false,
-    content:
-      'Lorem ipsum, dolor sit amet consectetur adipisicingelit. Ipsam minus consequatur sit iste odit itaque accusamus. Blanditiisperferendis natus, eveniet est, architecto numquam accusamus, iste sitquidem enim atque ad?'
-  },
-  {
-    id: '2',
-    name: 'Vitor Daniel',
-    avatar: avatar2,
-    isArtist: true,
-    content:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus harum nesciunt provident accusantium ullam, sint, quisquam in corporis dolorum soluta eum mollitia architecto ex vel perferendis, consequuntur ipsam aperiam delectus.'
-  }
-]
-
-const Comments = () => {
+const Comments = ({ comments }: ICommentsProps) => {
   const { formik } = useComments()
 
   return (
     <CommentsStyle>
       <CommentsList aria-label='Comentários' {...ulAnimationProps}>
-        {fakeComments.map(({ name, content, id, avatar, isArtist }) => (
+        {comments?.map(({ author, content, id }) => (
           <Comment
             key={id}
-            name={name}
             tabIndex={0}
-            avatar={avatar}
             forwardedAs='li'
             content={content}
-            isArtist={isArtist}
             variants={liVariants}
+            name={author.username}
+            avatar={author.avatar}
+            isArtist={author.artist}
           />
         ))}
-
-        <CreateCommentStyle
-          variants={liVariants}
-          onSubmit={formik.handleSubmit}
-        >
-          <label htmlFor='newComment'>
-            <Input
-              id='newComment'
-              type='text'
-              name='newComment'
-              placeholder='Deixe um comentário!'
-            />
-          </label>
-        </CreateCommentStyle>
       </CommentsList>
+
+      <CreateCommentStyle variants={liVariants} onSubmit={formik.handleSubmit}>
+        <NewComment htmlFor='newComment'>
+          <Input
+            type='text'
+            id='newComment'
+            name='newComment'
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.newComment}
+            placeholder='Deixe um comentário!'
+          />
+
+          <IconButton type='submit' icon={<Send />} />
+        </NewComment>
+      </CreateCommentStyle>
     </CommentsStyle>
   )
 }
 
-export default memo(Comments)
+export default Comments

@@ -1,7 +1,7 @@
 interface IPostActionsProps {
   commenting: boolean
   showingStyles: boolean
-  onTattooClick: () => void
+  onHashtagClick: () => void
   onBalloonClick: () => void
 }
 

@@ -7,13 +7,11 @@ import { TExtraReducers } from 'typescript/redux.types'
 import { TFeedResponse } from '@common/types/posts/useCases/readFeed.types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from 'api'
 import { AxiosResponse } from 'axios'
+import { api } from 'services/api'
 
 const readFeed: TReadFeed = async (_, { getState }) => {
   const user = getState().userStore.user
-
-  console.log(getState())
 
   try {
     const response: AxiosResponse<TFeedResponse> = user

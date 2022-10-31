@@ -1,20 +1,18 @@
+import { PostContext, usePost } from './logic'
 import { PostStyle } from './styles'
-import type { IPostProps } from './types'
+import { IPostProps } from './types'
 
 import PostHeader from 'components/molecules/PostHeader'
 
 import PostFooter from 'components/organisms/PostFooter'
 
-import { IFeed } from '@common/types/posts/models/feedModel.types'
-
 import Image from 'next/image'
-import { createContext } from 'react'
-
-export const PostContext = createContext({} as IFeed)
 
 const Post = ({ postData, forwardedAs, ...props }: IPostProps) => {
+  const { postContextValue } = usePost({ postData })
+
   return (
-    <PostContext.Provider value={postData}>
+    <PostContext.Provider value={postContextValue}>
       <PostStyle as={forwardedAs} {...props}>
         <article>
           <PostHeader
@@ -29,11 +27,13 @@ const Post = ({ postData, forwardedAs, ...props }: IPostProps) => {
             width='100%'
             height='100%'
             priority={true}
+            draggable='false'
             objectFit='cover'
             layout='responsive'
             src={postData.image}
             className='postImage'
             alt='Imagem da postagem'
+            style={{ userSelect: 'none' }}
           />
         </article>
 

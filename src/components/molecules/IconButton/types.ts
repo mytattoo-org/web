@@ -4,9 +4,9 @@ interface IIconButtonStyleProps {}
 
 interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: ReactNode
-  outlined: boolean
+  outlined?: boolean
   ariaLabel?: string
-  outlinedIcon: ReactNode
+  outlinedIcon?: ReactNode
   outlinedAriaLabel?: string
 }
 

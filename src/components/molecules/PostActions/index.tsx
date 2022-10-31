@@ -1,5 +1,5 @@
 import { usePostActions } from './logic'
-import { PostActionsStyle } from './styles'
+import { Hashtag, OutlinedHashtag, PostActionsStyle } from './styles'
 import type { IPostActionsProps } from './types'
 
 import HeartButton from '../HeartButton'
@@ -7,13 +7,11 @@ import IconButton from '../IconButton'
 
 import Balloon from 'components/atoms/Icon/icons/Balloon'
 import OutlinedBalloon from 'components/atoms/Icon/icons/OutlinedBalloon'
-import OutlinedTattoo from 'components/atoms/Icon/icons/OutlinedTattoo'
-import Tattoo from 'components/atoms/Icon/icons/Tattoo'
 
 const PostActions = ({
   commenting,
   showingStyles,
-  onTattooClick,
+  onHashtagClick,
   onBalloonClick
 }: IPostActionsProps) => {
   const { liked, onHeartClick } = usePostActions()
@@ -40,14 +38,14 @@ const PostActions = ({
       <li>
         <IconButton
           aria-haspopup='menu'
-          onClick={onTattooClick}
-          className='tattooButton'
+          onClick={onHashtagClick}
+          className='HashtagButton'
           outlined={!showingStyles}
           aria-expanded={showingStyles}
-          icon={<Tattoo aria-live='polite' />}
+          icon={<Hashtag aria-live='polite' />}
           ariaLabel='Esconder estilos de tatuagens'
           outlinedAriaLabel='Mostrar estilos de tatuagens'
-          outlinedIcon={<OutlinedTattoo aria-live='polite' />}
+          outlinedIcon={<OutlinedHashtag aria-live='polite' />}
         />
       </li>
     </PostActionsStyle>

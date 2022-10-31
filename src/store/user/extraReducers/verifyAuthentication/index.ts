@@ -5,7 +5,7 @@ import { IUserStore } from '../../types'
 import { TExtraReducers } from 'typescript/redux.types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from 'api'
+import { api } from 'services/api'
 
 const verifyAuthentication: TVerifyAuthentication = async (_, { getState }) => {
   try {

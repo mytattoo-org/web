@@ -2,10 +2,10 @@ import type { ISignUpValues, TOnSignupSubmit } from './types'
 
 import { signUpYupSchema } from './schemas'
 
-import { api } from 'api'
 import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useFormik } from 'formik'
 import { useContext, useState } from 'react'
+import { api } from 'services/api'
 import { useTheme } from 'styled-components'
 
 const initialValues: ISignUpValues = {

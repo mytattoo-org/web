@@ -24,7 +24,8 @@ const Comment = ({
       <Avatar size={40} src={avatar} aria-hidden='true' />
 
       <motion.p>
-        <b>{name}</b> {content}
+        <b>{name}</b>
+        <br /> {content}
       </motion.p>
     </CommentStyle>
   )

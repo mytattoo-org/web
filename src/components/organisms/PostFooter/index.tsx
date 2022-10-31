@@ -9,22 +9,27 @@ import Styles from 'components/molecules/Styles'
 import Comments from 'components/organisms/Comments'
 
 const PostFooter = () => {
-  const { commenting, onBalloonClick, onTattooClick, showingStyles } =
-    usePostFooter()
+  const {
+    comments,
+    commenting,
+    onBalloonClick,
+    onHashtagClick,
+    showingStyles
+  } = usePostFooter()
 
   return (
     <PostFooterStyle>
       <PostActions
         commenting={commenting}
         showingStyles={showingStyles}
-        onTattooClick={onTattooClick}
+        onHashtagClick={onHashtagClick}
         onBalloonClick={onBalloonClick}
       />
 
       <Styles showingStyles={showingStyles} />
 
       <Presence condition={commenting}>
-        <Comments />
+        <Comments comments={comments} />
       </Presence>
     </PostFooterStyle>
   )

@@ -7,8 +7,8 @@ import { TExtraReducers } from 'typescript/redux.types'
 import { TCreatePostResponse } from '@common/types/posts/useCases/createPost.types'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from 'api'
 import { AxiosResponse } from 'axios'
+import { api } from 'services/api'
 
 const createPost: TCreatePost = async (data, { getState }) => {
   const { userStore } = getState()

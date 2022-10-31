@@ -1,18 +1,27 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const CreateCommentStyle = styled(motion.form)`
-  label {
-    width: 100%;
-    border-radius: 4px;
+export const NewComment = styled.label`
+  display: flex;
+  justify-content: space-between;
 
-    padding: 8px;
-    border: solid ${({ theme }) => theme.colors.secondary} 1px;
-  }
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 4px;
+
+  border: solid 1px ${({ theme }) => theme.colors.secondary};
+`
+
+const CreateCommentStyle = styled(motion.form)`
+  margin-top: 16px;
 `
 
 const CommentsList = styled(motion.ul)`
-  overflow: hidden;
+  position: relative;
+
+  max-height: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   li {
     margin-bottom: 24px;
