@@ -1,4 +1,4 @@
-import favicon from '@public/favicon.ico'
+import { PWAProvider } from 'components/providers/PWA'
 
 import Document, {
   DocumentContext,
@@ -42,10 +42,8 @@ class MyDocument extends Document {
     return (
       <Html lang='pt-br'>
         <Head>
-          <link rel='icon' href={favicon} />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
-
           <link
             href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
             rel='stylesheet'
@@ -59,6 +57,8 @@ class MyDocument extends Document {
             name='description'
             content='Rede social com filtros incríveis'
           />
+
+          <PWAProvider />
         </Head>
 
         <body>

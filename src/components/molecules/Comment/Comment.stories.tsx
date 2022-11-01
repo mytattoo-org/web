@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof Comment> = args => <Comment {...args} />
 const Default = Template.bind({})
 
 Default.args = {
-  avatar,
+  avatar: avatar as unknown as string,
   name: 'Miguel Andrade',
   content:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum maxime, eaque accusamus repellat nemo alias dignissimos fugiat aperiam doloremque vero repudiandae ipsum neque? Consectetur tenetur soluta inventore fuga voluptas consequatur?'

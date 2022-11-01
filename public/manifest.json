@@ -1,0 +1,25 @@
+{
+  "name": "MySocial",
+  "display": "standalone",
+  "short_name": "MySocial",
+  "theme_color": "#9C7BEB",
+  "background_color": "#090909",
+  "description": "A sua rede social",
+  "lang": "pt-BR",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

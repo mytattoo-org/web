@@ -1,13 +1,17 @@
-const withImages = require('next-images')
-
-module.exports = withImages({
+const nextConfig = {
   reactStrictMode: false,
-  images: {
-    disableStaticImages: true
+  typescript: {
+    ignoreBuildErrors: true
   },
-  webpack: config => {
-    config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] })
+  images: { disableStaticImages: true }
+}
 
-    return config
-  }
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  sw: '/serviceWorker.js'
+  // disable: process.env.NODE_ENV !== 'production'
 })
+
+module.exports = withPWA(nextConfig)
