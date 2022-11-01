@@ -1,5 +1,7 @@
 import { PostContext } from 'components/organisms/Post/logic'
 
+import { GlobalContext } from 'components/templates/MyApp'
+
 import useAppSelector from 'hooks/useAppSelector'
 
 import { ILike } from '@common/types/likes/models/likeModel.types'
@@ -10,6 +12,7 @@ import { api } from 'services/api'
 const usePostActions = () => {
   const { post } = useContext(PostContext)
   const [liked, setLiked] = useState(post.liked)
+  const { feedback } = useContext(GlobalContext)
   const { user } = useAppSelector(({ userStore }) => userStore)
 
   const onHeartClick = async () => {
@@ -31,6 +34,13 @@ const usePostActions = () => {
       } catch (error) {
         console.log(error)
       }
+    } else {
+      feedback.trigger &&
+        feedback.trigger({
+          color: 'yellow',
+          title: 'Atenção',
+          content: 'Conecte-se para curtir uma publicação!'
+        })
     }
   }
 

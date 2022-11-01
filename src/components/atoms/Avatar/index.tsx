@@ -20,7 +20,7 @@ const Avatar = ({ size, className, src, ...props }: IAvatarProps) => {
     <DefaultAvatar
       data-cy='avatar'
       style={{ width: size, height: size }}
-      className={composeClassName('Avatar', className)}
+      className={composeClassName('DefaultAvatar', className)}
     />
   )
 }

@@ -135,5 +135,4 @@ const ProfileOptionsStyle = styled.div`
     }
   }
 `
-
 export { Navbar, Sidebar, ProfileOptionsStyle, AvatarLi }

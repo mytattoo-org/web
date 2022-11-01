@@ -1,10 +1,11 @@
 import type { ISignUpValues, TOnSignupSubmit } from './types'
 
+import { GlobalContext } from '../MyApp'
 import { signUpYupSchema } from './schemas'
 
 import { NavbarContext } from 'components/layouts/NavbarLayout/logic'
 import { useFormik } from 'formik'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { api } from 'services/api'
 import { useTheme } from 'styled-components'
 
@@ -19,7 +20,18 @@ const useSignUp = () => {
   const theme = useTheme()
   const [loading, setLoading] = useState(false)
   const { toggleAuthModal } = useContext(NavbarContext)
-  const { triggerFeedback } = useContext(NavbarContext)
+  const { feedback } = useContext(GlobalContext)
+
+  useEffect(() => {
+    console.log(feedback)
+
+    feedback.trigger &&
+      feedback.trigger({
+        title: 'Sucesso',
+        color: theme.colors.green,
+        content: 'Cadastrado com sucesso.'
+      })
+  }, [feedback, feedback.trigger, theme.colors.green])
 
   const onSignUpSubmit: TOnSignupSubmit = async (
     dataToCreate: ISignUpValues
@@ -29,17 +41,10 @@ const useSignUp = () => {
     try {
       await api.post('/users', dataToCreate)
 
-      triggerFeedback &&
-        triggerFeedback({
-          title: 'Sucesso',
-          color: theme.colors.green,
-          content: 'Cadastrado com sucesso.'
-        })
-
       toggleAuthModal({ page: 'sign-in', open: true })
     } catch (error) {
-      triggerFeedback &&
-        triggerFeedback({
+      feedback.trigger &&
+        feedback.trigger({
           title: 'Error',
           color: theme.colors.red,
           content: 'Error ao se cadastrar, tente novamente mais tarde.'

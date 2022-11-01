@@ -4,9 +4,9 @@ import type {
   TUseEditProfile
 } from './types'
 
+import { GlobalContext } from '../MyApp'
 import { editProfileYupSchema } from './schemas'
 
-import { IForwardFeedback } from 'components/molecules/Feedback/types'
 import { IForwardModal } from 'components/molecules/Modal/types'
 
 import useAppDispatch from 'hooks/useAppDispatch'
@@ -20,7 +20,7 @@ import { TUpdateUserResponse } from '@common/types/users/useCases/updateUser.typ
 import { AxiosResponse } from 'axios'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { api } from 'services/api'
 import { useTheme } from 'styled-components'
 
@@ -49,14 +49,14 @@ const useEditProfile: TUseEditProfile = () => {
   const dispatch = useAppDispatch()
   const modalRef = useRef<IForwardModal>(null)
   const [loading, setLoading] = useState(false)
-  const feedbackRef = useRef<IForwardFeedback>(null)
+  const { feedback } = useContext(GlobalContext)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { user, loading: userLoading } = useAppSelector(
     ({ userStore }) => userStore
   )
 
   const triggerModal = modalRef.current?.triggerModal
-  const triggerFeedback = feedbackRef.current?.triggerFeedback
+  const triggerFeedback = feedback.trigger
   const initialValues = {
     bio: user?.bio,
     email: user?.email,
@@ -154,7 +154,6 @@ const useEditProfile: TUseEditProfile = () => {
     loading,
     modalRef,
     onSaveClick,
-    feedbackRef,
     onNewPasswordBlur,
     showConfirmPassword
   }

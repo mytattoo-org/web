@@ -11,6 +11,7 @@ const Content = styled.ul`
 
   width: 100%;
   height: 100%;
+  padding: 0 16px;
 
   .Loading {
     width: 40px;
@@ -25,17 +26,9 @@ const Content = styled.ul`
 
     height: 46px;
 
-    &:first-child {
-      padding-left: 16px;
-    }
-
     &:nth-child(2) {
       width: 100%;
       padding: 0 16px;
-    }
-
-    &:last-child {
-      padding-right: 16px;
     }
   }
 

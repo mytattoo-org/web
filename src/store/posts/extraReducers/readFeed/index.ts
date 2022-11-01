@@ -22,13 +22,9 @@ const readFeed: TReadFeed = async (_, { getState }) => {
 
     const posts = response.data.posts
 
-    return { feed: { posts: posts || [] } }
+    return { feed: posts }
   } catch (error: any) {
-    throw new Error(
-      error?.response?.data?.error
-        ? error.response.data.error
-        : 'Error inesperado tente novamente mais tarde'
-    )
+    return { error: 'Error inesperado tente novamente mais tarde' }
   }
 }
 

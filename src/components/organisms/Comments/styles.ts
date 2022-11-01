@@ -12,9 +12,7 @@ export const NewComment = styled.label`
   border: solid 1px ${({ theme }) => theme.colors.secondary};
 `
 
-const CreateCommentStyle = styled(motion.form)`
-  margin-top: 16px;
-`
+const CreateCommentStyle = styled(motion.form)``
 
 const CommentsList = styled(motion.ul)`
   position: relative;

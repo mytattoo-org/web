@@ -32,11 +32,7 @@ const signIn: TSignIn = async data => {
       if (user) return { user: { token, ...user }, loading: false }
     }
   } catch (error: any) {
-    throw new Error(
-      error?.response?.data?.error
-        ? error.response.data.error
-        : 'Error inesperado tente novamente mais tarde'
-    )
+    return { error: 'Error inesperado tente novamente mais tarde' }
   }
 
   return { loading: false, user: undefined }

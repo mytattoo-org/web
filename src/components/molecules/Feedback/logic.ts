@@ -12,7 +12,7 @@ const useFeedback = (ref: Ref<IForwardFeedback>) => {
 
     setTimeout(() => {
       setFeedback({ open: false })
-    }, 1000)
+    }, 2000)
   }
 
   useImperativeHandle(ref, () => ({ triggerFeedback }))

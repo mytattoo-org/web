@@ -1,4 +1,4 @@
-import { PWAProvider } from 'components/providers/PWA'
+import { SEO } from 'components/providers/SEO'
 
 import Document, {
   DocumentContext,
@@ -42,23 +42,7 @@ class MyDocument extends Document {
     return (
       <Html lang='pt-br'>
         <Head>
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
-          <link rel='preconnect' href='https://fonts.googleapis.com' />
-          <link
-            href='https://fonts.googleapis.com/css2?family=Roboto&display=swap'
-            rel='stylesheet'
-          />
-
-          <meta charSet='UTF-8' />
-          <meta name='application-name' content='MySocial' />
-          <meta name='author' content='Miguel Andrade Barreto' />
-          <meta name='keywords' content='MySocial, Rede social' />
-          <meta
-            name='description'
-            content='Rede social com filtros incríveis'
-          />
-
-          <PWAProvider />
+          <SEO />
         </Head>
 
         <body>

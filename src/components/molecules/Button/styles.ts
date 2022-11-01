@@ -8,8 +8,8 @@ const ButtonStyle = styled.button<IButtonStyleProps>`
   justify-content: center;
 
   width: 100%;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
 
   .Icon {
     width: 15px;

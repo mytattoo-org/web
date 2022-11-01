@@ -1,6 +1,10 @@
 import { IPostContext, IUsePostParams, TAddComment } from './types'
 
+import { GlobalContext } from 'components/templates/MyApp'
+
 import useAppSelector from 'hooks/useAppSelector'
+
+import theme from 'styles/theme'
 
 import {
   ICreateCommentRequest,
@@ -12,7 +16,7 @@ import {
 } from '@common/types/comments/useCases/readComments.types'
 
 import { AxiosResponse } from 'axios'
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { api } from 'services/api'
 import { formatComment, formatComments } from 'services/api/comments/format'
 import { IComment } from 'services/api/comments/types'
@@ -20,18 +24,28 @@ import { IComment } from 'services/api/comments/types'
 export const PostContext = createContext({} as IPostContext)
 
 export const usePost = ({ postData }: IUsePostParams) => {
+  const { feedback } = useContext(GlobalContext)
   const [comments, setComments] = useState<IComment[]>([])
   const user = useAppSelector(({ userStore }) => userStore.user)
 
   const getComments = async () => {
     const commentsReqData: IReadCommentsRequest = { post_id: postData.id }
 
-    const res: AxiosResponse<TReadCommentsResponse> = await api.get(
-      '/comments',
-      { params: commentsReqData }
-    )
+    try {
+      const res: AxiosResponse<TReadCommentsResponse> = await api.get(
+        '/comments',
+        { params: commentsReqData }
+      )
 
-    setComments(formatComments(res.data.comments))
+      setComments(formatComments(res.data.comments))
+    } catch (error) {
+      feedback?.trigger &&
+        feedback?.trigger({
+          title: 'Error',
+          color: theme.colors.red,
+          content: 'Erro inesperado tente novamente'
+        })
+    }
   }
 
   const addComment: TAddComment = async content => {
@@ -50,7 +64,12 @@ export const usePost = ({ postData }: IUsePostParams) => {
 
       setComments(prev => [formatComment(res.data.createdComment), ...prev])
     } catch (error) {
-      console.log('error')
+      feedback?.trigger &&
+        feedback?.trigger({
+          title: 'Error',
+          color: theme.colors.red,
+          content: 'Erro inesperado tente novamente'
+        })
     }
   }
 

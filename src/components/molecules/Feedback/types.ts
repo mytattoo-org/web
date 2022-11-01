@@ -1,13 +1,10 @@
-import { HTMLAttributes } from 'react'
-
 interface IFeedbackStyleProps {
   color?: string
 }
 
-interface ITriggerParams
-  extends IFeedbackStyleProps,
-    HTMLAttributes<HTMLDivElement> {
+interface ITriggerParams {
   title?: string
+  color?: string
   content?: string
 }
 

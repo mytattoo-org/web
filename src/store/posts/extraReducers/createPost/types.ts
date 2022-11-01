@@ -6,7 +6,7 @@ import { ICreatePostRequest } from '@common/types/posts/useCases/createPost.type
 import { AsyncThunkPayloadCreator } from '@reduxjs/toolkit'
 
 type TCreatePost = AsyncThunkPayloadCreator<
-  IFeed,
+  { createdPost?: IFeed; error?: string; loading?: boolean },
   Omit<ICreatePostRequest, 'user_id'>,
   { state: TStoreState }
 >

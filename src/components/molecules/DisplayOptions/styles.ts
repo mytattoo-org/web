@@ -22,7 +22,6 @@ const DisplayOptionsStyle = styled.ul`
     }
 
     & + li {
-      margin-left: 8px;
     }
 
     .Icon {
@@ -58,6 +57,12 @@ const DisplayOptionsStyle = styled.ul`
   @media screen and (min-width: 1080px) {
     .feedOrientation {
       display: block;
+    }
+
+    li {
+      & + li {
+        margin-left: 8px;
+      }
     }
   }
 `

@@ -3,7 +3,7 @@ import type { IFeedbackStyleProps } from './types'
 import styled, { css } from 'styled-components'
 
 const FeedbackStyle = styled.div<IFeedbackStyleProps>`
-  position: absolute;
+  position: fixed;
   top: 24px;
   right: 24px;
   z-index: 20;

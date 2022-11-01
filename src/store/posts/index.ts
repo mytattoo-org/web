@@ -9,8 +9,7 @@ import type { TExtraReducers } from 'typescript/redux.types'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: IPostStore = {
-  loading: undefined,
-  feed: { posts: [] }
+  loading: undefined
 }
 
 const extraReducers: TExtraReducers<IPostStore> = builder => {

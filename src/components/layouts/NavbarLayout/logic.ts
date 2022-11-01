@@ -1,8 +1,6 @@
 import type { INavbarContext, IShowAuthModalState } from './types'
 
-import { IForwardFeedback } from 'components/molecules/Feedback/types'
-
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { createContext } from 'react'
 
 const NavbarContext = createContext({
@@ -11,7 +9,6 @@ const NavbarContext = createContext({
 } as INavbarContext)
 
 const useNavbarLayout = () => {
-  const feedbackRef = useRef<IForwardFeedback>(null)
   const [showFilters, setShowFilters] = useState(true)
   const [showSuggestions, setShowSuggestions] = useState(true)
   const [showAuthModal, setShowAuthModal] = useState<IShowAuthModalState>({
@@ -40,11 +37,10 @@ const useNavbarLayout = () => {
     toggleAuthModal,
     showSuggestions,
     toggleShowFilters,
-    toggleShowSuggestions,
-    triggerFeedback: feedbackRef.current?.triggerFeedback
+    toggleShowSuggestions
   }
 
-  return { context, feedbackRef }
+  return { context }
 }
 
 export { useNavbarLayout, NavbarContext }

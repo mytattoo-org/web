@@ -9,7 +9,6 @@ import Loading from 'components/atoms/Icon/icons/Loading'
 import Sad from 'components/atoms/Icon/icons/Sad'
 
 import Button from 'components/molecules/Button'
-import Feedback from 'components/molecules/Feedback'
 import Field from 'components/molecules/Field'
 import TextareaField from 'components/molecules/TextareaField'
 
@@ -20,7 +19,6 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
     formik,
     loading,
     modalRef,
-    feedbackRef,
     onSaveClick,
     onNewPasswordBlur,
     showConfirmPassword
@@ -120,8 +118,6 @@ const EditProfile: TNextPageWithLayout = (props: IEditProfileProps) => {
           )}
         </section>
       </PasswordModal>
-
-      <Feedback ref={feedbackRef} />
     </>
   )
 }

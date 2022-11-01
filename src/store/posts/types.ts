@@ -1,8 +1,9 @@
 import { IFeed } from '@common/types/posts/models/feedModel.types'
 
 interface IPostStore {
+  feed?: IFeed[]
+  error?: string
   loading?: boolean
-  feed: { posts: IFeed[] }
 }
 
 export type { IPostStore }

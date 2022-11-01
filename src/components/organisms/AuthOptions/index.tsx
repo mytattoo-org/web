@@ -1,11 +1,11 @@
 import { useAuthOptions } from './logic'
-import { AuthOptionsStyle, SignInButton, SignUpButton } from './styles'
+import { AuthOptionsStyle, SignInButton } from './styles'
 import type { IAuthOptionsProps } from './types'
 
 import DefaultAvatar from 'components/atoms/Icon/icons/DefaultAvatar'
 
 const AuthOptions = (props: IAuthOptionsProps) => {
-  const { onSignInClick, onSignUpClick, isSmall } = useAuthOptions()
+  const { onSignInClick, isSmall } = useAuthOptions()
 
   return (
     <AuthOptionsStyle {...props}>
@@ -21,12 +21,6 @@ const AuthOptions = (props: IAuthOptionsProps) => {
             <SignInButton onClick={onSignInClick} data-cy='openSignInModal'>
               Entrar
             </SignInButton>
-          </li>
-
-          <li>
-            <SignUpButton data-cy='openSignUpModal' onClick={onSignUpClick}>
-              Registrar
-            </SignUpButton>
           </li>
         </>
       )}

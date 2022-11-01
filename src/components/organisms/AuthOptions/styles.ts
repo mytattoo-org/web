@@ -19,7 +19,7 @@ const AuthOptionsStyle = styled.ul<IAuthOptionsStyleProps>`
       height: 36px;
 
       path {
-        fill: ${({ theme }) => theme.colors.secondary};
+        fill: ${({ theme }) => theme.colors.red};
       }
     }
 
@@ -29,12 +29,6 @@ const AuthOptionsStyle = styled.ul<IAuthOptionsStyleProps>`
   }
 `
 
-const SignInButton = styled(Button)`
-  border-radius: 16px;
-`
+const SignInButton = styled(Button)``
 
-const SignUpButton = styled(Button)`
-  border-radius: 16px;
-`
-
-export { AuthOptionsStyle, SignUpButton, SignInButton }
+export { AuthOptionsStyle, SignInButton }

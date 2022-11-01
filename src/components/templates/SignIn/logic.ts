@@ -1,3 +1,4 @@
+import { GlobalContext } from '../MyApp'
 import { signInYupSchema } from './schemas'
 
 import useAppDispatch from 'hooks/useAppDispatch'
@@ -19,14 +20,17 @@ const useSignIn = () => {
   const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
   const userStore = useAppSelector(({ userStore }) => userStore)
-  const { toggleAuthModal, triggerFeedback } = useContext(NavbarContext)
+  const { toggleAuthModal } = useContext(NavbarContext)
+  const { feedback } = useContext(GlobalContext)
 
   const onSignInSubmit = async (dataToAuthenticate: ISignInValues) => {
     try {
       const { user } = await dispatch(signInThunk(dataToAuthenticate)).unwrap()
 
-      triggerFeedback &&
-        triggerFeedback({
+      console.log(feedback)
+
+      feedback?.trigger &&
+        feedback.trigger({
           title: 'Sucesso',
           content: `Bem vindo de volta, ${user?.username}.`,
           color: theme.colors.green
@@ -34,8 +38,8 @@ const useSignIn = () => {
 
       toggleAuthModal({ open: false, page: 'sign-in' })
     } catch (error: any) {
-      triggerFeedback &&
-        triggerFeedback({
+      feedback.trigger &&
+        feedback.trigger({
           title: 'Error',
           color: theme.colors.red,
           content:

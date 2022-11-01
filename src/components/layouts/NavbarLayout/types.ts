@@ -1,5 +1,3 @@
-import { TTriggerFeedback } from 'components/molecules/Feedback/types'
-
 import { ReactNode } from 'react'
 
 interface IShowAuthModalState {
@@ -10,7 +8,6 @@ interface IShowAuthModalState {
 interface INavbarContext {
   showFilters: boolean
   showSuggestions: boolean
-  triggerFeedback?: TTriggerFeedback
   showAuthModal: IShowAuthModalState
   toggleShowFilters: (newState?: boolean) => void
   toggleShowSuggestions: (newState?: boolean) => void

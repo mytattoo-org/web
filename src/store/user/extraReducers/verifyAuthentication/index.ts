@@ -23,11 +23,7 @@ const verifyAuthentication: TVerifyAuthentication = async (_, { getState }) => {
 
     return { ...data.user, token }
   } catch (error: any) {
-    throw new Error(
-      error?.response?.data?.error
-        ? error.response.data.error
-        : 'Error inesperado tente novamente mais tarde'
-    )
+    return { error: 'Error inesperado tente novamente mais tarde' }
   }
 }
 

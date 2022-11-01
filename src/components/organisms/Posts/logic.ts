@@ -12,8 +12,8 @@ const usePosts = () => {
   const { innerWidth, innerHeight } = useWindowSize()
   const resizableRef = useRef<IForwardedResizable>(null)
   const { user } = useAppSelector(({ userStore }) => userStore)
+  const posts = useAppSelector(({ postsStore }) => postsStore.feed)
   const { showFilters, showSuggestions } = useContext(NavbarContext)
-  const { posts } = useAppSelector(({ postsStore }) => postsStore.feed)
 
   const iconPlusMargin = 24 + 24
 
