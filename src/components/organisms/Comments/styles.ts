@@ -24,6 +24,10 @@ const CommentsList = styled(motion.ul)`
   li + li {
     margin-top: 24px;
   }
+
+  li:last-child {
+    margin-bottom: 16px;
+  }
 `
 
 const CommentsStyle = styled(motion.div)``

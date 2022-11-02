@@ -1,3 +1,5 @@
+import { pxToRem } from 'utils/pxAndRem'
+
 const theme = {
   colors: {
     red: '#ff5959',
@@ -8,9 +10,16 @@ const theme = {
   },
   fonts: {
     sizes: {
-      md: 'clamp(1.4rem, 1.2627rem + 0.4292vw, 1.6rem)',
-      xmd: 'clamp(1.5rem, 1.2627rem + 0.4292vw, 1.7rem)',
-      lg: 'clamp(1.8rem, 0.6250rem + 1.6667vw, 2rem)'
+      1: pxToRem(12),
+      2: pxToRem(14),
+      3: pxToRem(16),
+      4: pxToRem(18),
+      5: pxToRem(20),
+      6: pxToRem(22),
+      7: pxToRem(24),
+      8: pxToRem(26),
+      9: pxToRem(28),
+      10: pxToRem(30)
     }
   }
 }

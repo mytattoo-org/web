@@ -23,8 +23,6 @@ const useSignUp = () => {
   const { feedback } = useContext(GlobalContext)
 
   useEffect(() => {
-    console.log(feedback)
-
     feedback.trigger &&
       feedback.trigger({
         title: 'Sucesso',

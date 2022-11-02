@@ -1,5 +1,5 @@
-import { IComment } from 'services/api/comments/types'
+import { ICommentUser } from '@common/types/comments/models/commentUserModel'
 
 export interface ICommentsProps {
-  comments?: IComment[]
+  comments?: ICommentUser[]
 }

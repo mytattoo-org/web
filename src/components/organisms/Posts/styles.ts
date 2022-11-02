@@ -12,6 +12,7 @@ const PostsStyle = styled.main<IPostsStyle>`
   flex-direction: column;
 
   width: 100%;
+
   padding: 0 16px;
 
   .Resizable {
@@ -24,7 +25,7 @@ const PostsStyle = styled.main<IPostsStyle>`
     .Handle {
       position: fixed;
       top: 78px;
-      left: 24px;
+      left: 16px;
       z-index: 3;
 
       width: 24px;

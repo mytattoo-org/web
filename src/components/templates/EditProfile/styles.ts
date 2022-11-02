@@ -36,8 +36,6 @@ const PasswordModal = styled(Modal)`
 const EditProfileStyle = styled.main`
   padding: 78px 0 62px 0;
 
-  font-size: ${({ theme }) => theme.fonts.sizes.lg};
-
   section {
     padding: 48px 0;
 
@@ -66,8 +64,9 @@ const EditProfileStyle = styled.main`
         margin: 24px 0;
 
         textarea {
+          min-width: 300px;
+          min-height: 50px;
           max-height: 300px;
-          min-height: ${({ theme }) => `calc(${theme.fonts.sizes.lg} + 12px)`};
         }
       }
 
@@ -86,10 +85,6 @@ const EditProfileStyle = styled.main`
       .Field,
       .bioTextareaField {
         .Tooltip {
-          .Content {
-            font-size: ${({ theme }) => theme.fonts.sizes.md};
-          }
-
           .TooltipArrow {
             left: 4px;
           }

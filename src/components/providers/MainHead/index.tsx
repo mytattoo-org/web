@@ -1,22 +1,39 @@
+/* eslint-disable @next/next/no-page-custom-font */
+const Fonts = () => (
+  <>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' />
+    <link
+      rel='stylesheet'
+      href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'
+    />
+  </>
+)
+
+const OG = () => (
+  <>
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='MySocial' />
+    <meta property='og:site_name' content='MySocial' />
+    <meta property='og:description' content='Sua rede social' />
+    <meta property='og:url' content='https://mytattoo.vercel.app/' />
+  </>
+)
+
 const TwitterOG = () => (
   <>
     <meta name='twitter:card' content='summary' />
-    <meta name='twitter:url' content='https://yourdomain.com' />
-    <meta name='twitter:title' content='PWA App' />
+    <meta name='twitter:title' content='MySocial' />
+    <meta name='twitter:creator' content='@InSTinToS123' />
+    <meta name='twitter:url' content='https://mytattoo.vercel.app/' />
     <meta name='twitter:description' content='Best PWA App in the world' />
     <meta
       name='twitter:image'
-      content='https://yourdomain.com/icons/android-chrome-192x192.png'
+      content='https://mytattoo.vercel.app/icons/android-chrome-192x192.png'
     />
-    <meta name='twitter:creator' content='@DavidWShadow' />
-    <meta property='og:type' content='website' />
-    <meta property='og:title' content='PWA App' />
-    <meta property='og:description' content='Best PWA App in the world' />
-    <meta property='og:site_name' content='PWA App' />
-    <meta property='og:url' content='https://yourdomain.com' />
     <meta
       property='og:image'
-      content='https://yourdomain.com/icons/apple-touch-icon.png'
+      content='https://mytattoo.vercel.app/icons/apple-touch-icon.png'
     />
   </>
 )
@@ -24,18 +41,18 @@ const TwitterOG = () => (
 const PWA = () => (
   <>
     <link rel='manifest' href='/manifest.json' />
-    <link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#9C7BEB' />
+    <link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#090909' />
 
-    <meta name='theme-color' content='#000000' />
+    <meta name='theme-color' content='#090909' />
     <meta name='mobile-web-app-capable' content='yes' />
     <meta name='format-detection' content='telephone=no' />
 
     <meta name='apple-mobile-web-app-capable' content='yes' />
-    <meta name='apple-mobile-web-app-title' content='PWA App' />
+    <meta name='apple-mobile-web-app-title' content='MySocial' />
     <meta name='apple-mobile-web-app-status-bar-style' content='default' />
 
     <meta name='msapplication-tap-highlight' content='no' />
-    <meta name='msapplication-TileColor' content='#9C7BEB' />
+    <meta name='msapplication-TileColor' content='#090909' />
     <meta name='msapplication-config' content='/icons/browserconfig.xml' />
 
     {/* Apple Icon */}
@@ -102,9 +119,11 @@ const PWA = () => (
   </>
 )
 
-export const SEO = () => (
+export const MainHead = () => (
   <>
+    <OG />
     <PWA />
+    <Fonts />
     <TwitterOG />
 
     <meta charSet='UTF-8' />
