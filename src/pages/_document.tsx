@@ -1,4 +1,4 @@
-import { SEO } from 'components/providers/SEO'
+import { MainHead } from 'components/providers/MainHead'
 
 import Document, {
   DocumentContext,
@@ -42,7 +42,7 @@ class MyDocument extends Document {
     return (
       <Html lang='pt-br'>
         <Head>
-          <SEO />
+          <MainHead />
         </Head>
 
         <body>

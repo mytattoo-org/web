@@ -1,8 +1,8 @@
+import { ICommentUser } from '@common/types/comments/models/commentUserModel'
 import { ICreateCommentRequest } from '@common/types/comments/useCases/createComment.types'
 import type { IFeed } from '@common/types/posts/models/feedModel.types'
 
 import { HTMLAttributes } from 'react'
-import { IComment } from 'services/api/comments/types'
 
 type TAddComment = (content: ICreateCommentRequest['content']) => Promise<void>
 
@@ -18,7 +18,7 @@ interface IUsePostParams {
 interface IPostContext {
   addComment: TAddComment
   getComments: () => Promise<void>
-  post: IFeed & { comments: IComment[] }
+  post: IFeed & { comments: ICommentUser[] }
 }
 
 export type { IPostProps, IPostContext, IUsePostParams, TAddComment }

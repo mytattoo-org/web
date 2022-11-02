@@ -11,6 +11,7 @@ import {
   TCreateCommentResponse
 } from '@common/types/comments/useCases/createComment.types'
 import {
+  ICommentUser,
   IReadCommentsRequest,
   TReadCommentsResponse
 } from '@common/types/comments/useCases/readComments.types'
@@ -18,14 +19,12 @@ import {
 import { AxiosResponse } from 'axios'
 import { createContext, useContext, useState } from 'react'
 import { api } from 'services/api'
-import { formatComment, formatComments } from 'services/api/comments/format'
-import { IComment } from 'services/api/comments/types'
 
 export const PostContext = createContext({} as IPostContext)
 
 export const usePost = ({ postData }: IUsePostParams) => {
   const { feedback } = useContext(GlobalContext)
-  const [comments, setComments] = useState<IComment[]>([])
+  const [comments, setComments] = useState<ICommentUser[]>([])
   const user = useAppSelector(({ userStore }) => userStore.user)
 
   const getComments = async () => {
@@ -37,7 +36,7 @@ export const usePost = ({ postData }: IUsePostParams) => {
         { params: commentsReqData }
       )
 
-      setComments(formatComments(res.data.comments))
+      setComments(res.data.comments || [])
     } catch (error) {
       feedback?.trigger &&
         feedback?.trigger({
@@ -62,7 +61,7 @@ export const usePost = ({ postData }: IUsePostParams) => {
         { headers: { Authorization: `Bearer ${user?.token}` } }
       )
 
-      setComments(prev => [formatComment(res.data.createdComment), ...prev])
+      setComments(prev => [res.data.createdComment, ...prev])
     } catch (error) {
       feedback?.trigger &&
         feedback?.trigger({

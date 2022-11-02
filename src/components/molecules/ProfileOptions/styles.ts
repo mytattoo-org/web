@@ -6,12 +6,12 @@ import styled from 'styled-components'
 const AvatarLi = styled.li<ISidebarProps>`
   position: relative;
 
+  padding-right: 16px;
   width: 100%;
 
   button {
     position: relative;
     z-index: 3;
-    padding-right: 8px;
 
     .Avatar {
       transition: all 0.3s ease-in-out;
@@ -26,7 +26,7 @@ const AvatarLi = styled.li<ISidebarProps>`
     & + button {
       position: absolute;
       bottom: 0px;
-      right: -16px;
+      right: 0px;
 
       .Icon.Logout {
         height: 16px;
@@ -34,6 +34,10 @@ const AvatarLi = styled.li<ISidebarProps>`
         fill: ${({ theme }) => theme.colors.secondary};
       }
     }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 16px;
   }
 `
 
@@ -53,7 +57,7 @@ const Navbar = styled.ul`
     }
   }
 
-  @media screen and (min-width: 786px) {
+  @media screen and (min-width: 768px) {
     .ListItem {
       display: flex;
     }
@@ -135,4 +139,5 @@ const ProfileOptionsStyle = styled.div`
     }
   }
 `
+
 export { Navbar, Sidebar, ProfileOptionsStyle, AvatarLi }

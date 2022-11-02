@@ -1,19 +1,36 @@
+/* eslint-disable @next/next/no-page-custom-font */
+const Fonts = () => (
+  <>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'
+      rel='stylesheet'
+    />
+  </>
+)
+
+const OG = () => (
+  <>
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='PWA App' />
+    <meta property='og:site_name' content='PWA App' />
+    <meta property='og:url' content='https://yourdomain.com' />
+    <meta property='og:description' content='Best PWA App in the world' />
+  </>
+)
+
 const TwitterOG = () => (
   <>
     <meta name='twitter:card' content='summary' />
-    <meta name='twitter:url' content='https://yourdomain.com' />
     <meta name='twitter:title' content='PWA App' />
+    <meta name='twitter:creator' content='@DavidWShadow' />
+    <meta name='twitter:url' content='https://yourdomain.com' />
     <meta name='twitter:description' content='Best PWA App in the world' />
     <meta
       name='twitter:image'
       content='https://yourdomain.com/icons/android-chrome-192x192.png'
     />
-    <meta name='twitter:creator' content='@DavidWShadow' />
-    <meta property='og:type' content='website' />
-    <meta property='og:title' content='PWA App' />
-    <meta property='og:description' content='Best PWA App in the world' />
-    <meta property='og:site_name' content='PWA App' />
-    <meta property='og:url' content='https://yourdomain.com' />
     <meta
       property='og:image'
       content='https://yourdomain.com/icons/apple-touch-icon.png'
@@ -102,10 +119,12 @@ const PWA = () => (
   </>
 )
 
-export const SEO = () => (
+export const MainHead = () => (
   <>
+    <OG />
     <PWA />
     <TwitterOG />
+    <Fonts />
 
     <meta charSet='UTF-8' />
     <meta name='application-name' content='MySocial' />
