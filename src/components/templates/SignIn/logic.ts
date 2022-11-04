@@ -27,8 +27,6 @@ const useSignIn = () => {
     try {
       const { user } = await dispatch(signInThunk(dataToAuthenticate)).unwrap()
 
-      console.log(feedback)
-
       feedback?.trigger &&
         feedback.trigger({
           title: 'Sucesso',
