@@ -29,10 +29,10 @@ const Post = ({ postData, forwardedAs, ...props }: IPostProps) => {
             draggable='false'
             objectFit='cover'
             layout='responsive'
-            src={postData.image}
             className='postImage'
             alt='Imagem da postagem'
             style={{ userSelect: 'none' }}
+            src={postData.image.includes('/') ? postData.image : ''}
           />
         </article>
 

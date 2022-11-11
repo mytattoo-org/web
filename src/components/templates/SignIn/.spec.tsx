@@ -3,9 +3,8 @@ import GlobalProvider from '../../providers/GlobalProvider'
 import SignIn from './index'
 import { signInSchema } from './schemas'
 
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
 
 let passwordInput: HTMLElement
 let submitButton: HTMLElement
@@ -34,11 +33,16 @@ describe('SignIn', () => {
 
   it('should be able to submit', async () => {
     await userEvent.type(usernameOrEmailInput, 'InSTinToS')
-    await userEvent.type(passwordInput, 'InSTinToS@1234')
+    await userEvent.type(passwordInput, 'InSTinToS@1234{esc}')
 
     expect(usernameOrEmailInput).toHaveValue('InSTinToS')
     expect(passwordInput).toHaveValue('InSTinToS@1234')
-    expect(submitButton).toBeEnabled()
+
+    await userEvent.tab()
+
+    await waitFor(() => {
+      expect(submitButton).toBeEnabled()
+    })
   })
 
   it('should has submit button starting disabled', () => {

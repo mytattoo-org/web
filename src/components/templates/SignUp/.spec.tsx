@@ -3,7 +3,7 @@ import GlobalProvider from '../../providers/GlobalProvider'
 import SignUp from './index'
 import { signUpSchema } from './schemas'
 
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 let emailInput: HTMLElement
@@ -46,7 +46,9 @@ describe('SignUp', () => {
     expect(emailInput).toHaveValue('InSTinToS@gmail.com')
     expect(confirmPasswordInput).toHaveValue('InSTinToS@1234')
 
-    expect(submitButton).toBeEnabled()
+    userEvent.tab()
+
+    await waitFor(() => expect(submitButton).toBeEnabled())
   })
 
   it('should has submit button starting disabled', () => {
@@ -103,6 +105,7 @@ describe('SignUp', () => {
       testingValue: 'InSTinToS'
     })
   })
+
   it('should be able to show password errors', async () => {
     await hasInputError({
       input: passwordInput,

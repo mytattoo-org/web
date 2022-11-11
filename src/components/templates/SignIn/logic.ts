@@ -55,7 +55,8 @@ const useSignIn = () => {
   })
 
   const { password, usernameOrEmail } = formik.errors
-  const enableSubmit = !password && !usernameOrEmail && formik.dirty
+  const enableSubmit =
+    !password && !usernameOrEmail && formik.dirty ? true : false
 
   const onSignUpClick = () => {
     toggleAuthModal({ page: 'sign-up', open: true })
