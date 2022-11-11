@@ -25,7 +25,7 @@ const Circle = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.background};
 `
 
-const SwitchStyle = styled(motion.div)`
+const SwitchStyle = styled(motion.button)`
   display: flex;
   align-items: center;
 

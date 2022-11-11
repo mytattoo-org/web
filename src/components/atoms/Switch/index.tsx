@@ -15,7 +15,9 @@ const Switch = ({ className, label, name, formik, ...props }: ISwitchProps) => {
 
   return (
     <SwitchStyle
+      role='switch'
       data-cy={name}
+      aria-checked={isOn}
       onClick={toggleSwitch}
       className={composeClassName('Switch', className)}
     >

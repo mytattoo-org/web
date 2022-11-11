@@ -14,21 +14,19 @@ const Comment = ({
   className,
   isArtist = false,
   ...props
-}: ICommentProps) => {
-  return (
-    <CommentStyle
-      isArtist={isArtist}
-      className={composeClassName('Comment', className)}
-      {...props}
-    >
-      <Avatar size={40} src={avatar} aria-hidden='true' />
+}: ICommentProps) => (
+  <CommentStyle
+    isArtist={isArtist}
+    className={composeClassName('Comment', className)}
+    {...props}
+  >
+    <Avatar size={40} src={avatar} aria-hidden='true' />
 
-      <motion.p>
-        <b>{name}</b>
-        <br /> {content}
-      </motion.p>
-    </CommentStyle>
-  )
-}
+    <motion.p>
+      <b>{name}</b>
+      <br /> {content}
+    </motion.p>
+  </CommentStyle>
+)
 
 export default Comment
