@@ -6,6 +6,11 @@ import '@testing-library/jest-dom'
 
 const originalError = console.error
 
+Object.defineProperty(window, 'scrollTo', {
+  value: () => {},
+  writable: true
+})
+
 beforeAll(() => {
   console.error = (...args) => {
     if (

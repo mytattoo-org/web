@@ -16,7 +16,7 @@ import {
   TReadCommentsResponse
 } from '@common/types/comments/useCases/readComments.types'
 
-import { AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { createContext, useContext, useState } from 'react'
 import { api } from 'services/api'
 
@@ -31,7 +31,7 @@ export const usePost = ({ postData }: IUsePostParams) => {
     const commentsReqData: IReadCommentsRequest = { post_id: postData.id }
 
     try {
-      const res: AxiosResponse<TReadCommentsResponse> = await api.get(
+      const res: AxiosResponse<TReadCommentsResponse> = await axios.get(
         '/comments',
         { params: commentsReqData }
       )
